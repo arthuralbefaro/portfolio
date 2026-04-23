@@ -164,9 +164,13 @@ Este projeto é de uso pessoal. Consulte os termos de uso para mais informaçõe
 ## 👨‍💻 Autor
 
 **Arthur Albefaro**
-- Estudante de Ciência da Computação
+- Estudante de Ciência da Computação - UVV
 - Desenvolvedor Full Stack
 - [Ver Portfólio](./index.html)
+
+## 🙏 Agradecimentos
+
+Um agradecimento especial à **Professora Fabiana Bravim de Freitas** pelo apoio na disciplina, orientação e contribuições para o desenvolvimento deste projeto na disciplina Construção de Software para Web.
 
 ---
 
