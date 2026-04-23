@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arthur Albefaro | Portfólio</title>
+  <meta
+    name="description"
+    content="Portfólio de Arthur Albefaro, estudante de Ciência da Computação e desenvolvedor full stack."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/bootstrap-custom.css" />
+  <link rel="stylesheet" href="css/fix.css" />
+</head>
+<body>
+  <!-- scroll progress bar -->
+  <div class="scroll-progress-bar"></div>
+  
+  <!-- navbar -->
+  <header class="site-header sticky-top" id="inicio">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-lg">
+        <a class="navbar-brand brand" href="#inicio">Arthur Albefaro</a>
+        <button class="navbar-toggler menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menu de navegação" id="menuToggle">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto site-nav">
+            <li class="nav-item"><a class="nav-link" href="#inicio">Início</a></li>
+            <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="#tecnologias">Tecnologias</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#galeria">Galeria</a></li>
+            <li class="nav-item"><a class="nav-link" href="#video">Vídeo</a></li>
+            <li class="nav-item"><a class="nav-link" href="#tabela">Tabela</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- home -->
+  <main>
+    <section class="hero">
+      <div class="container-lg">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">PORTFÓLIO</p>
+            <h1>Arthur Albefaro</h1>
+            <h2>Futuro Cientista da Computação</h2>
+            <p class="hero-description">
+              Sou estudante de Ciência da Computação na Universidade de Vila Velha
+              e desenvolvedor full stack.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#projetos" class="button primary">Ver Projetos</a>
+              <a href="#contato" class="button secondary">Entrar em Contato</a>
+              <a href="Arthur.pdf" class="button tertiary" download="Arthur.pdf">Baixar CV</a>
+            </div>
+
+            <div class="hero-badges">
+              <div class="badge-card">
+                <strong>Front-end</strong>
+                <span>Desenvolvimento Web, React e Bootstrap</span>
+              </div>
+              <div class="badge-card">
+                <strong>Back-end</strong>
+                <span>APIs, autenticação e banco de dados</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <article class="hero-card">
+              <img
+                src="img/foto.png"
+                alt="Foto de perfil de Arthur Albefaro"
+                class="profile-image"
+              />
+              <div class="hero-card-content">
+                <h3>Desenvolvedor em formação</h3>
+                <p>
+                  Portfólio criado em HTML e CSS para apresentar minha trajetória,
+                  tecnologias, projetos e informações de contato de forma clara,
+                  bonita e profissional.
+                </p>
+              </div>
+            </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- sobre -->
+    <section class="section alt-section" id="sobre">
+      <div class="container-lg">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">SOBRE MIM</p>
+          <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Construindo soluções reais com foco em qualidade</h2>
+          <p style="max-width: 600px; margin: 0 auto; color: #b8bfd0;">
+            Atuo tanto no front-end quanto no back-end, desenvolvendo projetos
+            acadêmicos e pessoais para fortalecer meu portfólio e evoluir como
+            profissional da área de tecnologia.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="info-card">
+            <h3>Quem sou eu</h3>
+            <p>
+              Tenho experiência prática com HTML, CSS, Python, Java, C#, C++,
+              PHP, Ruby, Node.js e bancos de dados relacionais. Gosto de criar
+              projetos completos, com visual profissional e estrutura organizada.
+            </p>
+            <p>
+              Busco sempre aprender mais sobre arquitetura de software,
+              desenvolvimento web, APIs, dashboards e boas práticas para código
+              limpo e escalável.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Diferenciais</h3>
+            <ol class="feature-list">
+              <li>Construção de APIs REST com autenticação</li>
+              <li>Criação de interfaces modernas e responsivas</li>
+              <li>Integração com MySQL e PostgreSQL</li>
+              <li>Uso de Git e GitHub no versionamento</li>
+              <li>Desenvolvimento de projetos para portfólio</li>
+            </ol>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- tecnologias -->
+    <section class="section" id="tecnologias">
+      <div class="container-lg">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">TECNOLOGIAS</p>
+          <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Linguagens, ferramentas e frameworks</h2>
+        </div>
+
+        <div class="tech-grid">
+          <div class="tech-card"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+          <div class="tech-card"><i class="devicon-css3-plain colored"></i><span>CSS3</span></div>
+          <div class="tech-card"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+          <div class="tech-card"><i class="devicon-typescript-plain colored"></i><span>TypeScript</span></div>
+          <div class="tech-card"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+          <div class="tech-card"><i class="devicon-java-plain colored"></i><span>Java</span></div>
+          <div class="tech-card"><i class="devicon-spring-plain colored"></i><span>Spring</span></div>
+          <div class="tech-card"><i class="devicon-php-plain colored"></i><span>PHP</span></div>
+          <div class="tech-card"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+          <div class="tech-card"><i class="devicon-csharp-plain colored"></i><span>C#</span></div>
+          <div class="tech-card"><i class="devicon-ruby-plain colored"></i><span>Ruby</span></div>
+          <div class="tech-card"><i class="devicon-react-original colored"></i><span>React</span></div>
+          <div class="tech-card"><i class="devicon-nodejs-plain colored"></i><span>Node.js</span></div>
+          <div class="tech-card"><i class="devicon-nextjs-plain colored"></i><span>Next.js</span></div>
+          <div class="tech-card"><i class="devicon-nestjs-plain colored"></i><span>NestJS</span></div>
+          <div class="tech-card"><i class="devicon-bootstrap-plain colored"></i><span>Bootstrap</span></div>
+          <div class="tech-card"><i class="devicon-laravel-plain colored"></i><span>Laravel</span></div>
+          <div class="tech-card"><i class="devicon-docker-plain colored"></i><span>Docker</span></div>
+          <div class="tech-card"><i class="devicon-git-plain colored"></i><span>Git</span></div>
+          <div class="tech-card"><i class="devicon-github-original"></i><span>GitHub</span></div>
+          <div class="tech-card"><i class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+          <div class="tech-card"><i class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span></div>
+          <div class="tech-card"><i class="devicon-sqlite-plain colored"></i><span>SQLite</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projetos -->
+    <section class="section alt-section" id="projetos">
+      <div class="container-lg">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">PROJETOS</p>
+          <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Projetos em destaque</h2>
+          <p style="color: #b8bfd0; margin: 0 auto; max-width: 600px;">
+            Alguns trabalhos que representam minha evolução como desenvolvedor e
+            minha busca por projetos com cara profissional.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; width: 100%;">
+          <article class="project-card">
+            <div class="placeholder-img" style="background: linear-gradient(45deg, #1a1a1a, #4a0e12);">
+              <img src="img/adv.png" alt="Site Adv">
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Site Institucional</span>
+              <h3>Site de Advocacia</h3>
+              <p>
+                Site profissional com identidade visual forte, estrutura clara e
+                foco em apresentação institucional.
+              </p>
+              <div class="stack-list">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>Bootstrap</span>
+              </div>
+              <a href="https://advhugoalbefaro.netlify.app" target="_blank">Visualizar projeto</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="placeholder-img" style="background: linear-gradient(45deg, #1a1a1a, #4a0e12);">
+              <img src="img/dashboard.png" alt="Dashboard PHP">
+            </div>
+            <div class="project-content">
+              <span class="project-tag">Dashboard</span>
+              <h3>Dashboard Profissional</h3>
+              <p>
+                Projeto com autenticação, visual moderno e organização de dados
+                para gestão e acompanhamento de informações.
+              </p>
+              <div class="stack-list">
+                <span>React</span>
+                <span>PHP</span>
+                <span>Laravel</span>
+                <span>PostgreSQL</span>
+              </div>
+              <a href="https://github.com/arthuralbefaro/dashboard-cs" target="_blank">Visualizar projeto</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="placeholder-img" style="background: linear-gradient(45deg, #1a1a1a, #4a0e12);">
+              <img src="img/bankingapi.png" alt="Banking API">
+            </div>
+            <div class="project-content">
+              <span class="project-tag">API REST</span>
+              <h3>API de Conta Bancária</h3>
+              <p>
+                API bancária em TypeScript com estrutura em camadas, rotas,
+                autenticação e integração com banco de dados.
+              </p>
+              <div class="stack-list">
+                <span>TypeScript</span>
+                <span>Node.js</span>
+                <span>PostgreSQL</span>
+              </div>
+              <a href="https://github.com/arthuralbefaro/banking-api-ts" target="_blank">Visualizar projeto</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- galeria -->
+    <section class="section" id="galeria">
+      <div class="container-lg">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">GALERIA</p>
+          <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Imagens do meu universo em tecnologia</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card">
+            <img src="img/projeto-frontend.svg" alt="Setup e desenvolvimento web" />
+            <figcaption>Desenvolvimento de interfaces e experiências web.</figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="img/projeto-dados.svg" alt="Código e programação" />
+            <figcaption>Projetos focados em código limpo e evolução constante.</figcaption>
+          </figure>
+
+          <figure class="gallery-card">
+            <img src="img/projeto-backend.svg" alt="Análise e construção de sistemas" />
+            <figcaption>Criação de sistemas, APIs e dashboards para portfólio.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- vídeo -->
+    <section class="section alt-section" id="video">
+      <div class="container-lg">
+        <div class="video-grid">
+          <div class="video-copy">
+            <p class="section-label">VÍDEO</p>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Apresentação em vídeo</h2>
+            <p style="color: #b8bfd0;">
+              Video de apresentação para o meu portfólio!!
+            </p>
+          </div>
+
+          <div>
+            <figure class="video-card">
+              <video controls preload="metadata" style="width: 100%; border-radius: 22px;">
+                <source src="videos/apresentacao.mp4" type="video/mp4" />
+                <track
+                  src="legendas/apresentacao.vtt"
+                  kind="subtitles"
+                  srclang="pt-BR"
+                  label="Português"
+                  default
+                />
+                Seu navegador não suporta vídeo HTML5.
+              </video>
+              <figcaption>
+                Vídeo de apresentação incorporado ao portfólio com arquivo de legenda.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- tabela -->
+    <section class="section" id="tabela">
+      <div class="container-lg">
+        <div class="section-heading text-center mb-5">
+          <p class="section-label">TABELA</p>
+          <h2>Resumo técnico e acadêmico</h2>
+          <p>
+            Tabela com minhas informações pessoais e profissionais.
+          </p>
+        </div>
+
+        <div class="table-wrapper">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0">
+              <thead>
+                <tr>
+                  <th>Categoria</th>
+                  <th>Informação</th>
+                  <th>Detalhes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Formação</td>
+                  <td>Ciência da Computação</td>
+                  <td>Universidade de Vila Velha</td>
+                </tr>
+                <tr>
+                  <td>Foco</td>
+                  <td>Desenvolvimento Full Stack</td>
+                  <td>Front-end, Back-end e Banco de Dados</td>
+                </tr>
+                <tr>
+                  <td>Objetivo</td>
+                  <td>Estágio em Tecnologia</td>
+                  <td>Aprendizado, prática e crescimento profissional</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- redes sociais -->
+    <section class="section" id="redes">
+      <div class="container-lg">
+        <div style="text-align: center; margin-bottom: 3rem;">
+          <p class="section-label">REDES</p>
+          <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Conecte-se comigo</h2>
+          <p style="color: #b8bfd0; margin: 0 auto; max-width: 600px;">
+            Você pode me encontrar nas principais plataformas para acompanhar meus projetos,
+            entrar em contato e ver mais sobre minha trajetória.
+          </p>
+        </div>
+
+        <div class="social-grid">
+          <a href="https://github.com/arthuralbefaro" target="_blank" class="social-card">
+            <i class="devicon-github-original"></i>
+            <h3>GitHub</h3>
+            <p>Veja meus projetos, repositórios e evolução prática em tecnologia.</p>
+            <span>Acessar perfil</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/arthur-nascimento-albefaro-penna-2a03473ab/" target="_blank" class="social-card">
+            <i class="devicon-linkedin-plain"></i>
+            <h3>LinkedIn</h3>
+            <p>Conheça minha trajetória profissional, experiências e objetivos de carreira.</p>
+            <span>Acessar perfil</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- contato -->
+    <section class="section alt-section" id="contato">
+      <div class="container-lg">
+        <div class="contact-layout">
+          <div class="contact-copy">
+            <p class="section-label">CONTATO</p>
+            <h2 style="font-size: clamp(1.8rem, 3vw, 3rem); margin-bottom: 1rem; color: #f4f6fb;">Entre em contato comigo</h2>
+            <p style="color: #b8bfd0;">
+              Estou aberto a oportunidades de estágio, networking e conexões na
+              área de tecnologia.
+            </p>
+
+            <div class="contact-info-cards" style="margin-top: 2rem;">
+              <div class="contact-info-card">
+                <h3>Email</h3>
+                <p>arthuralbefaroec@gmail.com</p>
+              </div>
+              <div class="contact-info-card">
+                <h3>Localização</h3>
+                <p>Vila Velha - ES, Brasil</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome" required />
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu e-mail" required />
+              </div>
+
+              <div class="form-group">
+                <label for="mensagem" class="form-label">Mensagem</label>
+                <textarea
+                  class="form-control"
+                  id="mensagem"
+                  name="mensagem"
+                  rows="6"
+                  placeholder="Digite sua mensagem"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="button primary">Enviar mensagem</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- rodapé -->
+  <footer class="site-footer">
+    <div class="container-lg">
+      <div class="footer-grid">
+        <div class="footer-section">
+          <h3 class="footer-title">Arthur Albefaro</h3>
+          <p class="footer-description">Desenvolvedor Full Stack em formação pela <a href="https://www.uvv.br" target="_blank" class="footer-link-highlight">Universidade de Vila Velha</a></p>
+          <div class="footer-social">
+            <a href="https://github.com/arthuralbefaro" target="_blank" class="footer-social-link" title="GitHub">
+              <i class="devicon-github-original"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/arthur-nascimento-albefaro-penna-2a03473ab/" target="_blank" class="footer-social-link" title="LinkedIn">
+              <i class="devicon-linkedin-plain"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Navegação</h4>
+          <ul class="footer-links">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#sobre">Sobre</a></li>
+            <li><a href="#tecnologias">Tecnologias</a></li>
+            <li><a href="#projetos">Projetos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#galeria">Galeria</a></li>
+            <li><a href="#tabela">Resumo</a></li>
+            <li><a href="#videos">Vídeos</a></li>
+            <li><a href="Arthur.pdf" download>Download CV</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h4 class="footer-subtitle">Contato</h4>
+          <div class="footer-contact">
+            <p><span class="footer-label">Email:</span> arthuralbefaroec@gmail.com</p>
+            <p><span class="footer-label">Localização:</span> Vila Velha - ES</p>
+            <p><span class="footer-label">Status:</span> Aberto para oportunidades</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <div class="footer-bottom">
+        <p class="footer-copyright">© 2026 Arthur Albefaro. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

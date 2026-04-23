@@ -1,0 +1,17 @@
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="520" rx="32" fill="#0F172A"/>
+  <circle cx="120" cy="100" r="18" fill="#22C55E"/>
+  <circle cx="170" cy="100" r="18" fill="#38BDF8"/>
+  <circle cx="220" cy="100" r="18" fill="#F97316"/>
+  <rect x="76" y="148" width="648" height="296" rx="20" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <rect x="116" y="196" width="210" height="32" rx="8" fill="#1E293B"/>
+  <rect x="116" y="250" width="440" height="18" rx="6" fill="#2563EB" fill-opacity="0.45"/>
+  <rect x="116" y="284" width="380" height="18" rx="6" fill="#22C55E" fill-opacity="0.35"/>
+  <rect x="116" y="318" width="500" height="18" rx="6" fill="#A855F7" fill-opacity="0.35"/>
+  <rect x="580" y="190" width="104" height="104" rx="16" fill="#1D4ED8" fill-opacity="0.35"/>
+  <path d="M612 225H652" stroke="#93C5FD" stroke-width="10" stroke-linecap="round"/>
+  <path d="M612 255H652" stroke="#93C5FD" stroke-width="10" stroke-linecap="round"/>
+  <path d="M612 285H640" stroke="#93C5FD" stroke-width="10" stroke-linecap="round"/>
+  <text x="76" y="68" fill="#E2E8F0" font-family="Arial, sans-serif" font-size="34" font-weight="700">Projetos Back-end</text>
+  <text x="116" y="395" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="24">APIs REST • PostgreSQL • Autenticação • Boas práticas</text>
+</svg>

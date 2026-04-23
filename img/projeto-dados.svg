@@ -1,0 +1,16 @@
+<svg width="800" height="520" viewBox="0 0 800 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="520" rx="32" fill="#0B1120"/>
+  <rect x="84" y="86" width="632" height="348" rx="26" fill="#111827" stroke="#334155" stroke-width="2"/>
+  <path d="M160 336L246 272L324 298L420 198L516 238L632 150" stroke="#38BDF8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="160" cy="336" r="14" fill="#38BDF8"/>
+  <circle cx="246" cy="272" r="14" fill="#38BDF8"/>
+  <circle cx="324" cy="298" r="14" fill="#38BDF8"/>
+  <circle cx="420" cy="198" r="14" fill="#38BDF8"/>
+  <circle cx="516" cy="238" r="14" fill="#38BDF8"/>
+  <circle cx="632" cy="150" r="14" fill="#38BDF8"/>
+  <rect x="140" y="154" width="78" height="182" rx="14" fill="#22C55E" fill-opacity="0.28"/>
+  <rect x="250" y="214" width="78" height="122" rx="14" fill="#22C55E" fill-opacity="0.28"/>
+  <rect x="360" y="182" width="78" height="154" rx="14" fill="#22C55E" fill-opacity="0.28"/>
+  <text x="84" y="54" fill="#F8FAFC" font-family="Arial, sans-serif" font-size="34" font-weight="700">Dados e Performance</text>
+  <text x="118" y="466" fill="#CBD5E1" font-family="Arial, sans-serif" font-size="24">Análise de resultados • Organização • Evolução contínua</text>
+</svg>
