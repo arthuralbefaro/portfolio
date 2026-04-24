@@ -1,20 +1,16 @@
-// Get DOM elements
 const siteHeader = document.querySelector('.site-header');
 const navbar = document.querySelector('.navbar-collapse');
 const navLinks = document.querySelectorAll('.site-nav .nav-link');
 const scrollProgressBar = document.querySelector('.scroll-progress-bar');
 
-// Store original scroll position for animations
 let lastScrollY = 0;
 
-// Function to update scroll progress bar
 function updateScrollProgress() {
   const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   const scrolled = (window.scrollY / windowHeight) * 100;
   scrollProgressBar.style.width = scrolled + '%';
 }
 
-// Scroll effect for header
 window.addEventListener('scroll', function() {
   if (window.scrollY > 10) {
     siteHeader.classList.add('scrolled');
@@ -27,7 +23,6 @@ window.addEventListener('scroll', function() {
   updateScrollProgress();
 });
 
-// Function to update active navigation link
 function updateActiveLink() {
   const sections = document.querySelectorAll('section, header');
   let currentSection = '';
@@ -53,7 +48,6 @@ function updateActiveLink() {
   }
 }
 
-// Smooth scroll navigation
 navLinks.forEach(link => {
   link.addEventListener('click', function(e) {
     const href = this.getAttribute('href');
@@ -61,7 +55,6 @@ navLinks.forEach(link => {
     if (href.startsWith('#')) {
       e.preventDefault();
       
-      // Close navbar if open
       const bsCollapse = new bootstrap.Collapse(navbar, {
         toggle: false
       });
