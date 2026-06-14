@@ -11,7 +11,7 @@ export const profile: Profile = {
     "Desenvolvedor backend na Overload. Construo e mantenho APIs, integro plataformas externas via API e estruturo dados em PostgreSQL para análise. Stack principal: TypeScript (NestJS) e Python.",
   about: [
     "Trabalho na Overload desenvolvendo serviços de backend em TypeScript (NestJS) e Python. No dia a dia, construo APIs REST, integro plataformas como GoHighLevel e Notion via API e normalizo dados não padronizados para que possam ser consultados e analisados.",
-    "Curso Bacharelado em Ciência da Computação na Universidade de Vila Velha (2026–2029). Em paralelo, aprofundo design de APIs, modelagem de banco de dados e arquitetura em nuvem, com certificações voltadas a AWS, .NET e Java.",
+    "Curso Bacharelado em Ciência da Computação na Universidade de Vila Velha (2026–2029). Em paralelo, aprofundo design de APIs, banco de dados e arquitetura em nuvem, com certificações voltadas a AWS, .NET e Java.",
     "No dia a dia, resolvo problemas de integração entre sistemas, mantendo o código organizado e os dados consistentes. Estou estudando mais a fundo arquitetura de APIs, banco de dados e cloud.",
   ],
   highlights: [
