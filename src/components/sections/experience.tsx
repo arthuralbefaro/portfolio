@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 
-import { Reveal } from "@/components/motion/reveal";
 import { Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { experiences } from "@/data/experience";
@@ -8,38 +7,36 @@ import { experiences } from "@/data/experience";
 export function ExperienceSection() {
   return (
     <Section id="experiencia">
-      <SectionHeading eyebrow="Experiência" title="Experiência profissional" />
+      <SectionHeading mark="// experiência" title="Experiência profissional" />
 
-      <ol className="border-border relative mx-auto max-w-3xl border-l">
-        {experiences.map((exp, index) => (
-          <Reveal
-            as="li"
+      <ol className="border-border relative border-l">
+        {experiences.map((exp) => (
+          <li
             key={`${exp.company}-${exp.period}`}
-            delay={index * 0.05}
             className="relative ml-6 pb-10 last:pb-0"
           >
-            <span className="border-background bg-foreground absolute top-1 -left-[1.6875rem] size-3.5 rounded-full border-2" />
+            <span className="border-background bg-emphasis absolute top-1.5 -left-[1.6875rem] size-3 rounded-full border-2" />
 
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-              <h3 className="text-base font-semibold">{exp.role}</h3>
-              {exp.current && <Badge variant="accent">Atual</Badge>}
+              <h3 className="font-display text-base font-semibold">
+                {exp.role}
+              </h3>
+              {exp.current && <Badge variant="accent">atual</Badge>}
             </div>
 
-            <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 text-sm">
+            <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs">
               {exp.companyUrl ? (
                 <a
                   href={exp.companyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-foreground/70 inline-flex items-center gap-0.5 font-medium transition-colors"
+                  className="text-foreground hover:text-emphasis inline-flex items-center gap-0.5 transition-colors"
                 >
                   {exp.company}
                   <ArrowUpRight className="size-3.5" />
                 </a>
               ) : (
-                <span className="text-foreground font-medium">
-                  {exp.company}
-                </span>
+                <span className="text-foreground">{exp.company}</span>
               )}
               <span aria-hidden>·</span>
               <span>{exp.period}</span>
@@ -71,7 +68,7 @@ export function ExperienceSection() {
                 </Badge>
               ))}
             </div>
-          </Reveal>
+          </li>
         ))}
       </ol>
     </Section>

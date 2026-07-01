@@ -1,6 +1,5 @@
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-import { Reveal } from "@/components/motion/reveal";
 import { Section } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { profile } from "@/data/profile";
@@ -9,50 +8,47 @@ import { socials } from "@/data/socials";
 export function Contact() {
   return (
     <Section id="contato">
-      <Reveal>
-        <div className="border-border bg-card rounded-2xl border px-6 py-16 text-center sm:px-12 sm:py-20">
-          <span className="text-muted-foreground text-xs font-semibold tracking-[0.2em] uppercase">
-            Contato
-          </span>
-          <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+      <p className="text-dim font-mono text-sm">{"// contato"}</p>
+
+      <div className="mt-6 grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-end">
+        <div>
+          <h2 className="font-display max-w-2xl text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
             Vamos conversar
           </h2>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-xl text-pretty">
+          <p className="text-muted-foreground mt-4 max-w-xl text-pretty">
             Entre em contato para falar sobre projetos, vagas ou tecnologia
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg">
-              <a href={`mailto:${profile.email}`}>Enviar e-mail</a>
+              <a href={`mailto:${profile.email}`}>enviar e-mail</a>
             </Button>
             <Button asChild variant="outline" size="lg">
               <a href={profile.resumeUrl} download>
-                Baixar currículo
+                baixar currículo
               </a>
             </Button>
           </div>
+        </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm">
-            {socials.map(({ label, href, icon: Icon, handle }) => (
+        <ul className="border-border flex flex-col border-t font-mono text-sm">
+          {socials.map(({ label, href, icon: Icon, handle }) => (
+            <li key={label} className="border-border border-b">
               <a
-                key={label}
                 href={href}
                 target={label === "Email" ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                className="group text-muted-foreground hover:text-foreground inline-flex items-center gap-2 transition-colors"
+                className="group text-muted-foreground hover:text-emphasis flex items-center gap-3 py-3 transition-colors"
               >
-                <Icon className="size-4" />
-                {handle ?? label}
-                <ArrowUpRight className="size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
+                <Icon className="size-4 shrink-0" />
+                <span className="truncate">{handle ?? label}</span>
+                <ArrowUpRight className="ml-auto size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
               </a>
-            ))}
-            <span className="text-muted-foreground inline-flex items-center gap-2">
-              <MapPin className="size-4" />
-              {profile.location}
-            </span>
-          </div>
-        </div>
-      </Reveal>
+            </li>
+          ))}
+          <li className="text-dim py-3">{profile.location}</li>
+        </ul>
+      </div>
     </Section>
   );
 }

@@ -1,75 +1,71 @@
-import { Check } from "lucide-react";
-
-import { Reveal } from "@/components/motion/reveal";
 import { Section, SectionHeading } from "@/components/section";
-import { Card } from "@/components/ui/card";
 import { education, languages } from "@/data/education";
 import { profile } from "@/data/profile";
 
 export function About() {
   return (
-    <Section id="sobre" className="bg-muted/30">
-      <SectionHeading eyebrow="Sobre mim" title="Sobre mim" />
+    <Section id="sobre">
+      <SectionHeading mark="// sobre" title="Sobre mim" />
 
-      <div className="grid gap-6 lg:grid-cols-[1.5fr_1fr]">
-        <Reveal className="space-y-4">
-          <Card className="h-full p-6 sm:p-8">
-            <div className="text-muted-foreground space-y-4 leading-relaxed text-pretty">
-              {profile.about.map((paragraph) => (
-                <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-              ))}
-            </div>
-          </Card>
-        </Reveal>
+      <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
+        <div className="text-muted-foreground space-y-4 leading-relaxed text-pretty">
+          {profile.about.map((paragraph) => (
+            <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+          ))}
+        </div>
 
-        <Reveal delay={0.1}>
-          <Card className="h-full p-6 sm:p-8">
-            <h3 className="text-sm font-semibold">Competências</h3>
-            <ul className="mt-4 space-y-3">
+        <div className="space-y-8">
+          <div>
+            <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
+              Competências
+            </h3>
+            <ul className="mt-4 space-y-2.5">
               {profile.highlights.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm">
-                  <Check className="text-foreground mt-0.5 size-4 shrink-0" />
-                  <span className="text-muted-foreground">{item}</span>
+                <li
+                  key={item}
+                  className="text-muted-foreground flex items-start gap-2.5 text-sm"
+                >
+                  <span
+                    aria-hidden
+                    className="bg-emphasis mt-1.5 size-1 shrink-0 rounded-full"
+                  />
+                  {item}
                 </li>
               ))}
             </ul>
+          </div>
 
-            <div className="border-border mt-6 border-t pt-6">
-              <h3 className="text-sm font-semibold">Idiomas</h3>
-              <ul className="mt-4 space-y-2.5">
-                {languages.map((lang) => (
-                  <li
-                    key={lang.name}
-                    className="flex items-center justify-between text-sm"
-                  >
-                    <span className="text-muted-foreground">{lang.name}</span>
-                    <span className="font-medium">{lang.level}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </Card>
-        </Reveal>
-      </div>
-
-      <Reveal delay={0.15} className="mt-6">
-        <Card className="flex flex-col gap-2 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-          <div>
-            <p className="text-muted-foreground text-xs font-semibold tracking-[0.2em] uppercase">
-              Formação
-            </p>
-            <h3 className="mt-1 text-base font-semibold">
-              {education[0]?.degree}
+          <div className="border-border border-t pt-6">
+            <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
+              Idiomas
             </h3>
+            <ul className="mt-4 space-y-2.5">
+              {languages.map((lang) => (
+                <li
+                  key={lang.name}
+                  className="flex items-center justify-between text-sm"
+                >
+                  <span className="text-muted-foreground">{lang.name}</span>
+                  <span className="font-mono text-xs">{lang.level}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="border-border border-t pt-6">
+            <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
+              Formação
+            </h3>
+            <p className="mt-4 font-medium">{education[0]?.degree}</p>
             <p className="text-muted-foreground text-sm">
               {education[0]?.institution}
             </p>
+            <p className="text-dim mt-1 font-mono text-xs">
+              {education[0]?.period}
+            </p>
           </div>
-          <span className="text-muted-foreground text-sm font-medium">
-            {education[0]?.period}
-          </span>
-        </Card>
-      </Reveal>
+        </div>
+      </div>
     </Section>
   );
 }
