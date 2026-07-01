@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import type { StaticImageData } from "next/image";
+import type { ComponentType, SVGProps } from "react";
 
 export interface NavItem {
   /** Visible label. */
@@ -11,7 +12,7 @@ export interface NavItem {
 export interface SocialLink {
   label: string;
   href: string;
-  icon: LucideIcon;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   /** Short handle shown in the UI (e.g. @arthuralbefaro). */
   handle?: string;
 }

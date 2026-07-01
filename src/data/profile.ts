@@ -22,7 +22,7 @@ export const profile: Profile = {
     "Frontend em React e Next.js consumindo as APIs",
     "Modelagem de dados e integrações entre plataformas via API",
   ],
-  email: "arthuralbefaroec@gmail.com",
+  email: "arthuralbefarodev@gmail.com",
   phone: "+55 27 99952-1684",
   location: "Vila Velha, ES, Brasil",
   availability: "Full Stack · Backend · Cloud",

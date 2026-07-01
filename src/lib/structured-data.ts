@@ -40,6 +40,8 @@ export function getPersonJsonLd() {
       recognizedBy: { "@type": "Organization", name: cert.issuer },
     })),
     knowsAbout: Array.from(new Set(skills)),
-    sameAs: socials.filter((s) => s.label !== "Email").map((s) => s.href),
+    sameAs: socials
+      .filter((s) => s.label !== "Email" && s.label !== "WhatsApp")
+      .map((s) => s.href),
   };
 }

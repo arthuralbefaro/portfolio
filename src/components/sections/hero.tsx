@@ -48,7 +48,7 @@ export function Hero() {
               </a>
             </Button>
             {socials
-              .filter((s) => s.label !== "Email")
+              .filter((s) => s.label === "GitHub" || s.label === "LinkedIn")
               .map(({ label, href, icon: Icon }) => (
                 <Button key={label} asChild variant="outline" size="lg">
                   <a href={href} target="_blank" rel="noopener noreferrer">
