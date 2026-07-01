@@ -55,6 +55,7 @@ export interface SkillGroup {
 /** Publication status of a case study. */
 export type CaseStudyStatus =
   | "Em produção"
+  | "Projeto profissional"
   | "Projeto interno"
   | "Projeto pessoal"
   | "Projeto acadêmico";
@@ -82,7 +83,7 @@ export interface CaseStudy {
   architecture: string[];
   technologies: string[];
   challenges: CaseStudyChallenge[];
-  result: string[];
+  result?: string[];
   demonstrates: string;
   featured?: boolean;
   proof?: CaseStudyProof;

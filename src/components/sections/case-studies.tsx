@@ -164,22 +164,24 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
       </div>
 
       <div className="border-border mt-8 grid gap-8 border-t pt-6 lg:grid-cols-2">
-        <Field label="Resultado">
-          <ul className="space-y-2">
-            {study.result.map((item) => (
-              <li
-                key={item.slice(0, 28)}
-                className="text-muted-foreground flex items-start gap-2 text-sm"
-              >
-                <span
-                  aria-hidden
-                  className="bg-muted-foreground mt-1.5 size-1 shrink-0 rounded-full"
-                />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </Field>
+        {study.result && study.result.length > 0 && (
+          <Field label="Resultado">
+            <ul className="space-y-2">
+              {study.result.map((item) => (
+                <li
+                  key={item.slice(0, 28)}
+                  className="text-muted-foreground flex items-start gap-2 text-sm"
+                >
+                  <span
+                    aria-hidden
+                    className="bg-muted-foreground mt-1.5 size-1 shrink-0 rounded-full"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Field>
+        )}
         <Field label="O que demonstra">
           <p className="text-foreground/90 text-sm leading-relaxed text-pretty">
             {study.demonstrates}
