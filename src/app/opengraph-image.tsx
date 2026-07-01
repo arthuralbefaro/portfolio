@@ -17,7 +17,7 @@ export default function OpengraphImage() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        background: "#0f0f10",
+        background: "#0c0b0a",
         padding: "80px",
         fontFamily: "sans-serif",
       }}
@@ -27,7 +27,7 @@ export default function OpengraphImage() {
           display: "flex",
           alignItems: "center",
           gap: 14,
-          color: "#a1a1aa",
+          color: "#928d84",
           fontSize: 28,
         }}
       >
@@ -36,32 +36,32 @@ export default function OpengraphImage() {
             width: 12,
             height: 12,
             borderRadius: 9999,
-            background: "#71717a",
+            background: "#ecebe8",
           }}
         />
         {profile.availability}
       </div>
 
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <div style={{ color: "#fafafa", fontSize: 88, fontWeight: 700 }}>
+        <div style={{ color: "#ecebe8", fontSize: 88, fontWeight: 700 }}>
           {profile.name}
         </div>
-        <div style={{ color: "#d4d4d8", fontSize: 44, fontWeight: 500 }}>
+        <div style={{ color: "#c9c5bd", fontSize: 44, fontWeight: 500 }}>
           {profile.role}
         </div>
         <div
           style={{
-            color: "#a1a1aa",
+            color: "#928d84",
             fontSize: 30,
             maxWidth: 900,
             marginTop: 8,
           }}
         >
-          APIs · Automações · Integração de sistemas
+          Correção imposta no banco · provada com testes
         </div>
       </div>
 
-      <div style={{ color: "#71717a", fontSize: 28 }}>
+      <div style={{ color: "#5c574e", fontSize: 28 }}>
         {siteConfig.url.replace("https://", "")}
       </div>
     </div>,
