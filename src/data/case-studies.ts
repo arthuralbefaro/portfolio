@@ -5,10 +5,15 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "journal",
     title: "Journal",
+    chip: "ledger · estudo",
     tagline:
       "Motor de razão contábil de partida dobrada em Java/Spring Boot, com prevenção de saldo negativo sob concorrência e invariantes financeiras impostas no PostgreSQL",
     status: "Projeto pessoal",
     featured: true,
+    proof: {
+      command: "./gradlew test",
+      result: "52 tests, 0 failures · overdraft sob concorrência provado",
+    },
     context:
       "Projeto público que implementa o motor de contabilidade por trás de uma carteira, banco ou sistema de pagamento: a peça que garante que dinheiro não aparece nem some por engano.",
     problem:
@@ -64,10 +69,15 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "verdict",
     title: "Verdict",
+    chip: "authz · estudo",
     tagline:
       "Serviço de autorização multi-tenant (Policy Decision Point) em C#/.NET, com isolamento entre tenants por Row-Level Security e log de auditoria imutável no PostgreSQL",
     status: "Projeto pessoal",
     featured: true,
+    proof: {
+      command: "dotnet test",
+      result: "50 passed · isolamento entre tenants provado",
+    },
     context:
       "Projeto público que implementa um Policy Decision Point: um serviço que responde se um subject pode executar uma ação sobre um recurso, dentro de um tenant, com decisão determinística, explicável e registrada.",
     problem:
@@ -120,10 +130,15 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "courier",
     title: "Courier",
+    chip: "webhooks · estudo",
     tagline:
       "Gateway de entrega de webhooks em TypeScript/NestJS, com ingestão idempotente, fila baseada em Postgres e proteção contra SSRF na entrega",
     status: "Projeto pessoal",
     featured: true,
+    proof: {
+      command: "npm test",
+      result: "188 passed · idempotência e SSRF provados",
+    },
     context:
       "Projeto público que recebe eventos e os entrega a assinantes via webhook — a peça de infraestrutura que parece simples até aparecerem as perguntas difíceis: e se o processo cair no meio? E se o destino apontar para a própria rede interna?",
     problem:
@@ -176,6 +191,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "crm-notion",
     title: "Integração CRM → Notion",
+    chip: "integração · produção",
     tagline:
       "Rotina de integração que sincroniza dados do GoHighLevel (CRM) com o Notion, normalizando informações não padronizadas e evitando duplicidade",
     status: "Projeto interno",

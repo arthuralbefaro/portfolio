@@ -65,7 +65,11 @@ export interface CaseStudyChallenge {
   detail: string;
 }
 
-/** A structured technical case study (Contexto → Resultado). */
+export interface CaseStudyProof {
+  command: string;
+  result: string;
+}
+
 export interface CaseStudy {
   slug: string;
   title: string;
@@ -79,13 +83,13 @@ export interface CaseStudy {
   technologies: string[];
   challenges: CaseStudyChallenge[];
   result: string[];
-  /** What the project signals to a recruiter / tech lead. */
   demonstrates: string;
   featured?: boolean;
+  proof?: CaseStudyProof;
+  chip?: string;
   links?: {
     github?: string;
     demo?: string;
-    /** Only set when a real technical publication exists. */
     post?: string;
   };
 }
