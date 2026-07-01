@@ -3,8 +3,9 @@ import type { SkillGroup } from "@/types";
 
 /**
  * Stack organizada por foco: o backend principal é o centro do perfil; Java/C#/
- * .NET aparecem como base complementar (apoiada por certificações), e Cloud e
- * Frontend completam a atuação full stack. Mantida enxuta de propósito.
+ * .NET aparecem como base complementar, agora aplicada em projetos reais (Verdict,
+ * Journal), e Cloud e Frontend completam a atuação full stack. Mantida enxuta de
+ * propósito.
  */
 export const skillGroups: SkillGroup[] = [
   {
@@ -23,7 +24,7 @@ export const skillGroups: SkillGroup[] = [
   {
     category: "Backend complementar",
     icon: Code2,
-    description: "Base técnica apoiada por certificações",
+    description: "Aplicado em projetos reais (Verdict em C#, Journal em Java)",
     items: ["Java", "C#", ".NET"],
   },
   {
