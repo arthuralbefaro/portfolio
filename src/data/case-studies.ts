@@ -3,6 +3,63 @@ import type { CaseStudy } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "sistema-interno-gestao",
+    title: "Sistema interno de gestão",
+    chip: "fullstack · produção",
+    tagline:
+      "Sistema interno fullstack usado por uma agência de marketing para gerir a carteira de clientes, o comercial e a operação, com uma camada de IA que apoia decisões.",
+    status: "Projeto profissional",
+    period: "2026",
+    featured: true,
+    context:
+      "A operação ficava espalhada entre planilhas, o CRM e conversas soltas. Não havia um lugar único onde a equipe visse a saúde da carteira, o andamento do comercial e as demandas de cada squad. As informações nasciam em ferramentas diferentes e eram cruzadas na mão.",
+    problem:
+      "Centralizar gestão de clientes, comercial e operação num sistema só, com dados vindos de várias fontes externas, controle de acesso por função e por squad, e apoio de IA para transformar dados dispersos em ação, tudo com informação sincronizada e consistente.",
+    solution:
+      "Sistema fullstack com backend em TypeScript (NestJS) e Python e frontend em React, sobre PostgreSQL. Reúne painel executivo, gestão de demandas por squad, CRM com qualificação de lead para SDRs, cálculo de saúde da carteira e do cliente, e chat interno da equipe. Integra fontes externas via API e usa uma camada de IA que absorve o histórico de cada cliente para sugerir ações e sinalizar risco.",
+    architecture: [
+      "Backend em NestJS e Python expondo APIs consumidas por um frontend em React, com controle de acesso por função e por squad.",
+      "PostgreSQL como base central, com dados sincronizados de plataformas externas (CRM, plataformas de anúncio) via API.",
+      "Integração com WhatsApp via API para leitura de contexto de conversas.",
+      "Camada de IA integrando múltiplos provedores de LLM (Anthropic Claude e OpenAI), que consome o histórico de cada cliente para calcular saúde, sugerir ações e apoiar a qualificação de leads.",
+      "Módulos separados por área (gestão, operação, inteligência) com navegação e busca unificadas.",
+    ],
+    technologies: [
+      "TypeScript",
+      "NestJS",
+      "Python",
+      "React",
+      "PostgreSQL",
+      "integrações via API (CRM, Meta Ads, Google Ads, WhatsApp)",
+      "Anthropic Claude",
+      "OpenAI",
+    ],
+    challenges: [
+      {
+        title: "Muitas fontes, um lugar só",
+        detail:
+          "Dados vinham de CRM, plataformas de anúncio e conversas, cada um num formato. O sistema sincroniza e normaliza tudo para um modelo consistente no Postgres.",
+      },
+      {
+        title: "Acesso por função e por squad",
+        detail:
+          "Cada pessoa vê o que é do seu escopo. O controle de permissão separa o que gestor, SDR e administrador enxergam, sem misturar dados entre squads.",
+      },
+      {
+        title: "IA aplicada a decisão, não a texto",
+        detail:
+          "Em vez de um chat genérico, a IA lê o caso real de cada cliente e devolve algo acionável: um score de saúde, uma sugestão de ação, um alerta de risco. Usa mais de um provedor de LLM em vez de ficar preso a um só.",
+      },
+      {
+        title: "Sistema em uso",
+        detail:
+          "Não é protótipo. A equipe usa no dia a dia, então estabilidade e consistência dos dados são requisito, não detalhe.",
+      },
+    ],
+    demonstrates:
+      "Sistema fullstack real, em produção, integrando várias fontes externas, com controle de acesso, IA aplicada a decisão e uma equipe usando no dia a dia.",
+  },
+  {
     slug: "journal",
     title: "Journal",
     chip: "ledger · estudo",
