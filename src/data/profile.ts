@@ -6,7 +6,7 @@ export const profile: Profile = {
   firstName: "Arthur",
   role: "Desenvolvedor Backend & Full Stack",
   headline:
-    "Desenvolvedor backend, trabalhando com TypeScript, Node.js, Python, PostgreSQL e APIs",
+    "Desenvolvedor backend — construo sistemas onde a correção é imposta no banco de dados e provada com testes, em TypeScript, C# e Java",
   summary:
     "Desenvolvedor backend na Overload. Construo e mantenho APIs, integro plataformas externas via API e estruturo dados em PostgreSQL para análise. Stack principal: TypeScript (NestJS) e Python.",
   about: [
