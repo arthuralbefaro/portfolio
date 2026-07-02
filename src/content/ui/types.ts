@@ -11,6 +11,7 @@ export interface UiDictionary {
     resume: string;
     available: string;
     workSuffix: string;
+    photoAlt: string;
   };
   about: {
     mark: string;

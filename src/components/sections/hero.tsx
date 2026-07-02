@@ -71,7 +71,7 @@ export function Hero({ dict }: HeroProps) {
             <div className="border-border bg-surface relative aspect-[4/5] w-64 overflow-hidden rounded-sm border sm:w-72">
               <Image
                 src={profile.avatar}
-                alt={`Foto de ${profile.name}`}
+                alt={ui.hero.photoAlt.replace("{name}", profile.name)}
                 fill
                 priority
                 sizes="(max-width: 640px) 16rem, 18rem"

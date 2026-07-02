@@ -13,6 +13,7 @@ export const enUi: UiDictionary = {
     resume: "download resume",
     available: "available for backend",
     workSuffix: "backend & automation",
+    photoAlt: "Photo of {name}",
   },
   about: {
     mark: "// about",
@@ -29,7 +30,7 @@ export const enUi: UiDictionary = {
   },
   caseStudies: {
     mark: "// cases",
-    title: "Technical cases",
+    title: "Case studies",
     description:
       "Case studies of the projects and work that best represent my backend practice, from context to result",
     fields: {
