@@ -56,7 +56,7 @@ export async function generateMetadata({
       template: `%s · ${siteConfig.name}`,
     },
     description: meta.description,
-    keywords: [...siteConfig.keywords],
+    keywords: meta.keywords,
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
     icons: {

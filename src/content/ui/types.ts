@@ -103,5 +103,6 @@ export interface UiDictionary {
     title: string;
     description: string;
     ogTagline: string;
+    keywords: string[];
   };
 }

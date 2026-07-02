@@ -111,5 +111,18 @@ export const ptUi: UiDictionary = {
     title: siteConfig.title,
     description: siteConfig.description,
     ogTagline: "Correção imposta no banco · provada com testes",
+    keywords: [
+      "Arthur Albefaro",
+      "Desenvolvedor Full Stack",
+      "Desenvolvedor Backend",
+      "Engenheiro de Software",
+      "Correção no banco de dados",
+      "PostgreSQL",
+      "TypeScript",
+      "C#",
+      "Java",
+      "NestJS",
+      "APIs",
+    ],
   },
 };

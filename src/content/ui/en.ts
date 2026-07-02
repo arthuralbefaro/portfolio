@@ -106,9 +106,22 @@ export const enUi: UiDictionary = {
     rights: "All rights reserved.",
   },
   meta: {
-    title: "Arthur Albefaro | Backend & Full Stack Developer",
+    title: "Arthur Albefaro | Full Stack & Backend Developer",
     description:
-      "Backend and full stack developer working with APIs, automations, and systems integration in TypeScript (NestJS), Python, and AWS.",
+      "Full stack developer building backends where correctness is enforced in the database and proven with tests. TypeScript, C#, and Java.",
     ogTagline: "Correctness enforced in the database · proven with tests",
+    keywords: [
+      "Arthur Albefaro",
+      "Full Stack Developer",
+      "Backend Developer",
+      "Software Engineer",
+      "Data correctness",
+      "PostgreSQL",
+      "TypeScript",
+      "C#",
+      "Java",
+      "NestJS",
+      "APIs",
+    ],
   },
 };

@@ -4,27 +4,13 @@
  */
 export const siteConfig = {
   name: "Arthur Albefaro",
-  title: "Arthur Albefaro — Desenvolvedor Backend & Full Stack",
+  title: "Arthur Albefaro | Desenvolvedor Backend & Full Stack",
   description:
-    "Desenvolvedor backend e full stack, trabalhando com APIs, automações e integração de sistemas em TypeScript (NestJS), Python e AWS.",
+    "Desenvolvedor full stack que constrói backend onde a correção é imposta no banco de dados e provada com testes. TypeScript, C# e Java.",
   url: "https://arthuralbefaro.com",
   locale: "pt-BR",
   role: "Desenvolvedor Backend & Full Stack",
   ogImage: "/opengraph-image",
-  keywords: [
-    "Arthur Albefaro",
-    "Desenvolvedor Full Stack",
-    "Desenvolvedor Backend",
-    "Engenheiro de Software",
-    "NestJS",
-    "TypeScript",
-    "Python",
-    "Node.js",
-    "AWS",
-    "APIs",
-    "Automação",
-    "Portfólio",
-  ],
 } as const;
 
 export type SiteConfig = typeof siteConfig;
