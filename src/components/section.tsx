@@ -27,7 +27,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ mark, title, description }: SectionHeadingProps) {
   return (
-    <div className="mb-12">
+    <div data-reveal className="mb-12">
       <div className="flex items-baseline gap-4">
         <span className="text-dim font-mono text-sm whitespace-nowrap">
           {mark}

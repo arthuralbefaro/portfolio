@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { getDictionary } from "@/content/dictionary";
 import {
   defaultLocale,
@@ -122,6 +123,11 @@ export default async function LocaleLayout({
         className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} font-sans antialiased`}
       >
         <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(getPersonJsonLd(locale)),
@@ -141,6 +147,7 @@ export default async function LocaleLayout({
         />
         <main>{children}</main>
         <Footer dict={dict} />
+        <ScrollReveal />
       </body>
     </html>
   );
