@@ -28,8 +28,11 @@ export const caseStudies: CaseStudy[] = [
       "TypeScript",
       "NestJS",
       "Python",
+      "C# & .NET",
       "React",
       "PostgreSQL",
+      "NoSQL",
+      "Amazon Web Services",
       "integrações via API (CRM, Meta Ads, Google Ads, WhatsApp)",
       "Anthropic Claude",
       "OpenAI",
@@ -62,7 +65,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "journal",
     title: "Journal",
-    chip: "ledger · estudo",
+    chip: "ledger",
     tagline:
       "Motor de razão contábil de partida dobrada em Java/Spring Boot, com prevenção de saldo negativo sob concorrência e invariantes financeiras impostas no PostgreSQL",
     status: "Projeto pessoal",
@@ -126,7 +129,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "verdict",
     title: "Verdict",
-    chip: "authz · estudo",
+    chip: "authz",
     tagline:
       "Serviço de autorização multi-tenant (Policy Decision Point) em C#/.NET, com isolamento entre tenants por Row-Level Security e log de auditoria imutável no PostgreSQL",
     status: "Projeto pessoal",
@@ -187,7 +190,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "courier",
     title: "Courier",
-    chip: "webhooks · estudo",
+    chip: "webhooks",
     tagline:
       "Gateway de entrega de webhooks em TypeScript/NestJS, com ingestão idempotente, fila baseada em Postgres e proteção contra SSRF na entrega",
     status: "Projeto pessoal",
