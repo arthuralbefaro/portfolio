@@ -1,14 +1,20 @@
 import { Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { skillGroups } from "@/data/skills";
+import type { Dictionary } from "@/content/dictionary";
 
-export function TechStack() {
+interface TechStackProps {
+  dict: Dictionary;
+}
+
+export function TechStack({ dict }: TechStackProps) {
+  const { skillGroups, ui } = dict;
+
   return (
     <Section id="stack">
       <SectionHeading
-        mark="// stack"
-        title="Tecnologias"
-        description="Stack usada em projetos, estudos e desenvolvimento de aplicações"
+        mark={ui.techStack.mark}
+        title={ui.techStack.title}
+        description={ui.techStack.description}
       />
 
       <div className="grid sm:grid-cols-2">

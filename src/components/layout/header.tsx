@@ -2,19 +2,27 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
+import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Button } from "@/components/ui/button";
-import { navItems } from "@/data/navigation";
-import { profile } from "@/data/profile";
+import type { UiDictionary } from "@/content/ui/types";
+import type { Locale } from "@/i18n/config";
 import { useScrollSpy } from "@/hooks/use-scroll-spy";
 import { cn } from "@/lib/utils";
+import type { NavItem } from "@/types";
 
-const sectionIds = navItems.map((item) => item.id);
+interface HeaderProps {
+  locale: Locale;
+  navItems: NavItem[];
+  ui: UiDictionary["header"];
+  resumeUrl: string;
+}
 
-export function Header() {
+export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const sectionIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
   const activeId = useScrollSpy(sectionIds);
 
   useEffect(() => {
@@ -67,22 +75,23 @@ export function Header() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher locale={locale} label={ui.languageLabel} />
           <Button
             asChild
             size="sm"
             variant="outline"
             className="hidden sm:inline-flex"
           >
-            <a href={profile.resumeUrl} download>
-              currículo →
+            <a href={resumeUrl} download>
+              {ui.resume}
             </a>
           </Button>
           <Button
             variant="ghost"
             size="icon"
             className="lg:hidden"
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-label={open ? ui.closeMenu : ui.openMenu}
             aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >

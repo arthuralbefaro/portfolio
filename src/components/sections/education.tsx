@@ -1,10 +1,16 @@
 import { Section, SectionHeading } from "@/components/section";
-import { education } from "@/data/education";
+import type { Dictionary } from "@/content/dictionary";
 
-export function Education() {
+interface EducationProps {
+  dict: Dictionary;
+}
+
+export function Education({ dict }: EducationProps) {
+  const { education, ui } = dict;
+
   return (
     <Section id="formacao">
-      <SectionHeading mark="// formação" title="Formação acadêmica" />
+      <SectionHeading mark={ui.education.mark} title={ui.education.title} />
 
       <div className="border-border border-t">
         {education.map((item) => (

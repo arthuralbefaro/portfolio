@@ -1,27 +1,32 @@
 import Link from "next/link";
 
-import { profile } from "@/data/profile";
+import type { Dictionary } from "@/content/dictionary";
 import { socials } from "@/data/socials";
 
 const githubHref = socials.find((s) => s.label === "GitHub")?.href ?? "#";
 const linkedinHref = socials.find((s) => s.label === "LinkedIn")?.href ?? "#";
 
-const externalLinks = [
-  { label: "github", href: githubHref, external: true },
-  { label: "linkedin", href: linkedinHref, external: true },
-  { label: "e-mail", href: `mailto:${profile.email}` },
-  { label: "currículo", href: profile.resumeUrl, download: true },
-];
+interface FooterProps {
+  dict: Dictionary;
+}
 
-const footerNav = [
-  { label: "casos", href: "#casos" },
-  { label: "certificações", href: "#certificacoes" },
-  { label: "experiência", href: "#experiencia" },
-  { label: "contato", href: "#contato" },
-];
-
-export function Footer() {
+export function Footer({ dict }: FooterProps) {
+  const { profile, ui } = dict;
   const year = new Date().getFullYear();
+
+  const externalLinks = [
+    { label: ui.footer.links.github, href: githubHref, external: true },
+    { label: ui.footer.links.linkedin, href: linkedinHref, external: true },
+    { label: ui.footer.links.email, href: `mailto:${profile.email}` },
+    { label: ui.footer.links.resume, href: profile.resumeUrl, download: true },
+  ];
+
+  const footerNav = [
+    { label: ui.footer.nav.casos, href: "#casos" },
+    { label: ui.footer.nav.certificacoes, href: "#certificacoes" },
+    { label: ui.footer.nav.experiencia, href: "#experiencia" },
+    { label: ui.footer.nav.contato, href: "#contato" },
+  ];
 
   return (
     <footer>
@@ -50,7 +55,7 @@ export function Footer() {
             </div>
           </div>
 
-          <nav aria-label="Rodapé">
+          <nav aria-label={ui.footer.navLabel}>
             <ul className="flex flex-col gap-2.5 font-mono text-sm sm:items-end">
               {footerNav.map((item) => (
                 <li key={item.href}>
@@ -68,7 +73,7 @@ export function Footer() {
 
         <div className="border-border mt-10 border-t pt-6">
           <p className="text-dim font-mono text-xs">
-            © {year} {profile.name}. Todos os direitos reservados.
+            © {year} {profile.name}. {ui.footer.rights}
           </p>
         </div>
       </div>

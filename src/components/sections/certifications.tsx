@@ -2,17 +2,22 @@ import { ExternalLink } from "lucide-react";
 
 import { Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { certifications } from "@/data/certifications";
+import type { Dictionary } from "@/content/dictionary";
 
-const sorted = [...certifications].sort((a, b) => a.priority - b.priority);
+interface CertificationsProps {
+  dict: Dictionary;
+}
 
-export function Certifications() {
+export function Certifications({ dict }: CertificationsProps) {
+  const { certifications, ui } = dict;
+  const sorted = [...certifications].sort((a, b) => a.priority - b.priority);
+
   return (
     <Section id="certificacoes">
       <SectionHeading
-        mark="// certificações"
-        title="Certificações"
-        description="Certificações e cursos voltados a backend, cloud e fundamentos de IA"
+        mark={ui.certifications.mark}
+        title={ui.certifications.title}
+        description={ui.certifications.description}
       />
 
       <div className="border-border border-t">
@@ -35,7 +40,7 @@ export function Certifications() {
                   className="text-muted-foreground hover:text-emphasis mt-3 inline-flex items-center gap-1.5 font-mono text-xs transition-colors"
                 >
                   <ExternalLink className="size-3.5" />
-                  ver credencial
+                  {ui.certifications.viewCredential}
                 </a>
               )}
             </div>

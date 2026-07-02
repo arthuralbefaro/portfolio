@@ -3,25 +3,31 @@ import { ArrowUpRight } from "lucide-react";
 import { Section } from "@/components/section";
 import { ContactForm } from "@/components/sections/contact-form";
 import { Button } from "@/components/ui/button";
-import { profile } from "@/data/profile";
+import type { Dictionary } from "@/content/dictionary";
 import { socials } from "@/data/socials";
 
-export function Contact() {
+interface ContactProps {
+  dict: Dictionary;
+}
+
+export function Contact({ dict }: ContactProps) {
+  const { profile, ui } = dict;
+
   return (
     <Section id="contato">
-      <p className="text-dim font-mono text-sm">{"// contato"}</p>
+      <p className="text-dim font-mono text-sm">{ui.contact.mark}</p>
 
       <div className="mt-6 max-w-2xl">
         <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          Vamos conversar
+          {ui.contact.title}
         </h2>
         <p className="text-muted-foreground mt-4 max-w-xl text-pretty">
-          Entre em contato para falar sobre projetos, vagas ou tecnologia
+          {ui.contact.description}
         </p>
       </div>
 
       <div className="mt-10 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-        <ContactForm />
+        <ContactForm messages={ui.contact.form} />
 
         <div className="flex flex-col gap-8">
           <ul className="border-border flex flex-col border-t font-mono text-sm">
@@ -44,7 +50,7 @@ export function Contact() {
 
           <Button asChild variant="outline" size="lg" className="self-start">
             <a href={profile.resumeUrl} download>
-              baixar currículo
+              {ui.contact.resume}
             </a>
           </Button>
         </div>

@@ -4,6 +4,7 @@ import { Loader2 } from "lucide-react";
 import { type FormEvent, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import type { UiDictionary } from "@/content/ui/types";
 
 const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL;
 
@@ -24,7 +25,11 @@ const labelClass = "font-mono text-sm text-muted-foreground";
 
 const errorClass = "mt-1.5 font-mono text-xs text-foreground";
 
-export function ContactForm() {
+interface ContactFormProps {
+  messages: UiDictionary["contact"]["form"];
+}
+
+export function ContactForm({ messages }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -35,13 +40,13 @@ export function ContactForm() {
   function validate(): FieldErrors {
     const next: FieldErrors = {};
     if (name.trim().length < 2) {
-      next.name = "Informe seu nome";
+      next.name = messages.errors.name;
     }
     if (!EMAIL_PATTERN.test(email.trim())) {
-      next.email = "Informe um e-mail válido";
+      next.email = messages.errors.email;
     }
     if (message.trim().length < 10) {
-      next.message = "Escreva uma mensagem com pelo menos 10 caracteres";
+      next.message = messages.errors.message;
     }
     return next;
   }
@@ -90,7 +95,7 @@ export function ContactForm() {
     <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
       <div>
         <label htmlFor="name" className={labelClass}>
-          nome
+          {messages.name}
         </label>
         <input
           id="name"
@@ -102,7 +107,7 @@ export function ContactForm() {
           autoComplete="name"
           aria-invalid={errors.name ? true : undefined}
           aria-describedby={errors.name ? "name-error" : undefined}
-          placeholder="Seu nome"
+          placeholder={messages.namePlaceholder}
           className={`mt-2 ${fieldClass}`}
         />
         {errors.name && (
@@ -114,7 +119,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="email" className={labelClass}>
-          e-mail
+          {messages.email}
         </label>
         <input
           id="email"
@@ -126,7 +131,7 @@ export function ContactForm() {
           autoComplete="email"
           aria-invalid={errors.email ? true : undefined}
           aria-describedby={errors.email ? "email-error" : undefined}
-          placeholder="nome@exemplo.com"
+          placeholder={messages.emailPlaceholder}
           className={`mt-2 ${fieldClass}`}
         />
         {errors.email && (
@@ -138,7 +143,7 @@ export function ContactForm() {
 
       <div>
         <label htmlFor="message" className={labelClass}>
-          mensagem
+          {messages.message}
         </label>
         <textarea
           id="message"
@@ -149,7 +154,7 @@ export function ContactForm() {
           rows={5}
           aria-invalid={errors.message ? true : undefined}
           aria-describedby={errors.message ? "message-error" : undefined}
-          placeholder="Conte sobre o projeto, a vaga ou a ideia"
+          placeholder={messages.messagePlaceholder}
           className={`mt-2 resize-y ${fieldClass}`}
         />
         {errors.message && (
@@ -186,10 +191,10 @@ export function ContactForm() {
           {sending ? (
             <>
               <Loader2 className="animate-spin" />
-              enviando...
+              {messages.sending}
             </>
           ) : (
-            "enviar mensagem"
+            messages.submit
           )}
         </Button>
 
@@ -198,10 +203,8 @@ export function ContactForm() {
           aria-live="polite"
           className="font-mono text-sm text-muted-foreground"
         >
-          {status === "success" &&
-            "Mensagem enviada. Retorno o mais breve possível."}
-          {status === "error" &&
-            "Não foi possível enviar. Tente de novo ou fale pelo WhatsApp ou e-mail."}
+          {status === "success" && messages.success}
+          {status === "error" && messages.error}
         </p>
       </div>
     </form>

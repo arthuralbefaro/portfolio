@@ -1,11 +1,16 @@
 import { Section, SectionHeading } from "@/components/section";
-import { education, languages } from "@/data/education";
-import { profile } from "@/data/profile";
+import type { Dictionary } from "@/content/dictionary";
 
-export function About() {
+interface AboutProps {
+  dict: Dictionary;
+}
+
+export function About({ dict }: AboutProps) {
+  const { profile, education, languages, ui } = dict;
+
   return (
     <Section id="sobre">
-      <SectionHeading mark="// sobre" title="Sobre mim" />
+      <SectionHeading mark={ui.about.mark} title={ui.about.title} />
 
       <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
         <div className="text-muted-foreground space-y-4 leading-relaxed text-pretty">
@@ -17,7 +22,7 @@ export function About() {
         <div className="space-y-8">
           <div>
             <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
-              Competências
+              {ui.about.skills}
             </h3>
             <ul className="mt-4 space-y-2.5">
               {profile.highlights.map((item) => (
@@ -37,7 +42,7 @@ export function About() {
 
           <div className="border-border border-t pt-6">
             <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
-              Idiomas
+              {ui.about.languages}
             </h3>
             <ul className="mt-4 space-y-2.5">
               {languages.map((lang) => (
@@ -54,7 +59,7 @@ export function About() {
 
           <div className="border-border border-t pt-6">
             <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
-              Formação
+              {ui.about.education}
             </h3>
             <p className="mt-4 font-medium">{education[0]?.degree}</p>
             <p className="text-muted-foreground text-sm">

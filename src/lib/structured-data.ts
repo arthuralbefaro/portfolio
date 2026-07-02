@@ -1,12 +1,13 @@
-import { certifications } from "@/data/certifications";
-import { education } from "@/data/education";
-import { profile } from "@/data/profile";
-import { skillGroups } from "@/data/skills";
+import { getDictionary } from "@/content/dictionary";
+import { defaultLocale, localeHtmlLang } from "@/i18n/config";
+import type { Locale } from "@/i18n/config";
 import { socials } from "@/data/socials";
 import { siteConfig } from "@/lib/site";
 
 /** Builds the schema.org Person JSON-LD for rich search results. */
-export function getPersonJsonLd() {
+export function getPersonJsonLd(locale: Locale = defaultLocale) {
+  const { profile, skillGroups, education, certifications } =
+    getDictionary(locale);
   const skills = skillGroups.flatMap((group) => group.items);
 
   return {
@@ -15,9 +16,10 @@ export function getPersonJsonLd() {
     name: profile.name,
     jobTitle: profile.role,
     description: siteConfig.description,
+    inLanguage: localeHtmlLang[locale],
     email: `mailto:${profile.email}`,
-    url: siteConfig.url,
-    image: `${siteConfig.url}${siteConfig.ogImage}`,
+    url: `${siteConfig.url}/${locale}`,
+    image: `${siteConfig.url}/${locale}${siteConfig.ogImage}`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Vila Velha",

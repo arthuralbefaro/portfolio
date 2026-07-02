@@ -3,8 +3,11 @@ import type { ReactNode } from "react";
 
 import { Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { caseStudies } from "@/data/case-studies";
+import type { Dictionary } from "@/content/dictionary";
+import type { UiDictionary } from "@/content/ui/types";
 import type { CaseStudy } from "@/types";
+
+type CaseStudiesUi = UiDictionary["caseStudies"];
 
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
@@ -30,7 +33,7 @@ function ProofStrip({ command, result }: { command: string; result: string }) {
   );
 }
 
-function CaseStudyCard({ study }: { study: CaseStudy }) {
+function CaseStudyCard({ study, ui }: { study: CaseStudy; ui: CaseStudiesUi }) {
   return (
     <article className="border-emphasis border-l-2 pl-6 sm:pl-8">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
@@ -53,7 +56,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
             >
-              código
+              {ui.links.code}
               <ArrowUpRight className="size-4" />
             </a>
           )}
@@ -64,7 +67,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
             >
-              demo
+              {ui.links.demo}
               <ArrowUpRight className="size-4" />
             </a>
           )}
@@ -75,7 +78,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
             >
-              publicação
+              {ui.links.post}
               <ArrowUpRight className="size-4" />
             </a>
           )}
@@ -102,17 +105,17 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 
       <div className="mt-8 grid gap-8 lg:grid-cols-2">
         <div className="space-y-6">
-          <Field label="Contexto">
+          <Field label={ui.fields.context}>
             <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
               {study.context}
             </p>
           </Field>
-          <Field label="Problema">
+          <Field label={ui.fields.problem}>
             <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
               {study.problem}
             </p>
           </Field>
-          <Field label="Solução">
+          <Field label={ui.fields.solution}>
             <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
               {study.solution}
             </p>
@@ -120,7 +123,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
         </div>
 
         <div className="space-y-6">
-          <Field label="Arquitetura">
+          <Field label={ui.fields.architecture}>
             <ol className="space-y-2.5">
               {study.architecture.map((item, index) => (
                 <li
@@ -136,7 +139,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
             </ol>
           </Field>
 
-          <Field label="Desafios técnicos">
+          <Field label={ui.fields.challenges}>
             <ul className="space-y-3">
               {study.challenges.map((challenge) => (
                 <li key={challenge.title} className="text-sm">
@@ -151,7 +154,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
             </ul>
           </Field>
 
-          <Field label="Tecnologias">
+          <Field label={ui.fields.technologies}>
             <div className="flex flex-wrap gap-1.5">
               {study.technologies.map((tech) => (
                 <Badge key={tech} variant="outline">
@@ -165,7 +168,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 
       <div className="border-border mt-8 grid gap-8 border-t pt-6 lg:grid-cols-2">
         {study.result && study.result.length > 0 && (
-          <Field label="Resultado">
+          <Field label={ui.fields.result}>
             <ul className="space-y-2">
               {study.result.map((item) => (
                 <li
@@ -182,7 +185,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
             </ul>
           </Field>
         )}
-        <Field label="O que demonstra">
+        <Field label={ui.fields.demonstrates}>
           <p className="text-foreground/90 text-sm leading-relaxed text-pretty">
             {study.demonstrates}
           </p>
@@ -192,18 +195,24 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
   );
 }
 
-export function CaseStudies() {
+interface CaseStudiesProps {
+  dict: Dictionary;
+}
+
+export function CaseStudies({ dict }: CaseStudiesProps) {
+  const { caseStudies, ui } = dict;
+
   return (
     <Section id="casos">
       <SectionHeading
-        mark="// casos"
-        title="Casos técnicos"
-        description="Estudos de caso dos projetos e do trabalho que melhor representam minha atuação em backend — do contexto ao resultado"
+        mark={ui.caseStudies.mark}
+        title={ui.caseStudies.title}
+        description={ui.caseStudies.description}
       />
 
       <div className="space-y-16">
         {caseStudies.map((study) => (
-          <CaseStudyCard key={study.slug} study={study} />
+          <CaseStudyCard key={study.slug} study={study} ui={ui.caseStudies} />
         ))}
       </div>
     </Section>

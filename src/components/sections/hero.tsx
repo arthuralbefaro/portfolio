@@ -2,16 +2,22 @@ import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
-import { profile } from "@/data/profile";
+import type { Dictionary } from "@/content/dictionary";
 import { socials } from "@/data/socials";
 
-const meta = [
-  { key: "loc", value: profile.location },
-  { key: "work", value: `${profile.company.name} · backend & automação` },
-  { key: "focus", value: profile.availability },
-];
+interface HeroProps {
+  dict: Dictionary;
+}
 
-export function Hero() {
+export function Hero({ dict }: HeroProps) {
+  const { profile, ui } = dict;
+
+  const meta = [
+    { key: "loc", value: profile.location },
+    { key: "work", value: `${profile.company.name} · ${ui.hero.workSuffix}` },
+    { key: "focus", value: profile.availability },
+  ];
+
   return (
     <section
       id="inicio"
@@ -19,7 +25,7 @@ export function Hero() {
     >
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
         <div>
-          <p className="text-dim font-mono text-sm">{"// backend engineer"}</p>
+          <p className="text-dim font-mono text-sm">{ui.hero.mark}</p>
 
           <h1 className="font-display mt-6 text-5xl leading-[0.95] font-bold tracking-tight text-balance sm:text-7xl">
             {profile.firstName}
@@ -44,7 +50,7 @@ export function Hero() {
             <Button asChild size="lg">
               <a href={profile.resumeUrl} download>
                 <ArrowDownToLine />
-                baixar currículo
+                {ui.hero.resume}
               </a>
             </Button>
             {socials
@@ -80,7 +86,7 @@ export function Hero() {
               className="border-border-strong bg-background hover:border-emphasis absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-sm border px-4 py-2 font-mono text-xs whitespace-nowrap transition-colors"
             >
               <span className="bg-emphasis size-1.5 rounded-full" />
-              disponível p/ backend
+              {ui.hero.available}
               <ArrowUpRight className="text-muted-foreground size-3.5" />
             </a>
           </div>

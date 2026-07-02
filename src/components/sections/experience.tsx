@@ -2,12 +2,18 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
-import { experiences } from "@/data/experience";
+import type { Dictionary } from "@/content/dictionary";
 
-export function ExperienceSection() {
+interface ExperienceProps {
+  dict: Dictionary;
+}
+
+export function ExperienceSection({ dict }: ExperienceProps) {
+  const { experiences, ui } = dict;
+
   return (
     <Section id="experiencia">
-      <SectionHeading mark="// experiência" title="Experiência profissional" />
+      <SectionHeading mark={ui.experience.mark} title={ui.experience.title} />
 
       <ol className="border-border relative border-l">
         {experiences.map((exp) => (
@@ -21,7 +27,7 @@ export function ExperienceSection() {
               <h3 className="font-display text-base font-semibold">
                 {exp.role}
               </h3>
-              {exp.current && <Badge variant="accent">atual</Badge>}
+              {exp.current && <Badge variant="accent">{ui.experience.current}</Badge>}
             </div>
 
             <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs">
