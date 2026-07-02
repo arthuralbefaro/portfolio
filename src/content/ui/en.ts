@@ -11,7 +11,7 @@ export const enUi: UiDictionary = {
   hero: {
     mark: "// backend engineer",
     resume: "download resume",
-    available: "available for backend",
+    available: "available for backend or full stack",
     workSuffix: "backend & automation",
     photoAlt: "Photo of {name}",
   },

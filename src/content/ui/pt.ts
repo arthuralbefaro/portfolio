@@ -12,7 +12,7 @@ export const ptUi: UiDictionary = {
   hero: {
     mark: "// backend engineer",
     resume: "baixar currículo",
-    available: "disponível p/ backend",
+    available: "disponível p/ backend ou fullstack",
     workSuffix: "backend & automação",
     photoAlt: "Foto de {name}",
   },

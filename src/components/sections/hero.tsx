@@ -11,6 +11,8 @@ interface HeroProps {
 
 export function Hero({ dict }: HeroProps) {
   const { profile, ui } = dict;
+  const linkedinHref =
+    socials.find((s) => s.label === "LinkedIn")?.href ?? "#";
 
   const meta = [
     { key: "loc", value: profile.location },
@@ -84,7 +86,7 @@ export function Hero({ dict }: HeroProps) {
               />
             </div>
             <a
-              href={profile.company.url}
+              href={linkedinHref}
               target="_blank"
               rel="noopener noreferrer"
               className="border-border-strong bg-background hover:border-emphasis absolute -bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-sm border px-4 py-2 font-mono text-xs whitespace-nowrap transition-colors"
