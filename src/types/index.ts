@@ -77,6 +77,8 @@ export interface CaseStudy {
   title: string;
   tagline: string;
   status: CaseStudyStatus;
+  /** Localized display label for the status. Falls back to `status`. */
+  statusLabel?: string;
   period?: string;
   context: string;
   problem: string;

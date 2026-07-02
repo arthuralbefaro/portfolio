@@ -86,7 +86,7 @@ function CaseStudyCard({ study, ui }: { study: CaseStudy; ui: CaseStudiesUi }) {
       </div>
 
       <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-3 font-mono text-xs">
-        <span>{study.status}</span>
+        <span>{study.statusLabel ?? study.status}</span>
         {study.period && (
           <>
             <span aria-hidden>·</span>
