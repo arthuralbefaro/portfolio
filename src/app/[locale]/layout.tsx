@@ -47,14 +47,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : defaultLocale;
+  const { meta } = getDictionary(locale).ui;
 
   return {
     metadataBase: new URL(siteConfig.url),
     title: {
-      default: siteConfig.title,
+      default: meta.title,
       template: `%s · ${siteConfig.name}`,
     },
-    description: siteConfig.description,
+    description: meta.description,
     keywords: [...siteConfig.keywords],
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
@@ -76,13 +77,13 @@ export async function generateMetadata({
       locale: localeOgLocale[locale],
       url: `${siteConfig.url}/${locale}`,
       siteName: siteConfig.name,
-      title: siteConfig.title,
-      description: siteConfig.description,
+      title: meta.title,
+      description: meta.description,
     },
     twitter: {
       card: "summary_large_image",
-      title: siteConfig.title,
-      description: siteConfig.description,
+      title: meta.title,
+      description: meta.description,
     },
     robots: {
       index: true,

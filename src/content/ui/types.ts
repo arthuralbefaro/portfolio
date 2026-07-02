@@ -99,4 +99,9 @@ export interface UiDictionary {
     };
     rights: string;
   };
+  meta: {
+    title: string;
+    description: string;
+    ogTagline: string;
+  };
 }

@@ -1,4 +1,5 @@
 import type { UiDictionary } from "@/content/ui/types";
+import { siteConfig } from "@/lib/site";
 
 export const ptUi: UiDictionary = {
   skipToContent: "Pular para o conteúdo",
@@ -105,5 +106,10 @@ export const ptUi: UiDictionary = {
       contato: "contato",
     },
     rights: "Todos os direitos reservados.",
+  },
+  meta: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    ogTagline: "Correção imposta no banco · provada com testes",
   },
 };

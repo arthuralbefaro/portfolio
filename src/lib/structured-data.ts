@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/site";
 
 /** Builds the schema.org Person JSON-LD for rich search results. */
 export function getPersonJsonLd(locale: Locale = defaultLocale) {
-  const { profile, skillGroups, education, certifications } =
+  const { profile, skillGroups, education, certifications, ui } =
     getDictionary(locale);
   const skills = skillGroups.flatMap((group) => group.items);
 
@@ -15,7 +15,7 @@ export function getPersonJsonLd(locale: Locale = defaultLocale) {
     "@type": "Person",
     name: profile.name,
     jobTitle: profile.role,
-    description: siteConfig.description,
+    description: ui.meta.description,
     inLanguage: localeHtmlLang[locale],
     email: `mailto:${profile.email}`,
     url: `${siteConfig.url}/${locale}`,

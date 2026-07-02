@@ -16,7 +16,7 @@ export default async function OpengraphImage({
 }) {
   const { locale: raw } = await params;
   const locale = isLocale(raw) ? raw : defaultLocale;
-  const { profile } = getDictionary(locale);
+  const { profile, ui } = getDictionary(locale);
 
   return new ImageResponse(
     (
@@ -67,7 +67,7 @@ export default async function OpengraphImage({
               marginTop: 8,
             }}
           >
-            Correção imposta no banco · provada com testes
+            {ui.meta.ogTagline}
           </div>
         </div>
 

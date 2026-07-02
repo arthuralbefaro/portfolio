@@ -105,4 +105,10 @@ export const enUi: UiDictionary = {
     },
     rights: "All rights reserved.",
   },
+  meta: {
+    title: "Arthur Albefaro | Backend & Full Stack Developer",
+    description:
+      "Backend and full stack developer working with APIs, automations, and systems integration in TypeScript (NestJS), Python, and AWS.",
+    ogTagline: "Correctness enforced in the database · proven with tests",
+  },
 };
