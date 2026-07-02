@@ -12,7 +12,7 @@ const buttonVariants = cva(
         default:
           "bg-emphasis text-invert-fg hover:opacity-85",
         outline:
-          "border border-border-strong bg-transparent hover:border-emphasis hover:text-emphasis",
+          "border border-border-strong bg-transparent text-foreground hover:bg-emphasis hover:text-invert-fg hover:border-emphasis",
         ghost: "hover:text-emphasis",
         link: "text-foreground underline-offset-4 hover:underline",
       },
