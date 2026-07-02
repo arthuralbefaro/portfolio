@@ -24,7 +24,7 @@ export function TechStack({ dict }: TechStackProps) {
             className="border-border border-t py-7 sm:odd:border-r sm:odd:pr-10 sm:even:pl-10"
           >
             <h3 className="font-display text-base font-medium">
-              {group.category}
+              {group.categoryLabel ?? group.category}
             </h3>
             <p className="text-dim mt-1 font-mono text-xs">
               {group.description}

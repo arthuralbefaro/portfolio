@@ -48,6 +48,8 @@ export type SkillCategory =
 /** A grouped set of skills shown as a card. */
 export interface SkillGroup {
   category: SkillCategory;
+  /** Localized display label for the category. Falls back to `category`. */
+  categoryLabel?: string;
   icon: LucideIcon;
   description: string;
   items: string[];

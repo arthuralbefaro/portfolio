@@ -1,3 +1,18 @@
-// TODO: translate to English. Re-exports the Portuguese nav labels as a
-// temporary placeholder. Replace labels with English in a later phase; keep ids.
-export { navItems } from "@/data/navigation";
+import { navItems as ptNavItems } from "@/data/navigation";
+import type { NavItem } from "@/types";
+
+const labels: Record<string, string> = {
+  inicio: "Home",
+  sobre: "About",
+  stack: "Stack",
+  casos: "Cases",
+  certificacoes: "Certifications",
+  experiencia: "Experience",
+  formacao: "Education",
+  contato: "Contact",
+};
+
+export const navItems: NavItem[] = ptNavItems.map((item) => {
+  const label = labels[item.id];
+  return label ? { ...item, label } : item;
+});
