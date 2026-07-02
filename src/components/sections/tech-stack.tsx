@@ -18,9 +18,11 @@ export function TechStack({ dict }: TechStackProps) {
       />
 
       <div className="grid sm:grid-cols-2">
-        {skillGroups.map((group) => (
+        {skillGroups.map((group, index) => (
           <div
             key={group.category}
+            data-reveal
+            style={{ transitionDelay: `${index * 50}ms` }}
             className="border-border border-t py-7 sm:odd:border-r sm:odd:pr-10 sm:even:pl-10"
           >
             <h3 className="font-display text-base font-medium">

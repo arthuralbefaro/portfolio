@@ -13,13 +13,16 @@ export function About({ dict }: AboutProps) {
       <SectionHeading mark={ui.about.mark} title={ui.about.title} />
 
       <div className="grid gap-12 lg:grid-cols-[1.6fr_1fr]">
-        <div className="text-muted-foreground space-y-4 leading-relaxed text-pretty">
+        <div
+          data-reveal
+          className="text-muted-foreground space-y-4 leading-relaxed text-pretty"
+        >
           {profile.about.map((paragraph) => (
             <p key={paragraph.slice(0, 24)}>{paragraph}</p>
           ))}
         </div>
 
-        <div className="space-y-8">
+        <div data-reveal style={{ transitionDelay: "80ms" }} className="space-y-8">
           <div>
             <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
               {ui.about.skills}

@@ -26,7 +26,11 @@ function ProofStrip({ command, result }: { command: string; result: string }) {
       <div className="text-invert-fg/70">
         <span className="text-invert-fg font-bold">$</span> {command}
       </div>
-      <div className="mt-1 font-medium">
+      <div
+        data-reveal
+        style={{ transitionDelay: "300ms" }}
+        className="mt-1 font-medium"
+      >
         <span aria-hidden>✓</span> {result}
       </div>
     </div>
@@ -35,7 +39,7 @@ function ProofStrip({ command, result }: { command: string; result: string }) {
 
 function CaseStudyCard({ study, ui }: { study: CaseStudy; ui: CaseStudiesUi }) {
   return (
-    <article className="border-emphasis border-l-2 pl-6 sm:pl-8">
+    <article className="relative rounded-sm pl-6 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-emphasis before:opacity-70 before:transition-all before:duration-300 before:content-[''] hover:bg-surface/30 hover:before:w-[3px] hover:before:opacity-100 sm:pl-8">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <h3 className="font-display text-2xl font-semibold tracking-tight">
@@ -211,8 +215,14 @@ export function CaseStudies({ dict }: CaseStudiesProps) {
       />
 
       <div className="space-y-16">
-        {caseStudies.map((study) => (
-          <CaseStudyCard key={study.slug} study={study} ui={ui.caseStudies} />
+        {caseStudies.map((study, index) => (
+          <div
+            key={study.slug}
+            data-reveal
+            style={{ transitionDelay: `${Math.min(index, 6) * 60}ms` }}
+          >
+            <CaseStudyCard study={study} ui={ui.caseStudies} />
+          </div>
         ))}
       </div>
     </Section>

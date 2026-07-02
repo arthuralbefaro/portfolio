@@ -24,7 +24,7 @@ export function Hero({ dict }: HeroProps) {
       className="border-border scroll-mt-16 border-b pt-32 pb-20 sm:pt-40 sm:pb-28"
     >
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
-        <div>
+        <div data-reveal>
           <p className="text-dim font-mono text-sm">{ui.hero.mark}</p>
 
           <h1 className="font-display mt-6 text-5xl leading-[0.95] font-bold tracking-tight text-balance sm:text-7xl">
@@ -66,7 +66,11 @@ export function Hero({ dict }: HeroProps) {
           </div>
         </div>
 
-        <div className="justify-self-center lg:justify-self-end">
+        <div
+          data-reveal
+          style={{ transitionDelay: "80ms" }}
+          className="justify-self-center lg:justify-self-end"
+        >
           <div className="relative">
             <div className="border-border bg-surface relative aspect-[4/5] w-64 overflow-hidden rounded-sm border sm:w-72">
               <Image

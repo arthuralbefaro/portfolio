@@ -21,9 +21,11 @@ export function Certifications({ dict }: CertificationsProps) {
       />
 
       <div className="border-border border-t">
-        {sorted.map((cert) => (
+        {sorted.map((cert, index) => (
           <div
             key={cert.title}
+            data-reveal
+            style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
             className="border-border grid gap-4 border-b py-7 lg:grid-cols-[1fr_1.4fr]"
           >
             <div>

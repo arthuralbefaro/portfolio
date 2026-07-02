@@ -92,7 +92,12 @@ export function ContactForm({ messages }: ContactFormProps) {
   const sending = status === "sending";
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      data-reveal
+      className="flex flex-col gap-5"
+    >
       <div>
         <label htmlFor="name" className={labelClass}>
           {messages.name}

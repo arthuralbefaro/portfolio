@@ -16,9 +16,11 @@ export function ExperienceSection({ dict }: ExperienceProps) {
       <SectionHeading mark={ui.experience.mark} title={ui.experience.title} />
 
       <ol className="border-border relative border-l">
-        {experiences.map((exp) => (
+        {experiences.map((exp, index) => (
           <li
             key={`${exp.company}-${exp.period}`}
+            data-reveal
+            style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
             className="relative ml-6 pb-10 last:pb-0"
           >
             <span className="border-background bg-emphasis absolute top-1.5 -left-[1.6875rem] size-3 rounded-full border-2" />

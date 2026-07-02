@@ -17,7 +17,7 @@ export function Contact({ dict }: ContactProps) {
     <Section id="contato">
       <p className="text-dim font-mono text-sm">{ui.contact.mark}</p>
 
-      <div className="mt-6 max-w-2xl">
+      <div data-reveal className="mt-6 max-w-2xl">
         <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
           {ui.contact.title}
         </h2>
@@ -29,7 +29,11 @@ export function Contact({ dict }: ContactProps) {
       <div className="mt-10 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
         <ContactForm messages={ui.contact.form} />
 
-        <div className="flex flex-col gap-8">
+        <div
+          data-reveal
+          style={{ transitionDelay: "80ms" }}
+          className="flex flex-col gap-8"
+        >
           <ul className="border-border flex flex-col border-t font-mono text-sm">
             {socials.map(({ label, href, icon: Icon, handle }) => (
               <li key={label} className="border-border border-b">
