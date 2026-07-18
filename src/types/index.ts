@@ -92,6 +92,8 @@ export interface CaseStudy {
   demonstrates: string;
   featured?: boolean;
   proof?: CaseStudyProof;
+  /** Verifiable evidence line for closed-source work (never invented). */
+  evidence?: string;
   chip?: string;
   links?: {
     github?: string;

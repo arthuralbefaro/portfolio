@@ -116,6 +116,12 @@ function CaseStudyCard({
         <ProofStrip command={study.proof.command} result={study.proof.result} />
       )}
 
+      {!study.proof && study.evidence && (
+        <div className="border-border-strong text-muted-foreground mt-6 rounded-sm border px-4 py-3 font-mono text-sm leading-relaxed">
+          <span aria-hidden>✓</span> {study.evidence}
+        </div>
+      )}
+
       <CaseStudyDisclosure
         contentId={`case-study-${study.slug}`}
         defaultOpen={defaultOpen}

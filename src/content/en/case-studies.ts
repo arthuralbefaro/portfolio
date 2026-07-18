@@ -18,6 +18,7 @@ const internalManagementSystem: CaseStudy = {
   statusLabel: "Professional project",
   tagline:
     "A full-stack internal system used by a marketing agency to manage its client portfolio, sales, and operations, with an AI layer that supports decisions.",
+  evidence: "In production · used daily by the agency team",
   context:
     "The operation was scattered across spreadsheets, the CRM, and scattered chats. There was no single place where the team could see portfolio health, sales progress, and each squad's workload. Information originated in different tools and was cross-referenced by hand.",
   problem:
