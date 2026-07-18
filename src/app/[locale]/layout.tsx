@@ -60,11 +60,6 @@ export async function generateMetadata({
     keywords: meta.keywords,
     authors: [{ name: siteConfig.name, url: siteConfig.url }],
     creator: siteConfig.name,
-    icons: {
-      icon: [{ url: "/favicon.png", type: "image/png" }],
-      shortcut: ["/favicon.png"],
-      apple: [{ url: "/favicon.png", type: "image/png" }],
-    },
     alternates: {
       canonical: `/${locale}`,
       languages: {

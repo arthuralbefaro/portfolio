@@ -1,4 +1,4 @@
-import avatar from "@/assets/profile.png";
+import avatar from "@/assets/profile.webp";
 import type { Profile } from "@/types";
 
 export const profile: Profile = {
