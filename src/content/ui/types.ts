@@ -83,6 +83,14 @@ export interface UiDictionary {
         email: string;
         message: string;
       };
+      fallback: {
+        title: string;
+        description: string;
+      };
+      sendVia: {
+        whatsapp: string;
+        email: string;
+      };
     };
   };
   footer: {

@@ -1,14 +1,30 @@
 "use client";
 
-import { Loader2 } from "lucide-react";
+import { ArrowUpRight, Loader2 } from "lucide-react";
 import { type FormEvent, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import type { UiDictionary } from "@/content/ui/types";
+import { socials } from "@/data/socials";
 
 const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL;
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const WHATSAPP_HREF =
+  socials.find((s) => s.label === "WhatsApp")?.href ?? "https://wa.me/";
+
+const EMAIL_HREF = socials.find((s) => s.label === "Email")?.href ?? "mailto:";
+
+function whatsappHref(text: string) {
+  return text
+    ? `${WHATSAPP_HREF}?text=${encodeURIComponent(text)}`
+    : WHATSAPP_HREF;
+}
+
+function emailHref(text: string) {
+  return text ? `${EMAIL_HREF}?body=${encodeURIComponent(text)}` : EMAIL_HREF;
+}
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -90,6 +106,34 @@ export function ContactForm({ messages }: ContactFormProps) {
   }
 
   const sending = status === "sending";
+
+  if (!CONTACT_API_URL) {
+    return (
+      <div
+        data-reveal
+        className="border-border flex flex-col items-start gap-4 rounded-sm border p-6"
+      >
+        <p className="text-foreground font-medium">{messages.fallback.title}</p>
+        <p className="text-muted-foreground text-sm text-pretty">
+          {messages.fallback.description}
+        </p>
+        <div className="mt-2 flex flex-wrap gap-3">
+          <Button asChild size="lg">
+            <a
+              href={whatsappHref("")}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {messages.sendVia.whatsapp}
+            </a>
+          </Button>
+          <Button asChild variant="outline" size="lg">
+            <a href={emailHref("")}>{messages.sendVia.email}</a>
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form
@@ -212,6 +256,27 @@ export function ContactForm({ messages }: ContactFormProps) {
           {status === "error" && messages.error}
         </p>
       </div>
+
+      {status === "error" && (
+        <div className="flex flex-wrap items-center gap-4 font-mono text-sm">
+          <a
+            href={whatsappHref(message)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
+          >
+            {messages.sendVia.whatsapp}
+            <ArrowUpRight className="size-4" />
+          </a>
+          <a
+            href={emailHref(message)}
+            className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
+          >
+            {messages.sendVia.email}
+            <ArrowUpRight className="size-4" />
+          </a>
+        </div>
+      )}
     </form>
   );
 }

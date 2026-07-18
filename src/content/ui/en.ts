@@ -88,6 +88,15 @@ export const enUi: UiDictionary = {
         email: "Enter a valid email",
         message: "Write a message with at least 10 characters",
       },
+      fallback: {
+        title: "The form is temporarily unavailable",
+        description:
+          "Reach me directly through one of the channels below — I will get back to you as soon as possible.",
+      },
+      sendVia: {
+        whatsapp: "send via whatsapp",
+        email: "send via email",
+      },
     },
   },
   footer: {

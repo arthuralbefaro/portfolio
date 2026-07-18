@@ -91,6 +91,15 @@ export const ptUi: UiDictionary = {
         email: "Informe um e-mail válido",
         message: "Escreva uma mensagem com pelo menos 10 caracteres",
       },
+      fallback: {
+        title: "Formulário temporariamente indisponível",
+        description:
+          "Fale comigo direto por um dos canais abaixo — respondo o mais breve possível.",
+      },
+      sendVia: {
+        whatsapp: "enviar pelo whatsapp",
+        email: "enviar por e-mail",
+      },
     },
   },
   footer: {
