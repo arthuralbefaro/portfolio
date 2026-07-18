@@ -11,7 +11,7 @@ export const enUi: UiDictionary = {
   hero: {
     mark: "// backend engineer",
     resume: "download resume",
-    available: "available for backend or full stack",
+    available: "available for backend & full stack",
     workSuffix: "backend & automation",
     photoAlt: "Photo of {name}",
   },
@@ -106,14 +106,14 @@ export const enUi: UiDictionary = {
     rights: "All rights reserved.",
   },
   meta: {
-    title: "Arthur Albefaro | Full Stack & Backend Developer",
+    title: "Arthur Albefaro | Backend & Full Stack Developer",
     description:
-      "Full stack developer building backends where correctness is enforced in the database and proven with tests. TypeScript, C#, and Java.",
+      "Backend and full stack developer building systems where correctness is enforced in the database and proven with tests. TypeScript, C#, and Java.",
     ogTagline: "Correctness enforced in the database · proven with tests",
     keywords: [
       "Arthur Albefaro",
-      "Full Stack Developer",
       "Backend Developer",
+      "Full Stack Developer",
       "Software Engineer",
       "Data correctness",
       "PostgreSQL",

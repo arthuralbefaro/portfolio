@@ -4,11 +4,11 @@ import type { Profile } from "@/types";
 export const profile: Profile = {
   name: "Arthur Albefaro",
   firstName: "Arthur",
-  role: "Desenvolvedor Full Stack",
+  role: "Desenvolvedor Backend & Full Stack",
   headline:
-    "Full Stack & Backend Developer",
+    "Construo backends onde as regras que não podem quebrar são impostas no banco de dados — e provadas com testes.",
   summary:
-    "Desenvolvedor full stack, atuando com TypeScript, C#, Java e React.",
+    "Desenvolvedor backend e full stack, atuando com TypeScript, C#, Java e React.",
   about: [
     "Trabalho a parte do backend que costuma dar errado: manter os dados corretos. Construo APIs onde as regras que não podem quebrar (a soma dos valores bater, um cliente nunca ver dados de outro, um registro não poder ser alterado depois de gravado) são impostas no banco de dados, não só na aplicação, e testo isso contra um PostgreSQL real tentando furar as regras. Também construo a interface que consome essas APIs.",
     "Isso é notório nos meus projetos: o Journal, um razão contábil de partidas dobradas em Java e Spring Boot que impede saldo negativo mesmo com saques simultâneos; o Verdict, um serviço de autorização multi tenant em C# e .NET com isolamento por Row Level Security e auditoria imutável; e o Courier, um gateway de entrega de webhooks em TypeScript e NestJS com idempotência e fila em Postgres.",
@@ -25,7 +25,7 @@ export const profile: Profile = {
   email: "arthuralbefarodev@gmail.com",
   phone: "+55 27 99952-1684",
   location: "Vila Velha, ES, Brasil",
-  availability: "Full Stack · Backend · Cloud",
+  availability: "Backend · Full Stack · Cloud",
   resumeUrl: "/arthur-albefaro-cv.pdf",
   avatar,
   company: {

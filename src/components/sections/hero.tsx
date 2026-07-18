@@ -35,7 +35,9 @@ export function Hero({ dict }: HeroProps) {
             {profile.name.replace(`${profile.firstName} `, "")}
           </h1>
 
-          <p className="text-muted-foreground mt-6 max-w-xl text-pretty">
+          <p className="text-dim mt-5 font-mono text-sm">{profile.role}</p>
+
+          <p className="text-muted-foreground mt-3 max-w-xl text-lg text-pretty">
             {profile.headline}
           </p>
 

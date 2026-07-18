@@ -3,9 +3,11 @@ import type { Profile } from "@/types";
 
 export const profile: Profile = {
   ...ptProfile,
-  role: "Full Stack Developer",
-  headline: "Full Stack & Backend Developer",
-  summary: "Full stack developer working with TypeScript, C#, Java, and React.",
+  role: "Backend & Full Stack Developer",
+  headline:
+    "I build backends where the rules that cannot break are enforced in the database — and proven with tests.",
+  summary:
+    "Backend and full stack developer working with TypeScript, C#, Java, and React.",
   about: [
     "I work on the part of the backend that tends to go wrong: keeping data correct. I build APIs where the rules that cannot break (the values adding up, one client never seeing another's data, a record that cannot be changed after it is written) are enforced in the database, not just in the application, and I test that against a real PostgreSQL by trying to break the rules. I also build the interface that consumes those APIs.",
     "It shows in my projects: Journal, a double-entry ledger in Java and Spring Boot that prevents negative balances even under simultaneous withdrawals; Verdict, a multi-tenant authorization service in C# and .NET with isolation via Row-Level Security and an immutable audit log; and Courier, a webhook delivery gateway in TypeScript and NestJS with idempotency and a Postgres-based queue.",
@@ -20,5 +22,5 @@ export const profile: Profile = {
     "Data modeling and cross-platform integrations via API",
   ],
   location: "Vila Velha, ES, Brazil",
-  availability: "Full Stack · Backend · Cloud",
+  availability: "Backend · Full Stack · Cloud",
 };

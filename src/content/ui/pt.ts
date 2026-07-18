@@ -12,7 +12,7 @@ export const ptUi: UiDictionary = {
   hero: {
     mark: "// backend engineer",
     resume: "baixar currículo",
-    available: "disponível p/ backend ou fullstack",
+    available: "disponível p/ backend & full stack",
     workSuffix: "backend & automação",
     photoAlt: "Foto de {name}",
   },
@@ -113,8 +113,8 @@ export const ptUi: UiDictionary = {
     ogTagline: "Correção imposta no banco · provada com testes",
     keywords: [
       "Arthur Albefaro",
-      "Desenvolvedor Full Stack",
       "Desenvolvedor Backend",
+      "Desenvolvedor Full Stack",
       "Engenheiro de Software",
       "Correção no banco de dados",
       "PostgreSQL",
