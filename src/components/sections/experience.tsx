@@ -29,7 +29,9 @@ export function ExperienceSection({ dict }: ExperienceProps) {
               <h3 className="font-display text-base font-semibold">
                 {exp.role}
               </h3>
-              {exp.current && <Badge variant="accent">{ui.experience.current}</Badge>}
+              {exp.current && (
+                <Badge variant="accent">{ui.experience.current}</Badge>
+              )}
             </div>
 
             <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs">

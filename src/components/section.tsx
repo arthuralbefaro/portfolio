@@ -12,7 +12,10 @@ export function Section({ id, className, children }: SectionProps) {
   return (
     <section
       id={id}
-      className={cn("border-border scroll-mt-16 border-b py-20 sm:py-28", className)}
+      className={cn(
+        "border-border scroll-mt-16 border-b py-20 sm:py-28",
+        className,
+      )}
     >
       <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">{children}</div>
     </section>
@@ -25,7 +28,11 @@ interface SectionHeadingProps {
   description?: string;
 }
 
-export function SectionHeading({ mark, title, description }: SectionHeadingProps) {
+export function SectionHeading({
+  mark,
+  title,
+  description,
+}: SectionHeadingProps) {
   return (
     <div data-reveal className="mb-12">
       <div className="flex items-baseline gap-4">

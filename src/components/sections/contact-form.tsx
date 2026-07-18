@@ -206,7 +206,7 @@ export function ContactForm({ messages }: ContactFormProps) {
         <p
           role="status"
           aria-live="polite"
-          className="font-mono text-sm text-muted-foreground"
+          className="text-muted-foreground font-mono text-sm"
         >
           {status === "success" && messages.success}
           {status === "error" && messages.error}

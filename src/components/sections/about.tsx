@@ -22,7 +22,11 @@ export function About({ dict }: AboutProps) {
           ))}
         </div>
 
-        <div data-reveal style={{ transitionDelay: "80ms" }} className="space-y-8">
+        <div
+          data-reveal
+          style={{ transitionDelay: "80ms" }}
+          className="space-y-8"
+        >
           <div>
             <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
               {ui.about.skills}

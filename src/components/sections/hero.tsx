@@ -11,8 +11,7 @@ interface HeroProps {
 
 export function Hero({ dict }: HeroProps) {
   const { profile, ui } = dict;
-  const linkedinHref =
-    socials.find((s) => s.label === "LinkedIn")?.href ?? "#";
+  const linkedinHref = socials.find((s) => s.label === "LinkedIn")?.href ?? "#";
 
   const meta = [
     { key: "loc", value: profile.location },

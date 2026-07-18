@@ -15,6 +15,14 @@ export const experiences: Experience[] = [
       "Normalizo dados não padronizados em PostgreSQL para que possam ser consultados e usados em dashboards.",
       "Substituí processos manuais por rotinas automatizadas de sincronização entre sistemas.",
     ],
-    stack: ["TypeScript", "NestJS", "Python", "C# & .NET", "PHP", "PostgreSQL", "NoSQL"],
+    stack: [
+      "TypeScript",
+      "NestJS",
+      "Python",
+      "C# & .NET",
+      "PHP",
+      "PostgreSQL",
+      "NoSQL",
+    ],
   },
 ];

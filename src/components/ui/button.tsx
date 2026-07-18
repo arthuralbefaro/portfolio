@@ -9,8 +9,7 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default:
-          "bg-emphasis text-invert-fg hover:opacity-85",
+        default: "bg-emphasis text-invert-fg hover:opacity-85",
         outline:
           "border border-border-strong bg-transparent text-foreground hover:bg-emphasis hover:text-invert-fg hover:border-emphasis",
         ghost: "hover:text-emphasis",
