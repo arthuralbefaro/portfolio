@@ -25,8 +25,7 @@ export const enUi: UiDictionary = {
   techStack: {
     mark: "// stack",
     title: "Technologies",
-    description:
-      "Stack used in projects, studies, and application development",
+    description: "Stack used in projects, studies, and application development",
   },
   caseStudies: {
     mark: "// cases",
@@ -48,6 +47,8 @@ export const enUi: UiDictionary = {
       demo: "demo",
       post: "post",
     },
+    expand: "view full case study",
+    collapse: "collapse",
   },
   certifications: {
     mark: "// certifications",

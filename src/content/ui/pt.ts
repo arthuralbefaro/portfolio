@@ -49,6 +49,8 @@ export const ptUi: UiDictionary = {
       demo: "demo",
       post: "publicação",
     },
+    expand: "ver estudo completo",
+    collapse: "recolher",
   },
   certifications: {
     mark: "// certificações",

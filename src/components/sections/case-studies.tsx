@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { ReactNode } from "react";
 
 import { Section, SectionHeading } from "@/components/section";
+import { CaseStudyDisclosure } from "@/components/sections/case-study-disclosure";
 import { Badge } from "@/components/ui/badge";
 import type { Dictionary } from "@/content/dictionary";
 import type { UiDictionary } from "@/content/ui/types";
@@ -37,9 +38,17 @@ function ProofStrip({ command, result }: { command: string; result: string }) {
   );
 }
 
-function CaseStudyCard({ study, ui }: { study: CaseStudy; ui: CaseStudiesUi }) {
+function CaseStudyCard({
+  study,
+  ui,
+  defaultOpen,
+}: {
+  study: CaseStudy;
+  ui: CaseStudiesUi;
+  defaultOpen: boolean;
+}) {
   return (
-    <article className="relative rounded-sm pl-6 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:bg-emphasis before:opacity-70 before:transition-all before:duration-300 before:content-[''] hover:bg-surface/30 hover:before:w-[3px] hover:before:opacity-100 sm:pl-8">
+    <article className="before:bg-emphasis hover:bg-surface/30 relative rounded-sm pl-6 transition-colors duration-300 before:absolute before:inset-y-0 before:left-0 before:w-0.5 before:opacity-70 before:transition-all before:duration-300 before:content-[''] hover:before:w-[3px] hover:before:opacity-100 sm:pl-8">
       <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <h3 className="font-display text-2xl font-semibold tracking-tight">
@@ -107,94 +116,101 @@ function CaseStudyCard({ study, ui }: { study: CaseStudy; ui: CaseStudiesUi }) {
         <ProofStrip command={study.proof.command} result={study.proof.result} />
       )}
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-2">
-        <div className="space-y-6">
-          <Field label={ui.fields.context}>
-            <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
-              {study.context}
-            </p>
-          </Field>
-          <Field label={ui.fields.problem}>
-            <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
-              {study.problem}
-            </p>
-          </Field>
-          <Field label={ui.fields.solution}>
-            <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
-              {study.solution}
+      <CaseStudyDisclosure
+        contentId={`case-study-${study.slug}`}
+        defaultOpen={defaultOpen}
+        expandLabel={ui.expand}
+        collapseLabel={ui.collapse}
+      >
+        <div className="mt-8 grid gap-8 lg:grid-cols-2">
+          <div className="space-y-6">
+            <Field label={ui.fields.context}>
+              <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
+                {study.context}
+              </p>
+            </Field>
+            <Field label={ui.fields.problem}>
+              <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
+                {study.problem}
+              </p>
+            </Field>
+            <Field label={ui.fields.solution}>
+              <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
+                {study.solution}
+              </p>
+            </Field>
+          </div>
+
+          <div className="space-y-6">
+            <Field label={ui.fields.architecture}>
+              <ol className="space-y-2.5">
+                {study.architecture.map((item, index) => (
+                  <li
+                    key={item.slice(0, 28)}
+                    className="text-muted-foreground flex gap-3 text-sm leading-relaxed"
+                  >
+                    <span className="text-dim font-mono text-xs">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </Field>
+
+            <Field label={ui.fields.challenges}>
+              <ul className="space-y-3">
+                {study.challenges.map((challenge) => (
+                  <li key={challenge.title} className="text-sm">
+                    <span className="text-foreground font-medium">
+                      {challenge.title}.
+                    </span>{" "}
+                    <span className="text-muted-foreground leading-relaxed">
+                      {challenge.detail}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </Field>
+
+            <Field label={ui.fields.technologies}>
+              <div className="flex flex-wrap gap-1.5">
+                {study.technologies.map((tech) => (
+                  <Badge key={tech} variant="outline">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </Field>
+          </div>
+        </div>
+
+        <div className="border-border mt-8 grid gap-8 border-t pt-6 lg:grid-cols-2">
+          {study.result && study.result.length > 0 && (
+            <Field label={ui.fields.result}>
+              <ul className="space-y-2">
+                {study.result.map((item) => (
+                  <li
+                    key={item.slice(0, 28)}
+                    className="text-muted-foreground flex items-start gap-2 text-sm"
+                  >
+                    <span
+                      aria-hidden
+                      className="bg-muted-foreground mt-1.5 size-1 shrink-0 rounded-full"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </Field>
+          )}
+          <Field label={ui.fields.demonstrates}>
+            <p className="text-foreground/90 text-sm leading-relaxed text-pretty">
+              {study.demonstrates}
             </p>
           </Field>
         </div>
-
-        <div className="space-y-6">
-          <Field label={ui.fields.architecture}>
-            <ol className="space-y-2.5">
-              {study.architecture.map((item, index) => (
-                <li
-                  key={item.slice(0, 28)}
-                  className="text-muted-foreground flex gap-3 text-sm leading-relaxed"
-                >
-                  <span className="text-dim font-mono text-xs">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-                  {item}
-                </li>
-              ))}
-            </ol>
-          </Field>
-
-          <Field label={ui.fields.challenges}>
-            <ul className="space-y-3">
-              {study.challenges.map((challenge) => (
-                <li key={challenge.title} className="text-sm">
-                  <span className="text-foreground font-medium">
-                    {challenge.title}.
-                  </span>{" "}
-                  <span className="text-muted-foreground leading-relaxed">
-                    {challenge.detail}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </Field>
-
-          <Field label={ui.fields.technologies}>
-            <div className="flex flex-wrap gap-1.5">
-              {study.technologies.map((tech) => (
-                <Badge key={tech} variant="outline">
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </Field>
-        </div>
-      </div>
-
-      <div className="border-border mt-8 grid gap-8 border-t pt-6 lg:grid-cols-2">
-        {study.result && study.result.length > 0 && (
-          <Field label={ui.fields.result}>
-            <ul className="space-y-2">
-              {study.result.map((item) => (
-                <li
-                  key={item.slice(0, 28)}
-                  className="text-muted-foreground flex items-start gap-2 text-sm"
-                >
-                  <span
-                    aria-hidden
-                    className="bg-muted-foreground mt-1.5 size-1 shrink-0 rounded-full"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </Field>
-        )}
-        <Field label={ui.fields.demonstrates}>
-          <p className="text-foreground/90 text-sm leading-relaxed text-pretty">
-            {study.demonstrates}
-          </p>
-        </Field>
-      </div>
+      </CaseStudyDisclosure>
     </article>
   );
 }
@@ -221,7 +237,11 @@ export function CaseStudies({ dict }: CaseStudiesProps) {
             data-reveal
             style={{ transitionDelay: `${Math.min(index, 6) * 60}ms` }}
           >
-            <CaseStudyCard study={study} ui={ui.caseStudies} />
+            <CaseStudyCard
+              study={study}
+              ui={ui.caseStudies}
+              defaultOpen={index === 0}
+            />
           </div>
         ))}
       </div>

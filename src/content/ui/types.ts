@@ -44,6 +44,8 @@ export interface UiDictionary {
       demo: string;
       post: string;
     };
+    expand: string;
+    collapse: string;
   };
   certifications: {
     mark: string;
