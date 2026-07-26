@@ -1,8 +1,9 @@
-import { profile as ptProfile } from "@/data/profile";
+import avatar from "@/assets/profile.webp";
 import type { Profile } from "@/types";
 
 export const profile: Profile = {
-  ...ptProfile,
+  name: "Arthur Albefaro",
+  firstName: "Arthur",
   role: "Backend & Full Stack Developer",
   headline:
     "I build backends where the rules that cannot break are enforced in the database — and proven with tests.",
@@ -21,6 +22,14 @@ export const profile: Profile = {
     "Frontend in React and Next.js consuming the APIs",
     "Data modeling and cross-platform integrations via API",
   ],
+  email: "arthuralbefarodev@gmail.com",
+  phone: "+55 27 99952-1684",
   location: "Vila Velha, ES, Brazil",
   availability: "Backend · Full Stack · Cloud",
+  resumeUrl: "/arthur-albefaro-cv.pdf",
+  avatar,
+  company: {
+    name: "Overload",
+    url: "https://overloadmkt.com.br",
+  },
 };
