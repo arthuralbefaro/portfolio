@@ -2,7 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ interface HeaderProps {
 export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
   const sectionIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
   const activeId = useScrollSpy(sectionIds);
 
@@ -37,6 +38,20 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, [open]);
 
   return (
@@ -88,6 +103,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
             </a>
           </Button>
           <Button
+            ref={toggleRef}
             variant="ghost"
             size="icon"
             className="lg:hidden"
@@ -124,6 +140,16 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
               </Link>
             </li>
           ))}
+          <li className="border-border mt-2 border-t pt-2">
+            <a
+              href={resumeUrl}
+              download
+              onClick={() => setOpen(false)}
+              className="text-muted-foreground hover:text-foreground block py-2.5 text-sm transition-colors"
+            >
+              {ui.resume.toLowerCase()}
+            </a>
+          </li>
         </ul>
       </div>
     </header>
