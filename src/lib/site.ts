@@ -4,6 +4,8 @@
  */
 export const GITHUB_USERNAME = "arthuralbefaro";
 
+export const contentLastModified = "2026-07-26";
+
 export const siteConfig = {
   name: "Arthur Albefaro",
   title: "Arthur Albefaro | Desenvolvedor Backend & Full Stack",
