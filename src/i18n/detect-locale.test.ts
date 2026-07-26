@@ -29,5 +29,25 @@ describe("detectLocale", () => {
     expect(detectLocale(undefined, "en-US,en;q=0.9")).toBe("en");
     expect(detectLocale(undefined, "fr-FR,fr;q=0.9")).toBe("en");
     expect(detectLocale(undefined, "de")).toBe("en");
+    expect(detectLocale(undefined, "*")).toBe("en");
+  });
+
+  it("falls through unsupported entries to a supported one", () => {
+    expect(detectLocale(undefined, "es-ES,pt-BR;q=0.9")).toBe("pt");
+    expect(detectLocale(undefined, "fr-FR,fr;q=0.9,en;q=0.8")).toBe("en");
+  });
+
+  it("orders entries by q weight, not by position", () => {
+    expect(detectLocale(undefined, "pt;q=0.3,en;q=0.9")).toBe("en");
+    expect(detectLocale(undefined, "es-ES;q=0.9,pt;q=0.5,en;q=0.8")).toBe("en");
+  });
+
+  it("treats q=0 as not acceptable", () => {
+    expect(detectLocale(undefined, "pt;q=0,en;q=0.5")).toBe("en");
+  });
+
+  it("matches on the primary language subtag", () => {
+    expect(detectLocale(undefined, "pt-PT")).toBe("pt");
+    expect(detectLocale(undefined, "en-GB")).toBe("en");
   });
 });
