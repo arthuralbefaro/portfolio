@@ -1,0 +1,60 @@
+import { describe, expect, it } from "vitest";
+
+import { getDictionary } from "@/content/dictionary";
+
+const pt = getDictionary("pt");
+const en = getDictionary("en");
+
+describe("locale content parity", () => {
+  it("has the same case studies, identified by slug", () => {
+    expect(en.caseStudies.map((study) => study.slug)).toEqual(
+      pt.caseStudies.map((study) => study.slug),
+    );
+  });
+
+  it("has the same certifications, identified by title", () => {
+    expect(en.certifications.map((cert) => cert.title)).toEqual(
+      pt.certifications.map((cert) => cert.title),
+    );
+  });
+
+  it("has the same education entries, identified by institution", () => {
+    expect(en.education.map((item) => item.institution)).toEqual(
+      pt.education.map((item) => item.institution),
+    );
+  });
+
+  it("has the same experiences, identified by company", () => {
+    expect(en.experiences.map((item) => item.company)).toEqual(
+      pt.experiences.map((item) => item.company),
+    );
+  });
+
+  it("has the same skill groups, identified by category", () => {
+    expect(en.skillGroups.map((group) => group.category)).toEqual(
+      pt.skillGroups.map((group) => group.category),
+    );
+  });
+
+  it("has the same nav items, identified by anchor id", () => {
+    expect(en.navItems.map((item) => item.id)).toEqual(
+      pt.navItems.map((item) => item.id),
+    );
+  });
+
+  it("has the same number of technical posts", () => {
+    expect(en.technicalPosts).toHaveLength(pt.technicalPosts.length);
+  });
+
+  it("has the same number of spoken languages", () => {
+    expect(en.languages).toHaveLength(pt.languages.length);
+  });
+
+  it("keeps profile identity fields in sync", () => {
+    expect(en.profile.name).toBe(pt.profile.name);
+    expect(en.profile.email).toBe(pt.profile.email);
+    expect(en.profile.phone).toBe(pt.profile.phone);
+    expect(en.profile.resumeUrl).toBe(pt.profile.resumeUrl);
+    expect(en.profile.company).toEqual(pt.profile.company);
+  });
+});
