@@ -20,8 +20,12 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
       return;
     }
     document.cookie = `${localeCookie}=${next}; path=/; max-age=31536000; samesite=lax`;
-    const rest = pathname.replace(/^\/(pt|en)(?=\/|$)/, "");
-    router.push(`/${next}${rest || ""}`);
+    const current = locales.find(
+      (candidate) =>
+        pathname === `/${candidate}` || pathname.startsWith(`/${candidate}/`),
+    );
+    const rest = current ? pathname.slice(current.length + 1) : pathname;
+    router.push(`/${next}${rest}`);
     router.refresh();
   }
 
