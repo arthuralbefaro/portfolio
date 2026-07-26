@@ -45,61 +45,6 @@ interface ContactFormProps {
 }
 
 export function ContactForm({ messages }: ContactFormProps) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
-  const [company, setCompany] = useState("");
-  const [status, setStatus] = useState<Status>("idle");
-  const [errors, setErrors] = useState<FieldErrors>({});
-
-  function validate(): FieldErrors {
-    const next: FieldErrors = {};
-    for (const field of validateContact({ name, email, message })) {
-      next[field] = messages.errors[field];
-    }
-    return next;
-  }
-
-  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const nextErrors = validate();
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      return;
-    }
-
-    if (!CONTACT_API_URL) {
-      setStatus("error");
-      return;
-    }
-
-    setStatus("sending");
-
-    try {
-      const response = await fetch(CONTACT_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message, company }),
-      });
-
-      if (response.status === 200 || response.status === 204) {
-        setStatus("success");
-        setName("");
-        setEmail("");
-        setMessage("");
-        setCompany("");
-        setErrors({});
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
-  }
-
-  const sending = status === "sending";
-
   if (!CONTACT_API_URL) {
     return (
       <div
@@ -127,6 +72,63 @@ export function ContactForm({ messages }: ContactFormProps) {
       </div>
     );
   }
+
+  return <ContactFormFields messages={messages} apiUrl={CONTACT_API_URL} />;
+}
+
+function ContactFormFields({
+  messages,
+  apiUrl,
+}: ContactFormProps & { apiUrl: string }) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [company, setCompany] = useState("");
+  const [status, setStatus] = useState<Status>("idle");
+  const [errors, setErrors] = useState<FieldErrors>({});
+
+  function validate(): FieldErrors {
+    const next: FieldErrors = {};
+    for (const field of validateContact({ name, email, message })) {
+      next[field] = messages.errors[field];
+    }
+    return next;
+  }
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    const nextErrors = validate();
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) {
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, message, company }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setName("");
+        setEmail("");
+        setMessage("");
+        setCompany("");
+        setErrors({});
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
+
+  const sending = status === "sending";
 
   return (
     <form
