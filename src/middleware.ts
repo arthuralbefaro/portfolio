@@ -1,25 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-import { defaultLocale, isLocale, localeCookie, locales } from "@/i18n/config";
-import type { Locale } from "@/i18n/config";
-
-function detectLocale(request: NextRequest): Locale {
-  const chosen = request.cookies.get(localeCookie)?.value;
-  if (isLocale(chosen)) {
-    return chosen;
-  }
-
-  const acceptLanguage = request.headers.get("accept-language") ?? "";
-  const primary = acceptLanguage.split(",")[0]?.trim().toLowerCase() ?? "";
-
-  if (primary.startsWith("pt")) {
-    return "pt";
-  }
-  if (primary === "") {
-    return defaultLocale;
-  }
-  return "en";
-}
+import { localeCookie, locales } from "@/i18n/config";
+import { detectLocale } from "@/i18n/detect-locale";
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -31,7 +13,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const locale = detectLocale(request);
+  const locale = detectLocale(
+    request.cookies.get(localeCookie)?.value,
+    request.headers.get("accept-language"),
+  );
   const url = request.nextUrl.clone();
   url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url, 308);

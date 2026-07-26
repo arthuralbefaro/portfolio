@@ -6,10 +6,9 @@ import { type FormEvent, useState } from "react";
 import { Button } from "@/components/ui/button";
 import type { UiDictionary } from "@/content/ui/types";
 import { socials } from "@/data/socials";
+import { validateContact } from "@/lib/validate-contact";
 
 const CONTACT_API_URL = process.env.NEXT_PUBLIC_CONTACT_API_URL;
-
-const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const WHATSAPP_HREF =
   socials.find((s) => s.label === "WhatsApp")?.href ?? "https://wa.me/";
@@ -55,14 +54,8 @@ export function ContactForm({ messages }: ContactFormProps) {
 
   function validate(): FieldErrors {
     const next: FieldErrors = {};
-    if (name.trim().length < 2) {
-      next.name = messages.errors.name;
-    }
-    if (!EMAIL_PATTERN.test(email.trim())) {
-      next.email = messages.errors.email;
-    }
-    if (message.trim().length < 10) {
-      next.message = messages.errors.message;
+    for (const field of validateContact({ name, email, message })) {
+      next[field] = messages.errors[field];
     }
     return next;
   }
