@@ -2,6 +2,8 @@
  * Global site configuration. Single source of truth for URLs and metadata
  * used across SEO, structured data, sitemap and the layout shell.
  */
+export const GITHUB_USERNAME = "arthuralbefaro";
+
 export const siteConfig = {
   name: "Arthur Albefaro",
   title: "Arthur Albefaro | Desenvolvedor Backend & Full Stack",

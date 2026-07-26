@@ -1,8 +1,7 @@
 import { Github, Instagram, Linkedin, Mail } from "lucide-react";
 import { WhatsappIcon } from "@/components/icons/whatsapp";
+import { GITHUB_USERNAME } from "@/lib/site";
 import type { SocialLink } from "@/types";
-
-export const GITHUB_USERNAME = "arthuralbefaro";
 
 export const socials: SocialLink[] = [
   {

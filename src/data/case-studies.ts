@@ -1,4 +1,4 @@
-import { GITHUB_USERNAME } from "@/data/socials";
+import { GITHUB_USERNAME } from "@/lib/site";
 import type { CaseStudy } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
