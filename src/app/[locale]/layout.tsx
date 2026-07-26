@@ -81,16 +81,6 @@ export async function generateMetadata({
       title: meta.title,
       description: meta.description,
     },
-    robots: {
-      index: true,
-      follow: true,
-      googleBot: {
-        index: true,
-        follow: true,
-        "max-image-preview": "large",
-        "max-snippet": -1,
-      },
-    },
   };
 }
 
