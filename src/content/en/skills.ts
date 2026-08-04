@@ -30,7 +30,15 @@ export const skillGroups: SkillGroup[] = [
     categoryLabel: "Data",
     icon: Database,
     description: "Modeling, querying, and storage",
-    items: ["PostgreSQL", "SQL", "PL/SQL", "MySQL", "MongoDB", "Redis", "SQLite"],
+    items: [
+      "PostgreSQL",
+      "SQL",
+      "PL/SQL",
+      "MySQL",
+      "MongoDB",
+      "Redis",
+      "SQLite",
+    ],
   },
   {
     category: "Cloud & Infraestrutura",
