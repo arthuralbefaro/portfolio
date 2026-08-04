@@ -4,7 +4,7 @@ export const education: Education[] = [
   {
     degree: "Bachelor's in Computer Science",
     institution: "Universidade de Vila Velha (UVV)",
-    period: "2026 — 2029",
+    period: "In progress · expected 2029",
   },
 ];
 
