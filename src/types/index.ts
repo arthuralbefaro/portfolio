@@ -42,8 +42,10 @@ export interface Profile {
 export type SkillCategory =
   | "Backend principal"
   | "Backend complementar"
+  | "Dados"
   | "Cloud & Infraestrutura"
-  | "Frontend";
+  | "Frontend"
+  | "IA & Automação";
 
 /** A grouped set of skills shown as a card. */
 export interface SkillGroup {

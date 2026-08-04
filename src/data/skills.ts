@@ -1,12 +1,6 @@
-import { Cloud, Code2, Layout, Server } from "lucide-react";
+import { Bot, Cloud, Code2, Database, Layout, Server } from "lucide-react";
 import type { SkillGroup } from "@/types";
 
-/**
- * Stack organizada por foco: o backend principal é o centro do perfil; Java/C#/
- * .NET aparecem como base complementar, agora aplicada em projetos reais (Verdict,
- * Journal), e Cloud e Frontend completam a atuação full stack. Mantida enxuta de
- * propósito.
- */
 export const skillGroups: SkillGroup[] = [
   {
     category: "Backend principal",
@@ -17,26 +11,56 @@ export const skillGroups: SkillGroup[] = [
       "Node.js",
       "NestJS",
       "Python",
-      "PostgreSQL",
-      "REST APIs",
+      "FastAPI",
+      "C# & .NET",
+      "ASP.NET",
+      "APIs REST",
     ],
   },
   {
     category: "Backend complementar",
     icon: Code2,
-    description: "Aplicado em projetos reais (Verdict em C#, Journal em Java)",
-    items: ["Java", "C#", ".NET"],
+    description: "Linguagens e frameworks que também uso no backend",
+    items: ["Java", "Spring Boot", "PHP", "Laravel"],
+  },
+  {
+    category: "Dados",
+    icon: Database,
+    description: "Modelagem, consulta e armazenamento",
+    items: ["PostgreSQL", "SQL", "PL/SQL", "MySQL", "MongoDB", "Redis", "SQLite"],
   },
   {
     category: "Cloud & Infraestrutura",
     icon: Cloud,
     description: "Deploy, containers e versionamento",
-    items: ["AWS", "Docker", "Git", "GitHub"],
+    items: [
+      "AWS (S3, EC2, Route 53)",
+      "Cloudflare R2",
+      "VPS",
+      "Docker",
+      "CI/CD",
+      "Linux",
+      "Git",
+      "GitHub",
+    ],
   },
   {
     category: "Frontend",
     icon: Layout,
     description: "Interfaces para consumir as APIs",
-    items: ["React", "Next.js", "Tailwind CSS"],
+    items: ["React", "Next.js", "Angular", "Tailwind CSS", "HTML5", "CSS3"],
+  },
+  {
+    category: "IA & Automação",
+    icon: Bot,
+    description: "Integrações e automação de rotinas operacionais",
+    items: [
+      "OpenAI",
+      "Anthropic Claude",
+      "Gemini",
+      "GoHighLevel",
+      "Notion API",
+      "ETL",
+    ],
   },
 ];
