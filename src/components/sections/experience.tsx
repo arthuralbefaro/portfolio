@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 
-import { Section, SectionHeading } from "@/components/section";
+import { Block, Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
 import { BulletList } from "@/components/ui/bullet-list";
 import { TagList } from "@/components/ui/tag-list";
@@ -14,56 +14,57 @@ export function ExperienceSection({ dict }: ExperienceProps) {
   const { experiences, ui } = dict;
 
   return (
-    <Section id="experiencia">
-      <SectionHeading mark={ui.experience.mark} title={ui.experience.title} />
+    <Section id="experiencia" mark={ui.experience.mark}>
+      <SectionHeading title={ui.experience.title} />
 
-      <ol className="border-border relative border-l">
-        {experiences.map((exp, index) => (
-          <li
-            key={`${exp.company}-${exp.period}`}
-            data-reveal
-            style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
-            className="relative ml-6 pb-12 last:pb-0"
-          >
-            <span className="border-background bg-emphasis absolute top-1.5 -left-[1.6875rem] size-3 rounded-full border-2" />
+      <Block>
+        <ol>
+          {experiences.map((exp, index) => (
+            <li
+              key={`${exp.company}-${exp.period}`}
+              data-reveal
+              style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
+              className="border-border grid grid-cols-4 gap-x-6 border-t py-8 sm:grid-cols-9"
+            >
+              <div className="text-muted-foreground text-meta col-span-4 space-y-1 font-mono sm:col-span-3">
+                {exp.companyUrl ? (
+                  <a
+                    href={exp.companyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-foreground hover:text-emphasis inline-flex items-center gap-1 transition-colors"
+                  >
+                    {exp.company}
+                    <ArrowUpRight aria-hidden className="size-3.5" />
+                  </a>
+                ) : (
+                  <p className="text-foreground">{exp.company}</p>
+                )}
+                <p>{exp.period}</p>
+              </div>
 
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-              <h3 className="font-display text-base font-semibold">
-                {exp.role}
-              </h3>
-              {exp.current && (
-                <Badge variant="accent">{ui.experience.current}</Badge>
-              )}
-            </div>
+              <div className="col-span-4 mt-4 sm:col-span-6 sm:mt-0">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                  <h3 className="font-display text-subtitle font-semibold tracking-tight">
+                    {exp.role}
+                  </h3>
+                  {exp.current && (
+                    <Badge variant="accent">{ui.experience.current}</Badge>
+                  )}
+                </div>
 
-            <div className="text-muted-foreground mt-1 flex flex-wrap items-center gap-x-2 font-mono text-xs">
-              {exp.companyUrl ? (
-                <a
-                  href={exp.companyUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-emphasis inline-flex items-center gap-1 transition-colors"
-                >
-                  {exp.company}
-                  <ArrowUpRight className="size-3.5" />
-                </a>
-              ) : (
-                <span className="text-foreground">{exp.company}</span>
-              )}
-              <span aria-hidden>·</span>
-              <span>{exp.period}</span>
-            </div>
+                <p className="text-muted-foreground text-body mt-2 leading-relaxed text-pretty">
+                  {exp.description}
+                </p>
 
-            <p className="text-muted-foreground text-body mt-4 text-pretty">
-              {exp.description}
-            </p>
+                <BulletList items={exp.achievements} className="mt-6" />
 
-            <BulletList items={exp.achievements} className="mt-4" />
-
-            <TagList items={exp.stack} className="mt-4" />
-          </li>
-        ))}
-      </ol>
+                <TagList items={exp.stack} className="mt-6" />
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Block>
     </Section>
   );
 }
