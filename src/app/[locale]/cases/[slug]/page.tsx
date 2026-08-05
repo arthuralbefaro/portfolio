@@ -136,36 +136,27 @@ export default async function CaseStudyPage({
     <article className="mx-auto w-full max-w-6xl px-4 pt-32 pb-24 sm:px-8 sm:pt-48">
       <GridRow
         rail={
-          <Link
-            href={`/${locale}#casos`}
-            className="text-muted-foreground hover:text-emphasis text-meta inline-flex items-center gap-2 font-mono transition-colors"
-          >
-            <ArrowLeft aria-hidden className="size-4" />
-            {ui.backToIndex}
-          </Link>
+          <div className="space-y-6">
+            <Link
+              href={`/${locale}#casos`}
+              className="text-muted-foreground hover:text-emphasis text-meta inline-flex items-center gap-2 font-mono transition-colors"
+            >
+              <ArrowLeft aria-hidden className="size-4" />
+              {ui.backToIndex}
+            </Link>
+
+            <ul className="text-muted-foreground text-meta space-y-1 font-mono">
+              <li>{study.statusLabel ?? study.status}</li>
+              {study.period && <li>{study.period}</li>}
+              {study.chip && <li>{study.chip}</li>}
+            </ul>
+          </div>
         }
       >
         <Block>
-          <div className="flex flex-wrap items-center gap-4">
-            <h1 className="font-display text-title font-semibold tracking-tight text-balance">
-              {study.title}
-            </h1>
-            {study.chip && (
-              <span className="text-muted-foreground border-border text-meta rounded-sm border px-2 py-1 font-mono">
-                {study.chip}
-              </span>
-            )}
-          </div>
-
-          <div className="text-muted-foreground text-meta mt-2 flex flex-wrap items-center gap-x-2 font-mono">
-            <span>{study.statusLabel ?? study.status}</span>
-            {study.period && (
-              <>
-                <span aria-hidden>·</span>
-                <span>{study.period}</span>
-              </>
-            )}
-          </div>
+          <h1 className="font-display text-title font-semibold tracking-tight text-balance">
+            {study.title}
+          </h1>
         </Block>
 
         <Block width="prose" className="mt-6">
