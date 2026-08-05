@@ -41,6 +41,14 @@
     var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-display: var(--font-space-grotesk), var(--font-inter), sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+
+  --text-display: clamp(2.75rem, 8vw, 5rem);
+  --text-title: clamp(1.75rem, 4vw, 2.5rem);
+  --text-subtitle: 1.25rem;
+  --text-lead: 1.125rem;
+  --text-body: 1rem;
+  --text-meta: 0.75rem;
+  --text-meta--letter-spacing: 0.08em;
 }
 
 @layer base {
