@@ -3,6 +3,127 @@ import type { CaseStudy } from "@/types";
 
 export const caseStudies: CaseStudy[] = [
   {
+    slug: "sistema-interno-gestao",
+    title: "Internal management system",
+    chip: "full-stack · production",
+    tagline:
+      "A full-stack internal system used by a marketing agency to manage its client portfolio, sales, and operations, with an AI layer that supports decisions.",
+    status: "Projeto profissional",
+    statusLabel: "Professional project",
+    period: "2026",
+    featured: true,
+    evidence: "In production · used daily by the agency team",
+    context:
+      "The operation was scattered across spreadsheets, the CRM, and scattered chats. There was no single place where the team could see portfolio health, sales progress, and each squad's workload. Information originated in different tools and was cross-referenced by hand.",
+    problem:
+      "Centralize client, sales, and operations management into a single system, with data coming from several external sources, access control by role and by squad, and AI support to turn scattered data into action, all with synchronized and consistent information.",
+    solution:
+      "A full-stack system with a TypeScript (NestJS) and Python backend and a React frontend, over PostgreSQL. It brings together an executive dashboard, squad-based task management, a CRM with lead qualification for SDRs, portfolio and client health scoring, and an internal team chat. It integrates external sources via API and uses an AI layer that ingests each client's history to suggest actions and flag risk.",
+    architecture: [
+      "A NestJS and Python backend exposing APIs consumed by a React frontend, with access control by role and by squad.",
+      "PostgreSQL as the central store, with data synchronized from external platforms (CRM, ad platforms) via API.",
+      "WhatsApp integration via API to read conversation context.",
+      "An AI layer integrating multiple LLM providers (Anthropic Claude and OpenAI) that ingests each client's history to compute client health, suggest actions, and support lead qualification.",
+      "Modules separated by area (management, operations, intelligence) with unified navigation and search.",
+    ],
+    technologies: [
+      "TypeScript",
+      "NestJS",
+      "Python",
+      "C# & .NET",
+      "React",
+      "PostgreSQL",
+      "NoSQL",
+      "Amazon Web Services",
+      "API integrations (CRM, Meta Ads, Google Ads, WhatsApp)",
+      "Anthropic Claude",
+      "OpenAI",
+    ],
+    challenges: [
+      {
+        title: "Many sources, one place",
+        detail:
+          "Data came from the CRM, ad platforms, and conversations, each in its own format. The system synchronizes and normalizes everything into a consistent model in Postgres.",
+      },
+      {
+        title: "Access by role and by squad",
+        detail:
+          "Each person sees only what belongs to their scope. Permission control separates what a manager, an SDR, and an admin can see, without mixing data across squads.",
+      },
+      {
+        title: "AI applied to decisions, not text",
+        detail:
+          "Instead of a generic chat, the AI reads each client's real case and returns something actionable: a health score, a suggested action, a risk alert. It uses more than one LLM provider rather than being locked to a single one.",
+      },
+      {
+        title: "A system in use",
+        detail:
+          "Not a prototype. The team uses it daily, so stability and data consistency are requirements, not details.",
+      },
+    ],
+    demonstrates:
+      "A real, in-production full-stack system integrating several external sources, with access control, AI applied to decisions, and a team using it daily.",
+  },
+  {
+    slug: "crm-notion",
+    title: "CRM → Notion integration",
+    chip: "integration · production",
+    tagline:
+      "An integration routine that syncs GoHighLevel (CRM) data into Notion, normalizing non-standardized information and preventing duplication.",
+    status: "Projeto interno",
+    statusLabel: "Internal project",
+    period: "Overload · 2026",
+    featured: true,
+    context:
+      "At Overload, GoHighLevel holds leads and contacts, while the operations teams work in Notion. Data was born in the CRM and carried into Notion by hand, a slow process, error-prone and always out of date.",
+    problem:
+      "There was no integration between the two platforms, and CRM data arrives non-standardized (custom fields, inconsistent and missing formats), which prevents direct consumption and requires a normalization step.",
+    solution:
+      "I built an integration routine that consumes the GoHighLevel API, normalizes the records, and writes them into Notion via API, avoiding duplication of already-synced data and handling failures record by record so the integration is not interrupted.",
+    architecture: [
+      "Extraction: reading the records through the GoHighLevel API.",
+      "Normalization: standardizing the CRM's unstructured fields (dates, phone numbers, and missing or inconsistent custom fields) into a consistent format.",
+      "Synchronization: writing to Notion via API with duplication control, checking whether the record already exists before creating or updating it.",
+      "Resilience: respecting the APIs' rate limits, with retries, and isolating errors per record.",
+    ],
+    technologies: [
+      "TypeScript",
+      "Node.js",
+      "REST APIs",
+      "Notion API",
+      "GoHighLevel API",
+    ],
+    challenges: [
+      {
+        title: "Duplication control",
+        detail:
+          "Since the routine runs repeatedly, it could not recreate already-synced records in Notion, the write checks for existence before creating or updating.",
+      },
+      {
+        title: "API rate limits",
+        detail:
+          "GoHighLevel and Notion impose call limits. The integration paces its requests and retries when needed.",
+      },
+      {
+        title: "Non-standardized data",
+        detail:
+          "Missing custom fields or inconsistent formats made consumption hard. I added a normalization step tolerant of those cases.",
+      },
+      {
+        title: "Partial failures",
+        detail:
+          "One invalid record could not bring down the whole batch. Processing isolates the error per record and continues with the rest.",
+      },
+    ],
+    result: [
+      "Eliminated the manual copying of data between CRM and Notion.",
+      "A more consistent base in Notion to feed internal automations and dashboards.",
+      "Reusable normalization and synchronization logic for new integrations.",
+    ],
+    demonstrates:
+      "Integration between external systems via API, data consistency, backend logic, and automation applied to a real operation",
+  },
+  {
     slug: "journal",
     title: "Journal",
     chip: "ledger",
@@ -190,126 +311,5 @@ export const caseStudies: CaseStudy[] = [
     links: {
       github: `https://github.com/${GITHUB_USERNAME}/courier`,
     },
-  },
-  {
-    slug: "sistema-interno-gestao",
-    title: "Internal management system",
-    chip: "full-stack · production",
-    tagline:
-      "A full-stack internal system used by a marketing agency to manage its client portfolio, sales, and operations, with an AI layer that supports decisions.",
-    status: "Projeto profissional",
-    statusLabel: "Professional project",
-    period: "2026",
-    featured: true,
-    evidence: "In production · used daily by the agency team",
-    context:
-      "The operation was scattered across spreadsheets, the CRM, and scattered chats. There was no single place where the team could see portfolio health, sales progress, and each squad's workload. Information originated in different tools and was cross-referenced by hand.",
-    problem:
-      "Centralize client, sales, and operations management into a single system, with data coming from several external sources, access control by role and by squad, and AI support to turn scattered data into action, all with synchronized and consistent information.",
-    solution:
-      "A full-stack system with a TypeScript (NestJS) and Python backend and a React frontend, over PostgreSQL. It brings together an executive dashboard, squad-based task management, a CRM with lead qualification for SDRs, portfolio and client health scoring, and an internal team chat. It integrates external sources via API and uses an AI layer that ingests each client's history to suggest actions and flag risk.",
-    architecture: [
-      "A NestJS and Python backend exposing APIs consumed by a React frontend, with access control by role and by squad.",
-      "PostgreSQL as the central store, with data synchronized from external platforms (CRM, ad platforms) via API.",
-      "WhatsApp integration via API to read conversation context.",
-      "An AI layer integrating multiple LLM providers (Anthropic Claude and OpenAI) that ingests each client's history to compute client health, suggest actions, and support lead qualification.",
-      "Modules separated by area (management, operations, intelligence) with unified navigation and search.",
-    ],
-    technologies: [
-      "TypeScript",
-      "NestJS",
-      "Python",
-      "C# & .NET",
-      "React",
-      "PostgreSQL",
-      "NoSQL",
-      "Amazon Web Services",
-      "API integrations (CRM, Meta Ads, Google Ads, WhatsApp)",
-      "Anthropic Claude",
-      "OpenAI",
-    ],
-    challenges: [
-      {
-        title: "Many sources, one place",
-        detail:
-          "Data came from the CRM, ad platforms, and conversations, each in its own format. The system synchronizes and normalizes everything into a consistent model in Postgres.",
-      },
-      {
-        title: "Access by role and by squad",
-        detail:
-          "Each person sees only what belongs to their scope. Permission control separates what a manager, an SDR, and an admin can see, without mixing data across squads.",
-      },
-      {
-        title: "AI applied to decisions, not text",
-        detail:
-          "Instead of a generic chat, the AI reads each client's real case and returns something actionable: a health score, a suggested action, a risk alert. It uses more than one LLM provider rather than being locked to a single one.",
-      },
-      {
-        title: "A system in use",
-        detail:
-          "Not a prototype. The team uses it daily, so stability and data consistency are requirements, not details.",
-      },
-    ],
-    demonstrates:
-      "A real, in-production full-stack system integrating several external sources, with access control, AI applied to decisions, and a team using it daily.",
-  },
-  {
-    slug: "crm-notion",
-    title: "CRM → Notion integration",
-    chip: "integration · production",
-    tagline:
-      "An integration routine that syncs GoHighLevel (CRM) data into Notion, normalizing non-standardized information and preventing duplication.",
-    status: "Projeto interno",
-    statusLabel: "Internal project",
-    period: "Overload · 2026",
-    featured: true,
-    context:
-      "At Overload, GoHighLevel holds leads and contacts, while the operations teams work in Notion. Data was born in the CRM and carried into Notion by hand, a slow process, error-prone and always out of date.",
-    problem:
-      "There was no integration between the two platforms, and CRM data arrives non-standardized (custom fields, inconsistent and missing formats), which prevents direct consumption and requires a normalization step.",
-    solution:
-      "I built an integration routine that consumes the GoHighLevel API, normalizes the records, and writes them into Notion via API, avoiding duplication of already-synced data and handling failures record by record so the integration is not interrupted.",
-    architecture: [
-      "Extraction: reading the records through the GoHighLevel API.",
-      "Normalization: standardizing the CRM's unstructured fields (dates, phone numbers, and missing or inconsistent custom fields) into a consistent format.",
-      "Synchronization: writing to Notion via API with duplication control, checking whether the record already exists before creating or updating it.",
-      "Resilience: respecting the APIs' rate limits, with retries, and isolating errors per record.",
-    ],
-    technologies: [
-      "TypeScript",
-      "Node.js",
-      "REST APIs",
-      "Notion API",
-      "GoHighLevel API",
-    ],
-    challenges: [
-      {
-        title: "Duplication control",
-        detail:
-          "Since the routine runs repeatedly, it could not recreate already-synced records in Notion, the write checks for existence before creating or updating.",
-      },
-      {
-        title: "API rate limits",
-        detail:
-          "GoHighLevel and Notion impose call limits. The integration paces its requests and retries when needed.",
-      },
-      {
-        title: "Non-standardized data",
-        detail:
-          "Missing custom fields or inconsistent formats made consumption hard. I added a normalization step tolerant of those cases.",
-      },
-      {
-        title: "Partial failures",
-        detail:
-          "One invalid record could not bring down the whole batch. Processing isolates the error per record and continues with the rest.",
-      },
-    ],
-    result: [
-      "Eliminated the manual copying of data between CRM and Notion.",
-      "A more consistent base in Notion to feed internal automations and dashboards.",
-      "Reusable normalization and synchronization logic for new integrations.",
-    ],
-    demonstrates:
-      "Integration between external systems via API, data consistency, backend logic, and automation applied to a real operation",
   },
 ];
