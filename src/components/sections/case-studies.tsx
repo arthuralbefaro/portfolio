@@ -46,7 +46,7 @@ function ProfessionalEntry({
       </div>
 
       <p className="text-muted-foreground text-body mt-2 max-w-3xl leading-relaxed text-pretty">
-        {study.result?.[0] ?? study.tagline}
+        {study.tagline}
       </p>
 
       <TagList items={study.technologies} className="mt-4" />
