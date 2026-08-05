@@ -2,6 +2,7 @@
 
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
@@ -23,8 +24,15 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
-  const sectionIds = useMemo(() => navItems.map((item) => item.id), [navItems]);
+  const pathname = usePathname();
+  const home = `/${locale}`;
+  const isHome = pathname === home;
+  const sectionIds = useMemo(
+    () => (isHome ? navItems.map((item) => item.id) : []),
+    [isHome, navItems],
+  );
   const activeId = useScrollSpy(sectionIds);
+  const anchor = (id: string) => (isHome ? `#${id}` : `${home}#${id}`);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -65,7 +73,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
     >
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-8">
         <Link
-          href="#inicio"
+          href={anchor("inicio")}
           className="font-mono text-sm tracking-tight"
           onClick={() => setOpen(false)}
         >
@@ -76,7 +84,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           {navItems.map((item) => (
             <li key={item.id}>
               <Link
-                href={`#${item.id}`}
+                href={anchor(item.id)}
                 className={cn(
                   "relative py-1 font-mono text-sm transition-colors",
                   activeId === item.id
@@ -127,7 +135,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           {navItems.map((item) => (
             <li key={item.id}>
               <Link
-                href={`#${item.id}`}
+                href={anchor(item.id)}
                 onClick={() => setOpen(false)}
                 className={cn(
                   "block py-2 text-sm transition-colors",

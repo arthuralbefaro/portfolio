@@ -2,19 +2,18 @@
 
 import { useEffect, useState } from "react";
 
-/**
- * Tracks which section is currently in view based on its anchor id.
- * Returns the id of the active section for scroll-spy navigation.
- */
 export function useScrollSpy(ids: string[], offset = 0.4): string {
-  const [activeId, setActiveId] = useState<string>(ids[0] ?? "");
+  const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
     const elements = ids
       .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
-    if (elements.length === 0) return;
+    if (elements.length === 0) {
+      setActiveId("");
+      return;
+    }
 
     const observer = new IntersectionObserver(
       (entries) => {
