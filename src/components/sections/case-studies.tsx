@@ -3,7 +3,9 @@ import type { ReactNode } from "react";
 
 import { Section, SectionHeading } from "@/components/section";
 import { CaseStudyDisclosure } from "@/components/sections/case-study-disclosure";
-import { Badge } from "@/components/ui/badge";
+import { BulletList } from "@/components/ui/bullet-list";
+import { MetaLabel } from "@/components/ui/meta-label";
+import { TagList } from "@/components/ui/tag-list";
 import type { Dictionary } from "@/content/dictionary";
 import type { UiDictionary } from "@/content/ui/types";
 import type { CaseStudy } from "@/types";
@@ -13,9 +15,7 @@ type CaseStudiesUi = UiDictionary["caseStudies"];
 function Field({ label, children }: { label: string; children: ReactNode }) {
   return (
     <div>
-      <p className="text-dim mb-2 font-mono text-xs tracking-[0.14em] uppercase">
-        {label}
-      </p>
+      <MetaLabel className="mb-2">{label}</MetaLabel>
       {children}
     </div>
   );
@@ -180,13 +180,7 @@ function CaseStudyCard({
             </Field>
 
             <Field label={ui.fields.technologies}>
-              <div className="flex flex-wrap gap-1.5">
-                {study.technologies.map((tech) => (
-                  <Badge key={tech} variant="outline">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
+              <TagList items={study.technologies} />
             </Field>
           </div>
         </div>
@@ -194,20 +188,7 @@ function CaseStudyCard({
         <div className="border-border mt-8 grid gap-8 border-t pt-6 lg:grid-cols-2">
           {study.result && study.result.length > 0 && (
             <Field label={ui.fields.result}>
-              <ul className="space-y-2">
-                {study.result.map((item) => (
-                  <li
-                    key={item.slice(0, 28)}
-                    className="text-muted-foreground flex items-start gap-2 text-sm"
-                  >
-                    <span
-                      aria-hidden
-                      className="bg-muted-foreground mt-1.5 size-1 shrink-0 rounded-full"
-                    />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <BulletList items={study.result} />
             </Field>
           )}
           <Field label={ui.fields.demonstrates}>

@@ -1,4 +1,6 @@
 import { Section, SectionHeading } from "@/components/section";
+import { BulletList } from "@/components/ui/bullet-list";
+import { MetaLabel } from "@/components/ui/meta-label";
 import type { Dictionary } from "@/content/dictionary";
 
 interface AboutProps {
@@ -28,51 +30,36 @@ export function About({ dict }: AboutProps) {
           className="space-y-8"
         >
           <div>
-            <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
-              {ui.about.skills}
-            </h3>
-            <ul className="mt-4 space-y-2.5">
-              {profile.highlights.map((item) => (
-                <li
-                  key={item}
-                  className="text-muted-foreground flex items-start gap-2.5 text-sm"
-                >
-                  <span
-                    aria-hidden
-                    className="bg-emphasis mt-1.5 size-1 shrink-0 rounded-full"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <MetaLabel as="h3">{ui.about.skills}</MetaLabel>
+            <BulletList
+              items={[...profile.highlights]}
+              tone="emphasis"
+              className="mt-4"
+            />
           </div>
 
           <div className="border-border border-t pt-6">
-            <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
-              {ui.about.languages}
-            </h3>
-            <ul className="mt-4 space-y-2.5">
+            <MetaLabel as="h3">{ui.about.languages}</MetaLabel>
+            <ul className="mt-4 space-y-2">
               {languages.map((lang) => (
                 <li
                   key={lang.name}
-                  className="flex items-center justify-between text-sm"
+                  className="text-body flex items-center justify-between"
                 >
                   <span className="text-muted-foreground">{lang.name}</span>
-                  <span className="font-mono text-xs">{lang.level}</span>
+                  <span className="text-meta font-mono">{lang.level}</span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="border-border border-t pt-6">
-            <h3 className="text-dim font-mono text-xs tracking-[0.14em] uppercase">
-              {ui.about.education}
-            </h3>
+            <MetaLabel as="h3">{ui.about.education}</MetaLabel>
             <p className="mt-4 font-medium">{education[0]?.degree}</p>
-            <p className="text-muted-foreground text-sm">
+            <p className="text-muted-foreground text-body">
               {education[0]?.institution}
             </p>
-            <p className="text-dim mt-1 font-mono text-xs">
+            <p className="text-dim text-meta mt-1 font-mono">
               {education[0]?.period}
             </p>
           </div>

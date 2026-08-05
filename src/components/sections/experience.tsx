@@ -2,6 +2,8 @@ import { ArrowUpRight } from "lucide-react";
 
 import { Section, SectionHeading } from "@/components/section";
 import { Badge } from "@/components/ui/badge";
+import { BulletList } from "@/components/ui/bullet-list";
+import { TagList } from "@/components/ui/tag-list";
 import type { Dictionary } from "@/content/dictionary";
 
 interface ExperienceProps {
@@ -52,32 +54,13 @@ export function ExperienceSection({ dict }: ExperienceProps) {
               <span>{exp.period}</span>
             </div>
 
-            <p className="text-muted-foreground mt-3 text-sm text-pretty">
+            <p className="text-muted-foreground text-body mt-4 text-pretty">
               {exp.description}
             </p>
 
-            <ul className="mt-3 space-y-2">
-              {exp.achievements.map((item) => (
-                <li
-                  key={item.slice(0, 24)}
-                  className="text-muted-foreground flex items-start gap-2 text-sm"
-                >
-                  <span
-                    aria-hidden
-                    className="bg-muted-foreground mt-2 size-1 shrink-0 rounded-full"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
+            <BulletList items={exp.achievements} className="mt-4" />
 
-            <div className="mt-4 flex flex-wrap gap-1.5">
-              {exp.stack.map((tech) => (
-                <Badge key={tech} variant="outline">
-                  {tech}
-                </Badge>
-              ))}
-            </div>
+            <TagList items={exp.stack} className="mt-4" />
           </li>
         ))}
       </ol>

@@ -1,5 +1,5 @@
 import { Section, SectionHeading } from "@/components/section";
-import { Badge } from "@/components/ui/badge";
+import { TagList } from "@/components/ui/tag-list";
 import type { Dictionary } from "@/content/dictionary";
 
 interface TechStackProps {
@@ -28,16 +28,10 @@ export function TechStack({ dict }: TechStackProps) {
             <h3 className="font-display text-base font-medium">
               {group.categoryLabel ?? group.category}
             </h3>
-            <p className="text-dim mt-1 font-mono text-xs">
+            <p className="text-dim text-meta mt-1 font-mono">
               {group.description}
             </p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <Badge key={item} variant="outline">
-                  {item}
-                </Badge>
-              ))}
-            </div>
+            <TagList items={group.items} className="mt-4" />
           </div>
         ))}
       </div>
