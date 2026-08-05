@@ -34,11 +34,11 @@ type FieldErrors = {
 };
 
 const fieldClass =
-  "w-full rounded-sm border border-border bg-surface px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-border-strong aria-[invalid=true]:border-border-strong";
+  "w-full rounded-sm border border-border bg-surface px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-border-strong aria-[invalid=true]:border-border-strong";
 
 const labelClass = "font-mono text-sm text-muted-foreground";
 
-const errorClass = "mt-1.5 font-mono text-xs text-foreground";
+const errorClass = "mt-2 font-mono text-xs text-foreground";
 
 interface ContactFormProps {
   messages: UiDictionary["contact"]["form"];
@@ -55,7 +55,7 @@ export function ContactForm({ messages }: ContactFormProps) {
         <p className="text-muted-foreground text-sm text-pretty">
           {messages.fallback.description}
         </p>
-        <div className="mt-2 flex flex-wrap gap-3">
+        <div className="mt-2 flex flex-wrap gap-4">
           <Button asChild size="lg">
             <a
               href={whatsappHref("")}
@@ -135,7 +135,7 @@ function ContactFormFields({
       onSubmit={handleSubmit}
       noValidate
       data-reveal
-      className="flex flex-col gap-5"
+      className="flex flex-col gap-6"
     >
       <div>
         <label htmlFor="name" className={labelClass}>
@@ -258,14 +258,14 @@ function ContactFormFields({
             href={whatsappHref(message)}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
+            className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-2 transition-colors"
           >
             {messages.sendVia.whatsapp}
             <ArrowUpRight className="size-4" />
           </a>
           <a
             href={emailHref(message)}
-            className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 transition-colors"
+            className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-2 transition-colors"
           >
             {messages.sendVia.email}
             <ArrowUpRight className="size-4" />

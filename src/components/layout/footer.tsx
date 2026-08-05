@@ -30,7 +30,7 @@ export function Footer({ dict }: FooterProps) {
 
   return (
     <footer>
-      <div className="mx-auto w-full max-w-6xl px-5 py-12 sm:px-8">
+      <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="font-mono text-sm">
@@ -38,7 +38,7 @@ export function Footer({ dict }: FooterProps) {
             </p>
             <p className="text-muted-foreground mt-1 text-sm">{profile.role}</p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-sm">
+            <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-sm">
               {externalLinks.map((link) => (
                 <a
                   key={link.label}
@@ -56,7 +56,7 @@ export function Footer({ dict }: FooterProps) {
           </div>
 
           <nav aria-label={ui.footer.navLabel}>
-            <ul className="flex flex-col gap-2.5 font-mono text-sm sm:items-end">
+            <ul className="flex flex-col gap-2 font-mono text-sm sm:items-end">
               {footerNav.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -71,7 +71,7 @@ export function Footer({ dict }: FooterProps) {
           </nav>
         </div>
 
-        <div className="border-border mt-10 border-t pt-6">
+        <div className="border-border mt-12 border-t pt-6">
           <p className="text-muted-foreground font-mono text-xs">
             © {year} {profile.name}. {ui.footer.rights}
           </p>

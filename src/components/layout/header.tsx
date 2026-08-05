@@ -63,7 +63,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           : "border-b border-transparent",
       )}
     >
-      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-5 sm:px-8">
+      <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-8">
         <Link
           href="#inicio"
           className="font-mono text-sm tracking-tight"
@@ -72,7 +72,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           arthur<span className="text-muted-foreground">.</span>albefaro
         </Link>
 
-        <ul className="hidden items-center gap-7 lg:flex">
+        <ul className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
             <li key={item.id}>
               <Link
@@ -90,7 +90,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           ))}
         </ul>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <LanguageSwitcher locale={locale} label={ui.languageLabel} />
           <Button
             asChild
@@ -123,14 +123,14 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           "transition-all duration-300 ease-in-out",
         )}
       >
-        <ul className="mx-auto flex w-full max-w-6xl flex-col px-5 py-4 font-mono sm:px-8">
+        <ul className="mx-auto flex w-full max-w-6xl flex-col px-4 py-4 font-mono sm:px-8">
           {navItems.map((item) => (
             <li key={item.id}>
               <Link
                 href={`#${item.id}`}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "block py-2.5 text-sm transition-colors",
+                  "block py-2 text-sm transition-colors",
                   activeId === item.id
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground",
@@ -145,7 +145,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
               href={resumeUrl}
               download
               onClick={() => setOpen(false)}
-              className="text-muted-foreground hover:text-foreground block py-2.5 text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground block py-2 text-sm transition-colors"
             >
               {ui.resume.toLowerCase()}
             </a>

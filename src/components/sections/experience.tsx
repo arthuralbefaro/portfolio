@@ -23,11 +23,11 @@ export function ExperienceSection({ dict }: ExperienceProps) {
             key={`${exp.company}-${exp.period}`}
             data-reveal
             style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
-            className="relative ml-6 pb-10 last:pb-0"
+            className="relative ml-6 pb-12 last:pb-0"
           >
             <span className="border-background bg-emphasis absolute top-1.5 -left-[1.6875rem] size-3 rounded-full border-2" />
 
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
               <h3 className="font-display text-base font-semibold">
                 {exp.role}
               </h3>
@@ -42,7 +42,7 @@ export function ExperienceSection({ dict }: ExperienceProps) {
                   href={exp.companyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-foreground hover:text-emphasis inline-flex items-center gap-0.5 transition-colors"
+                  className="text-foreground hover:text-emphasis inline-flex items-center gap-1 transition-colors"
                 >
                   {exp.company}
                   <ArrowUpRight className="size-3.5" />

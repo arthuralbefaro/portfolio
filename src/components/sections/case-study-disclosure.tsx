@@ -12,7 +12,7 @@ interface CaseStudyDisclosureProps {
 }
 
 const toggleClass =
-  "text-muted-foreground hover:text-emphasis inline-flex items-center gap-1.5 font-mono text-sm transition-colors";
+  "text-muted-foreground hover:text-emphasis inline-flex items-center gap-2 font-mono text-sm transition-colors";
 
 export function CaseStudyDisclosure({
   contentId,

@@ -22,9 +22,9 @@ export function Hero({ dict }: HeroProps) {
   return (
     <section
       id="inicio"
-      className="border-border scroll-mt-16 border-b pt-32 pb-20 sm:pt-40 sm:pb-28"
+      className="border-border scroll-mt-16 border-b pt-32 pb-24 sm:pt-48"
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
+      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 px-4 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
         <div data-reveal>
           <p className="text-muted-foreground font-mono text-sm">
             {ui.hero.mark}
@@ -36,24 +36,24 @@ export function Hero({ dict }: HeroProps) {
             {profile.name.replace(`${profile.firstName} `, "")}
           </h1>
 
-          <p className="text-muted-foreground mt-5 font-mono text-sm">
+          <p className="text-muted-foreground mt-6 font-mono text-sm">
             {profile.role}
           </p>
 
-          <p className="text-muted-foreground mt-3 max-w-xl text-lg text-pretty">
+          <p className="text-muted-foreground mt-4 max-w-xl text-lg text-pretty">
             {profile.headline}
           </p>
 
-          <dl className="text-muted-foreground mt-8 grid gap-1.5 font-mono text-sm">
+          <dl className="text-muted-foreground mt-8 grid gap-2 font-mono text-sm">
             {meta.map(({ key, value }) => (
-              <div key={key} className="flex gap-3">
+              <div key={key} className="flex gap-4">
                 <dt className="text-muted-foreground w-14 shrink-0">{key}</dt>
                 <dd className="text-muted-foreground">{value}</dd>
               </div>
             ))}
           </dl>
 
-          <div className="mt-9 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center gap-4">
             <Button asChild size="lg">
               <a href={profile.resumeUrl} download>
                 <ArrowDownToLine />

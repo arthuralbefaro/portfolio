@@ -23,7 +23,7 @@ export function TechStack({ dict }: TechStackProps) {
             key={group.category}
             data-reveal
             style={{ transitionDelay: `${index * 50}ms` }}
-            className="border-border border-t py-7 sm:odd:border-r sm:odd:pr-10 sm:even:pl-10"
+            className="border-border border-t py-8 sm:odd:border-r sm:odd:pr-8 sm:even:pl-8"
           >
             <h3 className="font-display text-base font-medium">
               {group.categoryLabel ?? group.category}

@@ -28,7 +28,7 @@ export function Contact({ dict }: ContactProps) {
         </p>
       </div>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
+      <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
         <ContactForm messages={ui.contact.form} />
 
         <div
@@ -43,7 +43,7 @@ export function Contact({ dict }: ContactProps) {
                   href={href}
                   target={label === "Email" ? undefined : "_blank"}
                   rel="noopener noreferrer"
-                  className="group text-muted-foreground hover:text-emphasis flex items-center gap-3 py-3 transition-colors"
+                  className="group text-muted-foreground hover:text-emphasis flex items-center gap-4 py-4 transition-colors"
                 >
                   <Icon className="size-4 shrink-0" />
                   <span className="truncate">{handle ?? label}</span>
@@ -51,7 +51,7 @@ export function Contact({ dict }: ContactProps) {
                 </a>
               </li>
             ))}
-            <li className="text-muted-foreground py-3">{profile.location}</li>
+            <li className="text-muted-foreground py-4">{profile.location}</li>
           </ul>
 
           <Button asChild variant="outline" size="lg" className="self-start">

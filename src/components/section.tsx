@@ -13,11 +13,11 @@ export function Section({ id, className, children }: SectionProps) {
     <section
       id={id}
       className={cn(
-        "border-border scroll-mt-16 border-b py-20 sm:py-28",
+        "border-border scroll-mt-16 border-b py-24 sm:py-32",
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-6xl px-5 sm:px-8">{children}</div>
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-8">{children}</div>
     </section>
   );
 }
