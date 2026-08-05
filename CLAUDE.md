@@ -232,9 +232,10 @@ Layout primitives are `Section` and `SectionHeading` in
 `src/components/section.tsx`. New sections use them rather than re-implementing
 the container and heading rhythm.
 
-`tech-stack.tsx` renders skill groups in `sm:grid-cols-2` with `odd:border-r`
-and `even:pl-10`, so an **even number of skill groups** keeps the borders
-symmetric.
+`tech-stack.tsx` places skill groups on the section grid: each group spans four
+of the nine content columns, odd ones starting at column 1 and even ones at
+column 6, so the empty column between them separates the pair instead of a
+vertical rule. An **even number of skill groups** keeps the two columns level.
 
 ## The README is stale
 
