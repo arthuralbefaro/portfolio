@@ -180,6 +180,16 @@ Constraints that define the look, all intentional:
 - **Motion is minimal**: one `IntersectionObserver` reveal via `[data-reveal]`,
   CSS-driven and disabled under `prefers-reduced-motion`. No animation library.
 
+The reveal only hides content when JavaScript is available, which an inline
+script signals by adding `js` to `documentElement` before hydration. That runs
+ahead of React, so the server HTML and the client DOM disagree on `<html
+class>`; `suppressHydrationWarning` on `<html>` is what keeps that intentional
+mismatch from being reported. The attribute is scoped to that one element and
+does not mask real mismatches below it. A future alternative is to drop the
+class entirely and gate the reveal on `@media (scripting: enabled)`, which
+removes the inline script and the warning together, but it changes how the
+reveal is expressed and should be a deliberate change, not a drive-by.
+
 ### Spacing scale
 
 Ten steps. Every margin, padding, gap and space utility uses one of them, and
