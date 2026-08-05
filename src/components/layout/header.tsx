@@ -74,7 +74,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
       <nav className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-8">
         <Link
           href={anchor("inicio")}
-          className="font-mono text-sm tracking-tight"
+          className="text-body font-mono tracking-tight"
           onClick={() => setOpen(false)}
         >
           arthur<span className="text-muted-foreground">.</span>albefaro
@@ -86,7 +86,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
               <Link
                 href={anchor(item.id)}
                 className={cn(
-                  "relative py-1 font-mono text-sm transition-colors",
+                  "text-meta relative py-1 font-mono transition-colors",
                   activeId === item.id
                     ? "text-foreground after:bg-emphasis after:absolute after:-bottom-0.5 after:left-0 after:h-px after:w-full after:content-['']"
                     : "text-muted-foreground hover:text-foreground",
@@ -138,7 +138,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
                 href={anchor(item.id)}
                 onClick={() => setOpen(false)}
                 className={cn(
-                  "block py-2 text-sm transition-colors",
+                  "text-body block py-2 transition-colors",
                   activeId === item.id
                     ? "text-foreground"
                     : "text-muted-foreground hover:text-foreground",
@@ -153,7 +153,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
               href={resumeUrl}
               download
               onClick={() => setOpen(false)}
-              className="text-muted-foreground hover:text-foreground block py-2 text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground text-body block py-2 transition-colors"
             >
               {ui.resume.toLowerCase()}
             </a>

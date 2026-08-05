@@ -62,6 +62,7 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
 | `npm run format` | Prettier write |
 | `npm run format:check` | Prettier check — **this is what fails CI** |
 | `npm test` | Vitest, 30 tests across 4 files |
+| `npm run check:design` | Type and spacing scale guard |
 | `npm run build` | Production build |
 
 CI (`.github/workflows/ci.yml`) runs typecheck → lint → format:check → test →
@@ -211,10 +212,17 @@ nothing else. The names are the stock Tailwind ones, so `mt-6` is still 24px:
 | `24` | 96 | between sections |
 | `32` `48` | 128, 192 | **section and page vertical rhythm only** — never inside a component |
 
-`npm run check:spacing` enforces this and runs in CI. It covers rhythm only
-(`m*`, `p*`, `gap*`, `space*`); component dimensions (`size-*`, `w-*`, `h-*`,
-`inset-*`, `top-*`) are deliberately free, since icon and control sizes are
-optical decisions rather than rhythm.
+`npm run check:design` enforces this and runs in CI. It covers rhythm (`m*`,
+`p*`, `gap*`, `space*`) and the type scale; component dimensions (`size-*`,
+`w-*`, `h-*`, `inset-*`, `top-*`) are deliberately free, since icon and control
+sizes are optical decisions rather than rhythm.
+
+The guard reads source text, so it cannot see a class that `cn()` drops at
+runtime. `tailwind-merge` does not know the custom `--text-*` tokens on its own
+and would treat `text-meta` as a colour, silently discarding either the size or
+the colour whenever both appear in one `cn()` call. `src/lib/utils.ts` registers
+the six names in the `font-size` group to prevent that; do not replace that
+configured merge with the bare `twMerge`.
 
 Steps `32` and `48` are allowed by role, not by filename: in the layout
 primitives (`section.tsx`, `hero.tsx`) and in any App Router `page.tsx` or

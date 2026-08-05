@@ -36,12 +36,14 @@ export function Footer({ dict, locale }: FooterProps) {
       <div className="mx-auto w-full max-w-6xl px-4 py-12 sm:px-8">
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
-            <p className="font-mono text-sm">
+            <p className="text-body font-mono">
               arthur<span className="text-muted-foreground">.</span>albefaro
             </p>
-            <p className="text-muted-foreground mt-1 text-sm">{profile.role}</p>
+            <p className="text-muted-foreground text-meta mt-1">
+              {profile.role}
+            </p>
 
-            <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-sm">
+            <div className="text-meta mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono">
               {externalLinks.map((link) => (
                 <a
                   key={link.label}
@@ -59,7 +61,7 @@ export function Footer({ dict, locale }: FooterProps) {
           </div>
 
           <nav aria-label={ui.footer.navLabel}>
-            <ul className="flex flex-col gap-2 font-mono text-sm sm:items-end">
+            <ul className="text-meta flex flex-col gap-2 font-mono sm:items-end">
               {footerNav.map((item) => (
                 <li key={item.href}>
                   <Link
@@ -75,7 +77,7 @@ export function Footer({ dict, locale }: FooterProps) {
         </div>
 
         <div className="border-border mt-12 border-t pt-6">
-          <p className="text-muted-foreground font-mono text-xs">
+          <p className="text-muted-foreground text-meta font-mono">
             © {year} {profile.name}. {ui.footer.rights}
           </p>
         </div>

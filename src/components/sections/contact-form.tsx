@@ -34,11 +34,11 @@ type FieldErrors = {
 };
 
 const fieldClass =
-  "w-full rounded-sm border border-border bg-surface px-4 py-4 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-border-strong aria-[invalid=true]:border-border-strong";
+  "w-full rounded-sm border border-border bg-surface px-4 py-4 text-body text-foreground placeholder:text-muted-foreground transition-colors focus:border-border-strong aria-[invalid=true]:border-border-strong";
 
-const labelClass = "font-mono text-sm text-muted-foreground";
+const labelClass = "font-mono text-meta text-muted-foreground";
 
-const errorClass = "mt-2 font-mono text-xs text-foreground";
+const errorClass = "mt-2 font-mono text-meta text-foreground";
 
 interface ContactFormProps {
   messages: UiDictionary["contact"]["form"];
@@ -52,7 +52,7 @@ export function ContactForm({ messages }: ContactFormProps) {
         className="border-border flex flex-col items-start gap-4 rounded-sm border p-6"
       >
         <p className="text-foreground font-medium">{messages.fallback.title}</p>
-        <p className="text-muted-foreground text-sm text-pretty">
+        <p className="text-muted-foreground text-body text-pretty">
           {messages.fallback.description}
         </p>
         <div className="mt-2 flex flex-wrap gap-4">
@@ -245,7 +245,7 @@ function ContactFormFields({
         <p
           role="status"
           aria-live="polite"
-          className="text-muted-foreground font-mono text-sm"
+          className="text-muted-foreground text-meta font-mono"
         >
           {status === "success" && messages.success}
           {status === "error" && messages.error}
@@ -253,7 +253,7 @@ function ContactFormFields({
       </div>
 
       {status === "error" && (
-        <div className="flex flex-wrap items-center gap-4 font-mono text-sm">
+        <div className="text-meta flex flex-wrap items-center gap-4 font-mono">
           <a
             href={whatsappHref(message)}
             target="_blank"

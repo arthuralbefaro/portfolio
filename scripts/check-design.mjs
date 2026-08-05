@@ -29,6 +29,34 @@ function walk(dir) {
   });
 }
 
+const TYPE_SCALE = new Set([
+  "display",
+  "title",
+  "subtitle",
+  "lead",
+  "body",
+  "meta",
+]);
+const TYPE_PATTERN = /(?<![\w-])text-(\[[^\]]+\]|[a-z0-9]+(?:xl)?)(?![\w.-])/g;
+const TYPE_IGNORE = new Set([
+  "left",
+  "right",
+  "center",
+  "justify",
+  "start",
+  "end",
+  "balance",
+  "pretty",
+  "nowrap",
+  "wrap",
+  "ellipsis",
+  "clip",
+]);
+const isColorToken = (value) =>
+  /^(foreground|background|muted|dim|emphasis|invert|surface|border|ring)/.test(
+    value,
+  );
+
 const violations = [];
 
 for (const file of walk("src")) {
@@ -50,16 +78,29 @@ for (const file of walk("src")) {
         });
       }
     }
+
+    for (const match of line.matchAll(TYPE_PATTERN)) {
+      const [text, value] = match;
+      if (
+        TYPE_SCALE.has(value) ||
+        TYPE_IGNORE.has(value) ||
+        isColorToken(value)
+      ) {
+        continue;
+      }
+      violations.push({ file, line: index + 1, text, reason: "off the type scale" });
+    }
   });
 }
 
 if (violations.length > 0) {
-  console.error(`spacing scale: ${violations.length} violation(s)\n`);
+  console.error(`design scale: ${violations.length} violation(s)\n`);
   for (const { file, line, text, reason } of violations) {
     console.error(`  ${file}:${line}  ${text}  (${reason})`);
   }
   console.error(
-    "\nallowed steps: 0 1 2 4 6 8 12 16 24 32 48" +
+    "\ntype steps: display title subtitle lead body meta" +
+      "\nspacing steps: 0 1 2 4 6 8 12 16 24 32 48" +
       "\n  1 2 4    inside a component" +
       "\n  6 8 12   between components in a section" +
       "\n  16       larger breathing room inside a long section" +
@@ -69,4 +110,4 @@ if (violations.length > 0) {
   process.exit(1);
 }
 
-console.log("spacing scale: clean");
+console.log("design scale: clean");

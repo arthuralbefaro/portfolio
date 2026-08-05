@@ -33,7 +33,7 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
     <div
       role="group"
       aria-label={label}
-      className="flex items-center font-mono text-xs"
+      className="text-meta flex items-center font-mono"
     >
       {locales.map((option, index) => (
         <span key={option} className="flex items-center">

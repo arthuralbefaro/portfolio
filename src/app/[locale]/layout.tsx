@@ -120,7 +120,7 @@ export default async function LocaleLayout({
         />
         <a
           href="#inicio"
-          className="focus:bg-emphasis focus:text-invert-fg sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:text-sm"
+          className="focus:bg-emphasis focus:text-invert-fg focus:text-body sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2"
         >
           {dict.ui.skipToContent}
         </a>
