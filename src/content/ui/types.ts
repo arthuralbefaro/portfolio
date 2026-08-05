@@ -44,6 +44,12 @@ export interface UiDictionary {
       demo: string;
       post: string;
     };
+    groups: {
+      professional: string;
+      personal: string;
+    };
+    viewCase: string;
+    backToIndex: string;
     expand: string;
     collapse: string;
   };

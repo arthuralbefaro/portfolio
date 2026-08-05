@@ -47,6 +47,12 @@ export const enUi: UiDictionary = {
       demo: "demo",
       post: "post",
     },
+    groups: {
+      professional: "Professional work",
+      personal: "Personal projects",
+    },
+    viewCase: "view case",
+    backToIndex: "back to case studies",
     expand: "view full case study",
     collapse: "collapse",
   },

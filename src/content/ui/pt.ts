@@ -49,6 +49,12 @@ export const ptUi: UiDictionary = {
       demo: "demo",
       post: "publicação",
     },
+    groups: {
+      professional: "Trabalho profissional",
+      personal: "Projetos próprios",
+    },
+    viewCase: "ver caso",
+    backToIndex: "voltar para os casos",
     expand: "ver estudo completo",
     collapse: "recolher",
   },
