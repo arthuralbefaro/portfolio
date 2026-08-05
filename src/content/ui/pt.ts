@@ -10,10 +10,10 @@ export const ptUi: UiDictionary = {
     languageLabel: "Idioma",
   },
   hero: {
-    mark: "// backend engineer",
+    mark: "// full-stack engineer",
     resume: "baixar currículo",
     available: "disponível p/ full-stack, automação & integração",
-    workSuffix: "backend & automação",
+    workSuffix: "full-stack & automação",
     photoAlt: "Foto de {name}",
   },
   about: {

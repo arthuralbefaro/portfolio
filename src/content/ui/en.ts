@@ -9,10 +9,10 @@ export const enUi: UiDictionary = {
     languageLabel: "Language",
   },
   hero: {
-    mark: "// backend engineer",
+    mark: "// full-stack engineer",
     resume: "download resume",
     available: "available for full-stack, automation & integration",
-    workSuffix: "backend & automation",
+    workSuffix: "full-stack & automation",
     photoAlt: "Photo of {name}",
   },
   about: {

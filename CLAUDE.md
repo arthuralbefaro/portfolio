@@ -12,22 +12,27 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
    facts *and* positioning: job titles, dates, role wording, stack. When the site
    and the CV disagree, the CV wins and the site changes.
 
-   Positioning is not one string, it is a **six-point cascade**. Change one,
-   change all six, or the site contradicts itself:
+   Positioning is not one string, it is an **eight-point cascade**. Change one,
+   change all eight, or the site contradicts itself:
 
-   | Point | Where |
-   | --- | --- |
-   | `profile.role` | `src/data/profile.ts` and `src/content/en/profile.ts` |
-   | `siteConfig.role` | `src/lib/site.ts` |
-   | `siteConfig.title` | `src/lib/site.ts` |
-   | `ui.hero.available` | `src/content/ui/pt.ts` and `src/content/ui/en.ts` |
-   | `profile.availability` | `src/data/profile.ts` and `src/content/en/profile.ts` |
-   | `ui.hero.mark`, `ui.hero.workSuffix` | `src/content/ui/pt.ts` and `src/content/ui/en.ts` |
+   | Point | Where | Renders as |
+   | --- | --- | --- |
+   | `profile.role` | `src/data/profile.ts`, `src/content/en/profile.ts` | hero role line, footer, JSON-LD `jobTitle` |
+   | `siteConfig.role` | `src/lib/site.ts` | structured data |
+   | `siteConfig.title` | `src/lib/site.ts` | pt `<title>`, SERP label |
+   | `ui.meta.title` | `src/content/ui/en.ts` | en `<title>` (pt reads `siteConfig.title`) |
+   | `profile.availability` | `src/data/profile.ts`, `src/content/en/profile.ts` | hero `focus` row, OG image top line |
+   | `ui.hero.available` | `src/content/ui/pt.ts`, `src/content/ui/en.ts` | badge over the photo |
+   | `ui.hero.mark` | `src/content/ui/pt.ts`, `src/content/ui/en.ts` | first line of the hero |
+   | `ui.hero.workSuffix` | `src/content/ui/pt.ts`, `src/content/ui/en.ts` | hero `work` row |
+
+   `siteConfig.description`, `ui.meta.description` and `ui.meta.keywords`
+   restate the same positioning in prose; update them in the same pass.
 
    `profile.role` and `profile.availability` both render into the OG image
    (`src/app/[locale]/opengraph-image.tsx`), so check it after any change.
-   `profile.availability` is **not** compared by `parity.test.ts`, so a locale
-   left behind fails silently.
+   Neither `profile.availability` nor any `ui.*` string is compared by
+   `parity.test.ts`, so a locale left behind fails silently.
 3. **No em dashes in rendered content.** `—` reads as machine-written and never
    appears in `src/data/**`, `src/content/**` or any string inside a component.
    Do not swap it for a hyphen or an en dash; rewrite the sentence. Two ideas
