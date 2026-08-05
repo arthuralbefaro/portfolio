@@ -1,4 +1,4 @@
-import avatar from "@/assets/profile.webp";
+import avatar from "@/assets/eu.jpg";
 import type { Profile } from "@/types";
 
 export const profile: Profile = {
@@ -28,7 +28,7 @@ export const profile: Profile = {
   phone: "+55 27 99952-1684",
   location: "Vila Velha, ES, Brasil",
   availability: "Backend · Full Stack · Cloud",
-  resumeUrl: "/arthur-albefaro-cv.pdf",
+  resumeUrl: "/CV_Arthur_Albefaro_PT.pdf",
   avatar,
   company: {
     name: "Overload",

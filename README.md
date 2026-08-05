@@ -149,7 +149,7 @@ Todo o conteúdo (textos, links, certificações, casos técnicos) é editado em
 em `src/lib/site.ts` — atualize a propriedade `url` com o domínio final antes do
 deploy (usada em metadata, sitemap, robots e JSON-LD).
 
-O currículo em PDF é servido de `public/arthur-albefaro-cv.pdf`.
+O currículo em PDF é servido de `public/CV_Arthur_Albefaro_PT.pdf` e `public/CV_Arthur_Albefaro_EN.pdf`, um por idioma.
 
 ---
 

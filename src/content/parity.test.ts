@@ -54,7 +54,12 @@ describe("locale content parity", () => {
     expect(en.profile.name).toBe(pt.profile.name);
     expect(en.profile.email).toBe(pt.profile.email);
     expect(en.profile.phone).toBe(pt.profile.phone);
-    expect(en.profile.resumeUrl).toBe(pt.profile.resumeUrl);
     expect(en.profile.company).toEqual(pt.profile.company);
+  });
+
+  it("gives each locale its own resume file", () => {
+    expect(pt.profile.resumeUrl).toMatch(/^\/CV_.+\.pdf$/);
+    expect(en.profile.resumeUrl).toMatch(/^\/CV_.+\.pdf$/);
+    expect(en.profile.resumeUrl).not.toBe(pt.profile.resumeUrl);
   });
 });

@@ -8,7 +8,7 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
 1. **Never invent a metric, date, credential, employer, client or URL.** Every
    claim on this site is checkable by a recruiter. If a fact is missing, omit the
    field and ask. Do not approximate, round up or infer from context.
-2. **The CV is the source of truth.** `public/arthur-albefaro-cv.pdf` decides
+2. **The CV is the source of truth.** `public/CV_Arthur_Albefaro_PT.pdf` decides
    facts *and* positioning: job titles, dates, role wording, stack. When the site
    and the CV disagree, the CV wins and the site changes. Note that
    `profile.role` is duplicated in `siteConfig.role` and `siteConfig.title` and
@@ -41,7 +41,7 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
 | `npm run lint` | ESLint 9 flat config |
 | `npm run format` | Prettier write |
 | `npm run format:check` | Prettier check — **this is what fails CI** |
-| `npm test` | Vitest, 28 tests across 4 files |
+| `npm test` | Vitest, 29 tests across 4 files |
 | `npm run build` | Production build |
 
 CI (`.github/workflows/ci.yml`) runs typecheck → lint → format:check → test →
@@ -57,7 +57,7 @@ npm run typecheck && npm test && npm run build
 ```
 
 Run them in the same message as the claim. Read the exit code and the full
-output, not the last line. `npm test` must report **28 tests across 4 files**,
+output, not the last line. `npm test` must report **29 tests across 4 files**,
 and `src/content/parity.test.ts` must be among them — a green run that skipped
 it proves nothing.
 
@@ -98,8 +98,9 @@ array position:
 | nav items | `id` |
 | technical posts, languages | length only |
 
-Profile is compared field by field on `name`, `email`, `phone`, `resumeUrl`,
-`company`.
+Profile is compared field by field on `name`, `email`, `phone` and `company`.
+`resumeUrl` is checked the other way round: it must differ between locales,
+because the CV is localized.
 
 ### Union keys stay in Portuguese
 
@@ -117,8 +118,10 @@ becomes `alumniOf`, `profile.role` becomes `jobTitle`. `profile.role` is also
 duplicated in `siteConfig.role` and `siteConfig.title` (`src/lib/site.ts`) —
 change one, change all three. Bump `contentLastModified` when content changes.
 
-The CV PDF lives at `public/arthur-albefaro-cv.pdf`, referenced by
-`profile.resumeUrl`. Replacing it keeps the filename.
+The CV is localized: `public/CV_Arthur_Albefaro_PT.pdf` and
+`public/CV_Arthur_Albefaro_EN.pdf`, each referenced by its locale's
+`profile.resumeUrl`. Because it is per locale, `parity.test.ts` asserts the two
+URLs differ rather than match. Replacing a CV keeps its filename.
 
 ## Rendering
 
@@ -175,6 +178,11 @@ nothing else. The names are the stock Tailwind ones, so `mt-6` is still 24px:
 (`m*`, `p*`, `gap*`, `space*`); component dimensions (`size-*`, `w-*`, `h-*`,
 `inset-*`, `top-*`) are deliberately free, since icon and control sizes are
 optical decisions rather than rhythm.
+
+Steps `32` and `48` are allowed by role, not by filename: in the layout
+primitives (`section.tsx`, `hero.tsx`) and in any App Router `page.tsx` or
+`layout.tsx`, because those files open a page. Anywhere else they fail the
+check.
 
 This is enforced by a script rather than by locking `--spacing` in CSS. Setting
 `--spacing: initial` does work, but it also drops every `space-y-*` utility
