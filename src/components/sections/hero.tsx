@@ -44,6 +44,25 @@ export function Hero({ dict }: HeroProps) {
                   </div>
                 ))}
               </dl>
+
+              <a
+                href={linkedinHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-muted-foreground hover:text-emphasis text-meta flex items-start gap-2 font-mono transition-colors"
+              >
+                <span
+                  aria-hidden
+                  className="bg-emphasis mt-1 size-1.5 shrink-0 rounded-full"
+                />
+                <span>
+                  {ui.hero.available}
+                  <ArrowUpRight
+                    aria-hidden
+                    className="ml-1 inline size-3.5 align-text-bottom"
+                  />
+                </span>
+              </a>
             </div>
           }
         >
@@ -87,29 +106,17 @@ export function Hero({ dict }: HeroProps) {
             style={{ transitionDelay: "80ms" }}
             className="col-span-4 mt-16 justify-self-center sm:col-span-3 sm:col-start-7 sm:mt-0 sm:justify-self-stretch"
           >
-            <div className="relative">
-              <div className="border-border bg-surface relative aspect-[4/5] w-64 overflow-hidden rounded-sm border sm:w-full">
-                <Image
-                  src={profile.avatar}
-                  alt={ui.hero.photoAlt.replace("{name}", profile.name)}
-                  fill
-                  priority
-                  quality={90}
-                  sizes="(min-width: 640px) 288px, 256px"
-                  className="object-cover"
-                  placeholder="blur"
-                />
-              </div>
-              <a
-                href={linkedinHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-border-strong bg-background hover:border-emphasis text-meta absolute right-0 -bottom-3 left-0 mx-auto flex w-fit max-w-full items-center justify-center gap-2 rounded-sm border px-4 py-2 text-center font-mono transition-colors"
-              >
-                <span className="bg-emphasis size-1.5 rounded-full" />
-                {ui.hero.available}
-                <ArrowUpRight className="text-muted-foreground size-3.5" />
-              </a>
+            <div className="border-border bg-surface relative aspect-[4/5] w-64 overflow-hidden rounded-sm border sm:w-full">
+              <Image
+                src={profile.avatar}
+                alt={ui.hero.photoAlt.replace("{name}", profile.name)}
+                fill
+                priority
+                quality={90}
+                sizes="256px"
+                className="object-cover"
+                placeholder="blur"
+              />
             </div>
           </div>
         </GridRow>
