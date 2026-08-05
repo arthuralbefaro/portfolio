@@ -4,7 +4,7 @@ import type { Profile } from "@/types";
 export const profile: Profile = {
   name: "Arthur Albefaro",
   firstName: "Arthur",
-  role: "Backend & Full Stack Developer",
+  role: "Full-Stack Developer · Back-end, Automation & Systems Integration",
   headline:
     "I build backends where the rules that cannot break are enforced in the database — and proven with tests.",
   summary:

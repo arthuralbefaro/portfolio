@@ -4,7 +4,7 @@ import type { Profile } from "@/types";
 export const profile: Profile = {
   name: "Arthur Albefaro",
   firstName: "Arthur",
-  role: "Desenvolvedor Backend & Full Stack",
+  role: "Desenvolvedor Full-Stack · Back-end, Automações & Integração de Sistemas",
   headline:
     "Construo backends onde as regras que não podem quebrar são impostas no banco de dados — e provadas com testes.",
   summary:

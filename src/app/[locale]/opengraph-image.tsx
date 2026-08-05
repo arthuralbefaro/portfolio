@@ -55,13 +55,13 @@ export default async function OpengraphImage({
         <div style={{ color: "#ecebe8", fontSize: 88, fontWeight: 700 }}>
           {profile.name}
         </div>
-        <div style={{ color: "#c9c5bd", fontSize: 44, fontWeight: 500 }}>
+        <div style={{ color: "#c9c5bd", fontSize: 28, fontWeight: 500 }}>
           {profile.role}
         </div>
         <div
           style={{
             color: "#928d84",
-            fontSize: 30,
+            fontSize: 26,
             maxWidth: 900,
             marginTop: 8,
           }}
