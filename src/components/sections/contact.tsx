@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 
-import { Section } from "@/components/section";
+import { Section, SectionHeading } from "@/components/section";
 import { ContactForm } from "@/components/sections/contact-form";
 import { Button } from "@/components/ui/button";
 import type { Dictionary } from "@/content/dictionary";
@@ -14,52 +14,47 @@ export function Contact({ dict }: ContactProps) {
   const { profile, ui } = dict;
 
   return (
-    <Section id="contato">
-      <p className="text-muted-foreground font-mono text-sm">
-        {ui.contact.mark}
-      </p>
+    <Section id="contato" mark={ui.contact.mark}>
+      <SectionHeading
+        title={ui.contact.title}
+        description={ui.contact.description}
+      />
 
-      <div data-reveal className="mt-6 max-w-2xl">
-        <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
-          {ui.contact.title}
-        </h2>
-        <p className="text-muted-foreground mt-4 max-w-xl text-pretty">
-          {ui.contact.description}
-        </p>
+      <div data-reveal className="col-span-4 mt-4 sm:col-span-5 sm:col-start-1">
+        <ContactForm messages={ui.contact.form} />
       </div>
 
-      <div className="mt-12 grid gap-12 lg:grid-cols-[1.4fr_1fr] lg:items-start">
-        <ContactForm messages={ui.contact.form} />
+      <div
+        data-reveal
+        style={{ transitionDelay: "80ms" }}
+        className="col-span-4 mt-12 sm:col-span-4 sm:col-start-6 sm:mt-4"
+      >
+        <ul className="border-border text-meta flex flex-col border-t font-mono">
+          {socials.map(({ label, href, icon: Icon, handle }) => (
+            <li key={label} className="border-border border-b">
+              <a
+                href={href}
+                target={label === "Email" ? undefined : "_blank"}
+                rel="noopener noreferrer"
+                className="group text-muted-foreground hover:text-emphasis flex items-center gap-4 py-4 transition-colors"
+              >
+                <Icon aria-hidden className="size-4 shrink-0" />
+                <span className="truncate">{handle ?? label}</span>
+                <ArrowUpRight
+                  aria-hidden
+                  className="ml-auto size-3.5 opacity-0 transition-opacity group-hover:opacity-100"
+                />
+              </a>
+            </li>
+          ))}
+          <li className="text-muted-foreground py-4">{profile.location}</li>
+        </ul>
 
-        <div
-          data-reveal
-          style={{ transitionDelay: "80ms" }}
-          className="flex flex-col gap-8"
-        >
-          <ul className="border-border flex flex-col border-t font-mono text-sm">
-            {socials.map(({ label, href, icon: Icon, handle }) => (
-              <li key={label} className="border-border border-b">
-                <a
-                  href={href}
-                  target={label === "Email" ? undefined : "_blank"}
-                  rel="noopener noreferrer"
-                  className="group text-muted-foreground hover:text-emphasis flex items-center gap-4 py-4 transition-colors"
-                >
-                  <Icon className="size-4 shrink-0" />
-                  <span className="truncate">{handle ?? label}</span>
-                  <ArrowUpRight className="ml-auto size-3.5 opacity-0 transition-opacity group-hover:opacity-100" />
-                </a>
-              </li>
-            ))}
-            <li className="text-muted-foreground py-4">{profile.location}</li>
-          </ul>
-
-          <Button asChild variant="outline" size="lg" className="self-start">
-            <a href={profile.resumeUrl} download>
-              {ui.contact.resume}
-            </a>
-          </Button>
-        </div>
+        <Button asChild variant="outline" size="lg" className="mt-8">
+          <a href={profile.resumeUrl} download>
+            {ui.contact.resume}
+          </a>
+        </Button>
       </div>
     </Section>
   );

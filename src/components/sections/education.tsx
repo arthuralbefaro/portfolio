@@ -1,4 +1,5 @@
-import { Section, SectionHeading } from "@/components/section";
+import { Block, Section, SectionHeading } from "@/components/section";
+import { MetaLabel } from "@/components/ui/meta-label";
 import type { Dictionary } from "@/content/dictionary";
 
 interface EducationProps {
@@ -9,34 +10,37 @@ export function Education({ dict }: EducationProps) {
   const { education, ui } = dict;
 
   return (
-    <Section id="formacao">
-      <SectionHeading mark={ui.education.mark} title={ui.education.title} />
+    <Section id="formacao" mark={ui.education.mark}>
+      <SectionHeading title={ui.education.title} />
 
-      <div className="border-border border-t">
-        {education.map((item, index) => (
-          <div
-            key={item.degree}
-            data-reveal
-            style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
-            className="border-border border-b py-8"
-          >
-            <div className="flex flex-wrap items-baseline justify-between gap-2">
-              <h3 className="font-display font-medium">{item.degree}</h3>
-              <span className="text-muted-foreground font-mono text-xs">
+      <Block width="prose">
+        <ul>
+          {education.map((item, index) => (
+            <li
+              key={item.degree}
+              data-reveal
+              style={{ transitionDelay: `${Math.min(index, 6) * 50}ms` }}
+              className="border-border border-t py-6"
+            >
+              <MetaLabel>{item.institution}</MetaLabel>
+
+              <h3 className="font-display text-body mt-2 font-medium">
+                {item.degree}
+              </h3>
+
+              <p className="text-muted-foreground text-meta mt-1 font-mono">
                 {item.period}
-              </span>
-            </div>
-            <p className="text-muted-foreground mt-1 text-sm">
-              {item.institution}
-            </p>
-            {item.description && (
-              <p className="text-muted-foreground mt-2 max-w-3xl text-sm text-pretty">
-                {item.description}
               </p>
-            )}
-          </div>
-        ))}
-      </div>
+
+              {item.description && (
+                <p className="text-muted-foreground text-body mt-2 leading-relaxed text-pretty">
+                  {item.description}
+                </p>
+              )}
+            </li>
+          ))}
+        </ul>
+      </Block>
     </Section>
   );
 }
