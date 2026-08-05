@@ -32,6 +32,7 @@ export const experiences: Experience[] = [
   {
     role: "Desenvolvedor Full Stack",
     company: "Arcabee",
+    companyUrl: "https://arcabee.com.br",
     period: "2025 — Atual",
     current: true,
     description:
