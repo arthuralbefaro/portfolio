@@ -49,11 +49,9 @@ export function GridRow({ rail, className, children }: GridRowProps) {
   );
 }
 
-interface BlockProps {
+interface BlockProps extends React.HTMLAttributes<HTMLDivElement> {
   width?: "prose" | "full";
   offset?: boolean;
-  className?: string;
-  children: React.ReactNode;
 }
 
 export function Block({
@@ -61,9 +59,11 @@ export function Block({
   offset = false,
   className,
   children,
+  ...props
 }: BlockProps) {
   return (
     <div
+      {...props}
       className={cn(
         "col-span-4",
         offset ? "sm:col-start-2" : "sm:col-start-1",

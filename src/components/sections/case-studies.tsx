@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-import { Section, SectionHeading } from "@/components/section";
+import { Block, Section, SectionHeading } from "@/components/section";
 import { MetaLabel } from "@/components/ui/meta-label";
 import { TagList } from "@/components/ui/tag-list";
 import type { Dictionary } from "@/content/dictionary";
@@ -103,14 +103,13 @@ export function CaseStudies({ dict, locale }: CaseStudiesProps) {
   );
 
   return (
-    <Section id="casos">
+    <Section id="casos" mark={ui.caseStudies.mark}>
       <SectionHeading
-        mark={ui.caseStudies.mark}
         title={ui.caseStudies.title}
         description={ui.caseStudies.description}
       />
 
-      <div data-reveal>
+      <Block data-reveal>
         <MetaLabel as="h3">{ui.caseStudies.groups.professional}</MetaLabel>
         <div className="mt-6 space-y-8">
           {professional.map((study) => (
@@ -122,9 +121,9 @@ export function CaseStudies({ dict, locale }: CaseStudiesProps) {
             />
           ))}
         </div>
-      </div>
+      </Block>
 
-      <div data-reveal style={{ transitionDelay: "80ms" }} className="mt-16">
+      <Block offset data-reveal className="mt-16">
         <MetaLabel as="h3">{ui.caseStudies.groups.personal}</MetaLabel>
         <div className="mt-6 space-y-4">
           {personal.map((study) => (
@@ -136,7 +135,7 @@ export function CaseStudies({ dict, locale }: CaseStudiesProps) {
             />
           ))}
         </div>
-      </div>
+      </Block>
     </Section>
   );
 }
