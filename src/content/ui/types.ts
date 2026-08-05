@@ -62,10 +62,6 @@ export interface UiDictionary {
     title: string;
     current: string;
   };
-  education: {
-    mark: string;
-    title: string;
-  };
   contact: {
     mark: string;
     title: string;

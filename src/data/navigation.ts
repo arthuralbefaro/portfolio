@@ -7,6 +7,5 @@ export const navItems: NavItem[] = [
   { label: "Casos", id: "casos" },
   { label: "Certificações", id: "certificacoes" },
   { label: "Experiência", id: "experiencia" },
-  { label: "Formação", id: "formacao" },
   { label: "Contato", id: "contato" },
 ];

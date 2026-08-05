@@ -66,10 +66,6 @@ export const enUi: UiDictionary = {
     title: "Professional experience",
     current: "current",
   },
-  education: {
-    mark: "// education",
-    title: "Academic background",
-  },
   contact: {
     mark: "// contact",
     title: "Let's talk",

@@ -68,10 +68,6 @@ export const ptUi: UiDictionary = {
     title: "Experiência profissional",
     current: "atual",
   },
-  education: {
-    mark: "// formação",
-    title: "Formação acadêmica",
-  },
   contact: {
     mark: "// contato",
     title: "Vamos conversar",
