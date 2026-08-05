@@ -10,9 +10,24 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
    field and ask. Do not approximate, round up or infer from context.
 2. **The CV is the source of truth.** `public/CV_Arthur_Albefaro_PT.pdf` decides
    facts *and* positioning: job titles, dates, role wording, stack. When the site
-   and the CV disagree, the CV wins and the site changes. Note that
-   `profile.role` is duplicated in `siteConfig.role` and `siteConfig.title` and
-   flows into the OG image, so a title change is a four-point cascade.
+   and the CV disagree, the CV wins and the site changes.
+
+   Positioning is not one string, it is a **six-point cascade**. Change one,
+   change all six, or the site contradicts itself:
+
+   | Point | Where |
+   | --- | --- |
+   | `profile.role` | `src/data/profile.ts` and `src/content/en/profile.ts` |
+   | `siteConfig.role` | `src/lib/site.ts` |
+   | `siteConfig.title` | `src/lib/site.ts` |
+   | `ui.hero.available` | `src/content/ui/pt.ts` and `src/content/ui/en.ts` |
+   | `profile.availability` | `src/data/profile.ts` and `src/content/en/profile.ts` |
+   | `ui.hero.mark`, `ui.hero.workSuffix` | `src/content/ui/pt.ts` and `src/content/ui/en.ts` |
+
+   `profile.role` and `profile.availability` both render into the OG image
+   (`src/app/[locale]/opengraph-image.tsx`), so check it after any change.
+   `profile.availability` is **not** compared by `parity.test.ts`, so a locale
+   left behind fails silently.
 3. **No em dashes in rendered content.** `—` reads as machine-written and never
    appears in `src/data/**`, `src/content/**` or any string inside a component.
    Do not swap it for a hyphen or an en dash; rewrite the sentence. Two ideas

@@ -27,7 +27,7 @@ export const profile: Profile = {
   email: "arthuralbefaroec@gmail.com",
   phone: "+55 27 99952-1684",
   location: "Vila Velha, ES, Brazil",
-  availability: "Backend · Full Stack · Cloud",
+  availability: "Full-Stack · Automation · Integration",
   resumeUrl: "/CV_Arthur_Albefaro_EN.pdf",
   avatar,
   company: {
