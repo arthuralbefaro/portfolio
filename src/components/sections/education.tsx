@@ -22,7 +22,9 @@ export function Education({ dict }: EducationProps) {
           >
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="font-display font-medium">{item.degree}</h3>
-              <span className="text-dim font-mono text-xs">{item.period}</span>
+              <span className="text-muted-foreground font-mono text-xs">
+                {item.period}
+              </span>
             </div>
             <p className="text-muted-foreground mt-1 text-sm">
               {item.institution}

@@ -15,7 +15,9 @@ export function Contact({ dict }: ContactProps) {
 
   return (
     <Section id="contato">
-      <p className="text-dim font-mono text-sm">{ui.contact.mark}</p>
+      <p className="text-muted-foreground font-mono text-sm">
+        {ui.contact.mark}
+      </p>
 
       <div data-reveal className="mt-6 max-w-2xl">
         <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
@@ -49,7 +51,7 @@ export function Contact({ dict }: ContactProps) {
                 </a>
               </li>
             ))}
-            <li className="text-dim py-3">{profile.location}</li>
+            <li className="text-muted-foreground py-3">{profile.location}</li>
           </ul>
 
           <Button asChild variant="outline" size="lg" className="self-start">

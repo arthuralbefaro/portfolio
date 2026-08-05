@@ -34,7 +34,7 @@ type FieldErrors = {
 };
 
 const fieldClass =
-  "w-full rounded-sm border border-border bg-surface px-3 py-2.5 text-sm text-foreground placeholder:text-dim transition-colors focus:border-border-strong aria-[invalid=true]:border-border-strong";
+  "w-full rounded-sm border border-border bg-surface px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground transition-colors focus:border-border-strong aria-[invalid=true]:border-border-strong";
 
 const labelClass = "font-mono text-sm text-muted-foreground";
 

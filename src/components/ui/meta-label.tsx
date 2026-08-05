@@ -15,7 +15,10 @@ export function MetaLabel({
 }: MetaLabelProps) {
   return (
     <Tag
-      className={cn("text-dim text-meta font-mono uppercase", className)}
+      className={cn(
+        "text-muted-foreground text-meta font-mono uppercase",
+        className,
+      )}
       {...props}
     />
   );

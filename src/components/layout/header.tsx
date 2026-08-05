@@ -69,7 +69,7 @@ export function Header({ locale, navItems, ui, resumeUrl }: HeaderProps) {
           className="font-mono text-sm tracking-tight"
           onClick={() => setOpen(false)}
         >
-          arthur<span className="text-dim">.</span>albefaro
+          arthur<span className="text-muted-foreground">.</span>albefaro
         </Link>
 
         <ul className="hidden items-center gap-7 lg:flex">

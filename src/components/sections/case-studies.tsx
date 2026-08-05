@@ -155,7 +155,7 @@ function CaseStudyCard({
                     key={item.slice(0, 28)}
                     className="text-muted-foreground flex gap-3 text-sm leading-relaxed"
                   >
-                    <span className="text-dim font-mono text-xs">
+                    <span className="text-muted-foreground font-mono text-xs">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {item}

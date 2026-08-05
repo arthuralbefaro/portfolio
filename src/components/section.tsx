@@ -36,7 +36,7 @@ export function SectionHeading({
   return (
     <div data-reveal className="mb-12">
       <div className="flex items-baseline gap-4">
-        <span className="text-dim font-mono text-sm whitespace-nowrap">
+        <span className="text-muted-foreground font-mono text-sm whitespace-nowrap">
           {mark}
         </span>
         <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">

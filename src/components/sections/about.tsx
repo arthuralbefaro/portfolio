@@ -59,7 +59,7 @@ export function About({ dict }: AboutProps) {
             <p className="text-muted-foreground text-body">
               {education[0]?.institution}
             </p>
-            <p className="text-dim text-meta mt-1 font-mono">
+            <p className="text-muted-foreground text-meta mt-1 font-mono">
               {education[0]?.period}
             </p>
           </div>

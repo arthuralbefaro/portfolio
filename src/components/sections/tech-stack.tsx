@@ -28,7 +28,7 @@ export function TechStack({ dict }: TechStackProps) {
             <h3 className="font-display text-base font-medium">
               {group.categoryLabel ?? group.category}
             </h3>
-            <p className="text-dim text-meta mt-1 font-mono">
+            <p className="text-muted-foreground text-meta mt-1 font-mono">
               {group.description}
             </p>
             <TagList items={group.items} className="mt-4" />

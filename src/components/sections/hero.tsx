@@ -26,7 +26,9 @@ export function Hero({ dict }: HeroProps) {
     >
       <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
         <div data-reveal>
-          <p className="text-dim font-mono text-sm">{ui.hero.mark}</p>
+          <p className="text-muted-foreground font-mono text-sm">
+            {ui.hero.mark}
+          </p>
 
           <h1 className="font-display mt-6 text-5xl leading-[0.95] font-bold tracking-tight text-balance sm:text-7xl">
             {profile.firstName}
@@ -34,16 +36,18 @@ export function Hero({ dict }: HeroProps) {
             {profile.name.replace(`${profile.firstName} `, "")}
           </h1>
 
-          <p className="text-dim mt-5 font-mono text-sm">{profile.role}</p>
+          <p className="text-muted-foreground mt-5 font-mono text-sm">
+            {profile.role}
+          </p>
 
           <p className="text-muted-foreground mt-3 max-w-xl text-lg text-pretty">
             {profile.headline}
           </p>
 
-          <dl className="text-dim mt-8 grid gap-1.5 font-mono text-sm">
+          <dl className="text-muted-foreground mt-8 grid gap-1.5 font-mono text-sm">
             {meta.map(({ key, value }) => (
               <div key={key} className="flex gap-3">
-                <dt className="text-dim w-14 shrink-0">{key}</dt>
+                <dt className="text-muted-foreground w-14 shrink-0">{key}</dt>
                 <dd className="text-muted-foreground">{value}</dd>
               </div>
             ))}

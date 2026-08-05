@@ -138,11 +138,17 @@ locales.
 Single dark editorial palette, defined as CSS custom properties in
 `src/app/globals.css` and exposed to Tailwind via `@theme inline`. Use the
 tokens (`bg-background`, `text-muted-foreground`, `border-border`,
-`text-dim`, `bg-surface`) — never raw hex, never arbitrary values.
+`bg-surface`) — never raw hex, never arbitrary values.
 
 Constraints that define the look, all intentional:
 
 - **No accent color.** Emphasis comes from `--emphasis` and inversion, not hue.
+- **`--dim` is never used for text.** It is 2.74:1 on `--background` and fails
+  WCAG AA. It is reserved for hairlines and decorative markers. The dimmest
+  text token is `--muted-foreground`: 5.96:1 on `--background` and 5.66:1 on
+  `--surface`, so it still passes under `hover:bg-surface/30`. A recessive
+  label earns its recession from the mono face, 0.75rem size, uppercase and
+  0.08em tracking — not from contrast.
 - **No gradients, no glassmorphism, no shadows.** Hairline borders over boxed
   cards. `--radius` is 2px.
 - **Three type roles only**: `font-display` (Space Grotesk) for headings,

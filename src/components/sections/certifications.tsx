@@ -33,7 +33,9 @@ export function Certifications({ dict }: CertificationsProps) {
                 <h3 className="font-display font-medium">{cert.title}</h3>
                 <Badge variant="accent">{cert.category}</Badge>
               </div>
-              <p className="text-dim mt-1 font-mono text-xs">{cert.issuer}</p>
+              <p className="text-muted-foreground mt-1 font-mono text-xs">
+                {cert.issuer}
+              </p>
               {cert.credentialUrl && (
                 <a
                   href={cert.credentialUrl}

@@ -38,7 +38,7 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
       {locales.map((option, index) => (
         <span key={option} className="flex items-center">
           {index > 0 && (
-            <span aria-hidden className="text-dim px-1">
+            <span aria-hidden className="text-muted-foreground px-1">
               /
             </span>
           )}

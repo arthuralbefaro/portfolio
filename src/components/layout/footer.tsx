@@ -34,7 +34,7 @@ export function Footer({ dict }: FooterProps) {
         <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
           <div>
             <p className="font-mono text-sm">
-              arthur<span className="text-dim">.</span>albefaro
+              arthur<span className="text-muted-foreground">.</span>albefaro
             </p>
             <p className="text-muted-foreground mt-1 text-sm">{profile.role}</p>
 
@@ -72,7 +72,7 @@ export function Footer({ dict }: FooterProps) {
         </div>
 
         <div className="border-border mt-10 border-t pt-6">
-          <p className="text-dim font-mono text-xs">
+          <p className="text-muted-foreground font-mono text-xs">
             © {year} {profile.name}. {ui.footer.rights}
           </p>
         </div>
