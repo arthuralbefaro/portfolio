@@ -2,15 +2,17 @@ import Link from "next/link";
 
 import type { Dictionary } from "@/content/dictionary";
 import { socials } from "@/data/socials";
+import type { Locale } from "@/i18n/config";
 
 const githubHref = socials.find((s) => s.label === "GitHub")?.href ?? "#";
 const linkedinHref = socials.find((s) => s.label === "LinkedIn")?.href ?? "#";
 
 interface FooterProps {
   dict: Dictionary;
+  locale: Locale;
 }
 
-export function Footer({ dict }: FooterProps) {
+export function Footer({ dict, locale }: FooterProps) {
   const { profile, ui } = dict;
   const year = new Date().getFullYear();
 
@@ -21,11 +23,12 @@ export function Footer({ dict }: FooterProps) {
     { label: ui.footer.links.resume, href: profile.resumeUrl, download: true },
   ];
 
+  const home = `/${locale}`;
   const footerNav = [
-    { label: ui.footer.nav.casos, href: "#casos" },
-    { label: ui.footer.nav.certificacoes, href: "#certificacoes" },
-    { label: ui.footer.nav.experiencia, href: "#experiencia" },
-    { label: ui.footer.nav.contato, href: "#contato" },
+    { label: ui.footer.nav.casos, href: `${home}#casos` },
+    { label: ui.footer.nav.certificacoes, href: `${home}#certificacoes` },
+    { label: ui.footer.nav.experiencia, href: `${home}#experiencia` },
+    { label: ui.footer.nav.contato, href: `${home}#contato` },
   ];
 
   return (

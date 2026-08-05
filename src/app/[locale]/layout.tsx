@@ -131,7 +131,7 @@ export default async function LocaleLayout({
           resumeUrl={dict.profile.resumeUrl}
         />
         <main>{children}</main>
-        <Footer dict={dict} />
+        <Footer dict={dict} locale={locale} />
         <ScrollReveal />
       </body>
     </html>
