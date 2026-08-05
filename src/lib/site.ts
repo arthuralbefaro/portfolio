@@ -8,10 +8,9 @@ export const contentLastModified = "2026-08-04";
 
 export const siteConfig = {
   name: "Arthur Albefaro",
-  title:
-    "Arthur Albefaro | Desenvolvedor Full-Stack · Back-end, Automações & Integração de Sistemas",
+  title: "Arthur Albefaro | Full-Stack, Automações & Integração",
   description:
-    "Desenvolvedor full stack que constrói backend onde a correção é imposta no banco de dados e provada com testes. TypeScript, C# e Java.",
+    "Desenvolvedor full-stack em back-end, automações e integração de sistemas. Correção imposta no banco e provada com testes. TypeScript, Python, C# e .NET.",
   url: "https://arthuralbefaro.com",
   locale: "pt-BR",
   role: "Desenvolvedor Full-Stack · Back-end, Automações & Integração de Sistemas",

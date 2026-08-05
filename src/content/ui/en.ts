@@ -116,9 +116,9 @@ export const enUi: UiDictionary = {
     rights: "All rights reserved.",
   },
   meta: {
-    title: "Arthur Albefaro | Backend & Full Stack Developer",
+    title: "Arthur Albefaro | Full-Stack, Automation & Integration",
     description:
-      "Backend and full stack developer building systems where correctness is enforced in the database and proven with tests. TypeScript, C#, and Java.",
+      "Full-stack developer in back-end, automation, and systems integration. Correctness enforced in the database and proven with tests. TypeScript, Python, C#, .NET.",
     ogTagline: "Correctness enforced in the database · proven with tests",
     keywords: [
       "Arthur Albefaro",
