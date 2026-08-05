@@ -9,7 +9,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "Sistema interno fullstack usado por uma agência de marketing para gerir a carteira de clientes, o comercial e a operação, com uma camada de IA que apoia decisões.",
     status: "Projeto profissional",
-    period: "2025",
+    period: "2026",
     featured: true,
     // TODO(arthur): fortalecer a prova com dados reais quando disponíveis —
     // nº de usuários internos, nº de integrações ativas, screenshot anonimizado.
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
     tagline:
       "Rotina de integração que sincroniza dados do GoHighLevel (CRM) com o Notion, normalizando informações não padronizadas e evitando duplicidade",
     status: "Projeto interno",
-    period: "Overload · 2025",
+    period: "2026",
     featured: true,
     context:
       "Na Overload, o GoHighLevel concentra leads e contatos, enquanto os times de operação trabalham no Notion. Os dados nasciam no CRM e eram levados ao Notion manualmente, em um processo lento, sujeito a erro e sempre defasado.",

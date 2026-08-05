@@ -10,7 +10,7 @@ export const caseStudies: CaseStudy[] = [
       "A full-stack internal system used by a marketing agency to manage its client portfolio, sales, and operations, with an AI layer that supports decisions.",
     status: "Projeto profissional",
     statusLabel: "Professional project",
-    period: "2025",
+    period: "2026",
     featured: true,
     evidence: "In production · used daily by the agency team",
     context:
@@ -72,7 +72,7 @@ export const caseStudies: CaseStudy[] = [
       "An integration routine that syncs GoHighLevel (CRM) data into Notion, normalizing non-standardized information and preventing duplication.",
     status: "Projeto interno",
     statusLabel: "Internal project",
-    period: "Overload · 2025",
+    period: "2026",
     featured: true,
     context:
       "At Overload, GoHighLevel holds leads and contacts, while the operations teams work in Notion. Data was born in the CRM and carried into Notion by hand, a slow process, error-prone and always out of date.",
