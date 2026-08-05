@@ -1,7 +1,9 @@
 import { ArrowDownToLine, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 
+import { GridRow } from "@/components/section";
 import { Button } from "@/components/ui/button";
+import { MetaLabel } from "@/components/ui/meta-label";
 import type { Dictionary } from "@/content/dictionary";
 import { socials } from "@/data/socials";
 
@@ -24,85 +26,93 @@ export function Hero({ dict }: HeroProps) {
       id="inicio"
       className="border-border scroll-mt-16 border-b pt-32 pb-24 sm:pt-48"
     >
-      <div className="mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-16 px-4 sm:px-8 lg:grid-cols-[1.5fr_1fr]">
-        <div data-reveal>
-          <p className="text-muted-foreground font-mono text-sm">
-            {ui.hero.mark}
-          </p>
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-8">
+        <GridRow
+          rail={
+            <div data-reveal className="space-y-8">
+              <MetaLabel>{ui.hero.mark}</MetaLabel>
 
-          <h1 className="font-display mt-6 text-5xl leading-[0.95] font-bold tracking-tight text-balance sm:text-7xl">
-            {profile.firstName}
-            <br />
-            {profile.name.replace(`${profile.firstName} `, "")}
-          </h1>
-
-          <p className="text-muted-foreground mt-6 font-mono text-sm">
-            {profile.role}
-          </p>
-
-          <p className="text-muted-foreground mt-4 max-w-xl text-lg text-pretty">
-            {profile.headline}
-          </p>
-
-          <dl className="text-muted-foreground mt-8 grid gap-2 font-mono text-sm">
-            {meta.map(({ key, value }) => (
-              <div key={key} className="flex gap-4">
-                <dt className="text-muted-foreground w-14 shrink-0">{key}</dt>
-                <dd className="text-muted-foreground">{value}</dd>
-              </div>
-            ))}
-          </dl>
-
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button asChild size="lg">
-              <a href={profile.resumeUrl} download>
-                <ArrowDownToLine />
-                {ui.hero.resume}
-              </a>
-            </Button>
-            {socials
-              .filter((s) => s.label === "GitHub" || s.label === "LinkedIn")
-              .map(({ label, href, icon: Icon }) => (
-                <Button key={label} asChild variant="outline" size="lg">
-                  <a href={href} target="_blank" rel="noopener noreferrer">
-                    <Icon />
-                    {label.toLowerCase()}
-                  </a>
-                </Button>
-              ))}
-          </div>
-        </div>
-
-        <div
-          data-reveal
-          style={{ transitionDelay: "80ms" }}
-          className="justify-self-center lg:justify-self-end"
-        >
-          <div className="relative">
-            <div className="border-border bg-surface relative aspect-[4/5] w-64 overflow-hidden rounded-sm border sm:w-72">
-              <Image
-                src={profile.avatar}
-                alt={ui.hero.photoAlt.replace("{name}", profile.name)}
-                fill
-                priority
-                quality={90}
-                sizes="(min-width: 640px) 288px, 256px"
-                className="object-cover"
-                placeholder="blur"
-              />
+              <dl className="space-y-4">
+                {meta.map(({ key, value }) => (
+                  <div key={key}>
+                    <dt className="text-muted-foreground text-meta font-mono uppercase">
+                      {key}
+                    </dt>
+                    <dd className="text-muted-foreground text-meta mt-1 font-mono">
+                      {value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-            <a
-              href={linkedinHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border-border-strong bg-background hover:border-emphasis absolute right-0 -bottom-3 left-0 mx-auto flex w-fit max-w-full items-center justify-center gap-2 rounded-sm border px-4 py-2 text-center font-mono text-xs transition-colors"
-            >
-              <span className="bg-emphasis size-1.5 rounded-full" />
-              {ui.hero.available}
-              <ArrowUpRight className="text-muted-foreground size-3.5" />
-            </a>
+          }
+        >
+          <div data-reveal className="col-span-4 sm:col-span-6">
+            <h1 className="font-display text-display leading-[0.95] font-bold tracking-tight">
+              {profile.firstName}
+              <br />
+              {profile.name.replace(`${profile.firstName} `, "")}
+            </h1>
+
+            <p className="text-muted-foreground text-meta mt-6 font-mono">
+              {profile.role}
+            </p>
+
+            <p className="text-muted-foreground text-lead mt-6 leading-relaxed text-pretty">
+              {profile.headline}
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center gap-4">
+              <Button asChild size="lg">
+                <a href={profile.resumeUrl} download>
+                  <ArrowDownToLine />
+                  {ui.hero.resume}
+                </a>
+              </Button>
+              {socials
+                .filter((s) => s.label === "GitHub" || s.label === "LinkedIn")
+                .map(({ label, href, icon: Icon }) => (
+                  <Button key={label} asChild variant="outline" size="lg">
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                      <Icon />
+                      {label.toLowerCase()}
+                    </a>
+                  </Button>
+                ))}
+            </div>
           </div>
-        </div>
+
+          <div
+            data-reveal
+            style={{ transitionDelay: "80ms" }}
+            className="col-span-4 mt-16 justify-self-center sm:col-span-3 sm:col-start-7 sm:mt-0 sm:justify-self-stretch"
+          >
+            <div className="relative">
+              <div className="border-border bg-surface relative aspect-[4/5] w-64 overflow-hidden rounded-sm border sm:w-full">
+                <Image
+                  src={profile.avatar}
+                  alt={ui.hero.photoAlt.replace("{name}", profile.name)}
+                  fill
+                  priority
+                  quality={90}
+                  sizes="(min-width: 640px) 288px, 256px"
+                  className="object-cover"
+                  placeholder="blur"
+                />
+              </div>
+              <a
+                href={linkedinHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border-border-strong bg-background hover:border-emphasis text-meta absolute right-0 -bottom-3 left-0 mx-auto flex w-fit max-w-full items-center justify-center gap-2 rounded-sm border px-4 py-2 text-center font-mono transition-colors"
+              >
+                <span className="bg-emphasis size-1.5 rounded-full" />
+                {ui.hero.available}
+                <ArrowUpRight className="text-muted-foreground size-3.5" />
+              </a>
+            </div>
+          </div>
+        </GridRow>
       </div>
     </section>
   );
