@@ -6,7 +6,17 @@ const SECTION_ONLY = new Set([32, 48]);
 const RHYTHM =
   "m|mx|my|mt|mr|mb|ml|p|px|py|pt|pr|pb|pl|gap|gap-x|gap-y|space-x|space-y";
 const PATTERN = new RegExp(`(?<![\\w-])-?(${RHYTHM})-(\\d+(?:\\.\\d+)?)(?![\\w.-])`, "g");
-const SECTION_FILES = new Set(["section.tsx", "hero.tsx"]);
+
+const LAYOUT_PRIMITIVES = new Set([
+  "src/components/section.tsx",
+  "src/components/sections/hero.tsx",
+]);
+const ROUTE_ENTRY = /^src\/app\/.*\/(page|layout)\.tsx$/;
+
+const isPageLayout = (file) => {
+  const path = file.split(/[\\/]/).join("/");
+  return LAYOUT_PRIMITIVES.has(path) || ROUTE_ENTRY.test(path);
+};
 
 function walk(dir) {
   return readdirSync(dir).flatMap((entry) => {
@@ -31,7 +41,7 @@ for (const file of walk("src")) {
         violations.push({ file, line: index + 1, text, reason: "off the scale" });
         continue;
       }
-      if (SECTION_ONLY.has(value) && !SECTION_FILES.has(file.split(/[\\/]/).pop())) {
+      if (SECTION_ONLY.has(value) && !isPageLayout(file)) {
         violations.push({
           file,
           line: index + 1,
