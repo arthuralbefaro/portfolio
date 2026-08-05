@@ -183,20 +183,22 @@ export default async function CaseStudyPage({
         )}
 
         {study.proof && (
-          <Block className="bg-invert-bg text-invert-fg text-body mt-8 rounded-sm px-4 py-4 font-mono leading-relaxed">
-            <div className="text-invert-fg/70">
-              <span className="text-invert-fg font-bold">$</span>{" "}
-              {study.proof.command}
+          <Block className="border-border-strong bg-surface text-body mt-8 rounded-sm border px-4 py-4 font-mono leading-relaxed">
+            <div className="text-muted-foreground">
+              <span className="text-foreground">$</span> {study.proof.command}
             </div>
-            <div className="mt-1 font-medium">
+            <div className="text-foreground mt-1">
               <span aria-hidden>✓</span> {study.proof.result}
             </div>
           </Block>
         )}
 
         {!study.proof && study.evidence && (
-          <Block className="border-border-strong text-muted-foreground text-body mt-8 rounded-sm border px-4 py-4 font-mono leading-relaxed">
-            <span aria-hidden>✓</span> {study.evidence}
+          <Block className="border-border-strong bg-surface text-muted-foreground text-body mt-8 rounded-sm border px-4 py-4 font-mono leading-relaxed">
+            <span aria-hidden className="text-foreground">
+              ✓
+            </span>{" "}
+            {study.evidence}
           </Block>
         )}
       </GridRow>
