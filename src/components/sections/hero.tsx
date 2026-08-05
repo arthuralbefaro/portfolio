@@ -85,7 +85,8 @@ export function Hero({ dict }: HeroProps) {
                 alt={ui.hero.photoAlt.replace("{name}", profile.name)}
                 fill
                 priority
-                sizes="(max-width: 640px) 16rem, 18rem"
+                quality={90}
+                sizes="(min-width: 640px) 288px, 256px"
                 className="object-cover"
                 placeholder="blur"
               />
