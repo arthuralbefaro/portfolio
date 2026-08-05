@@ -2,7 +2,9 @@ import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { ReactNode } from "react";
 
+import { Block, GridRow } from "@/components/section";
 import { BulletList } from "@/components/ui/bullet-list";
 import { MetaLabel } from "@/components/ui/meta-label";
 import { TagList } from "@/components/ui/tag-list";
@@ -79,6 +81,30 @@ export async function generateMetadata({
   };
 }
 
+function Field({
+  label,
+  width = "prose",
+  children,
+}: {
+  label: string;
+  width?: "prose" | "full";
+  children: ReactNode;
+}) {
+  return (
+    <GridRow rail={<MetaLabel as="h2">{label}</MetaLabel>}>
+      <Block width={width}>{children}</Block>
+    </GridRow>
+  );
+}
+
+function Prose({ children }: { children: ReactNode }) {
+  return (
+    <p className="text-muted-foreground text-body leading-relaxed text-pretty">
+      {children}
+    </p>
+  );
+}
+
 export default async function CaseStudyPage({
   params,
 }: {
@@ -108,42 +134,48 @@ export default async function CaseStudyPage({
 
   return (
     <article className="mx-auto w-full max-w-6xl px-4 pt-32 pb-24 sm:px-8 sm:pt-48">
-      <Link
-        href={`/${locale}#casos`}
-        className="text-muted-foreground hover:text-emphasis text-meta inline-flex items-center gap-2 font-mono transition-colors"
+      <GridRow
+        rail={
+          <Link
+            href={`/${locale}#casos`}
+            className="text-muted-foreground hover:text-emphasis text-meta inline-flex items-center gap-2 font-mono transition-colors"
+          >
+            <ArrowLeft aria-hidden className="size-4" />
+            {ui.backToIndex}
+          </Link>
+        }
       >
-        <ArrowLeft aria-hidden className="size-4" />
-        {ui.backToIndex}
-      </Link>
+        <Block>
+          <div className="flex flex-wrap items-center gap-4">
+            <h1 className="font-display text-title font-semibold tracking-tight text-balance">
+              {study.title}
+            </h1>
+            {study.chip && (
+              <span className="text-muted-foreground border-border text-meta rounded-sm border px-2 py-1 font-mono">
+                {study.chip}
+              </span>
+            )}
+          </div>
 
-      <header className="mt-12">
-        <div className="flex flex-wrap items-center gap-4">
-          <h1 className="font-display text-title font-semibold tracking-tight text-balance">
-            {study.title}
-          </h1>
-          {study.chip && (
-            <span className="text-muted-foreground border-border text-meta rounded-sm border px-2 py-1 font-mono">
-              {study.chip}
-            </span>
-          )}
-        </div>
+          <div className="text-muted-foreground text-meta mt-2 flex flex-wrap items-center gap-x-2 font-mono">
+            <span>{study.statusLabel ?? study.status}</span>
+            {study.period && (
+              <>
+                <span aria-hidden>·</span>
+                <span>{study.period}</span>
+              </>
+            )}
+          </div>
+        </Block>
 
-        <div className="text-muted-foreground text-meta mt-2 flex flex-wrap items-center gap-x-2 font-mono">
-          <span>{study.statusLabel ?? study.status}</span>
-          {study.period && (
-            <>
-              <span aria-hidden>·</span>
-              <span>{study.period}</span>
-            </>
-          )}
-        </div>
-
-        <p className="text-muted-foreground text-lead mt-6 max-w-3xl text-pretty">
-          {study.tagline}
-        </p>
+        <Block width="prose" className="mt-6">
+          <p className="text-muted-foreground text-lead leading-relaxed text-pretty">
+            {study.tagline}
+          </p>
+        </Block>
 
         {links.length > 0 && (
-          <div className="text-meta mt-6 flex flex-wrap items-center gap-6 font-mono">
+          <Block className="text-meta mt-6 flex flex-wrap items-center gap-6 font-mono">
             {links.map((link) => (
               <a
                 key={link.href}
@@ -156,104 +188,86 @@ export default async function CaseStudyPage({
                 <ArrowUpRight aria-hidden className="size-4" />
               </a>
             ))}
-          </div>
+          </Block>
         )}
-      </header>
 
-      {study.proof && (
-        <div className="bg-invert-bg text-invert-fg text-body mt-12 rounded-sm px-4 py-4 font-mono leading-relaxed">
-          <div className="text-invert-fg/70">
-            <span className="text-invert-fg font-bold">$</span>{" "}
-            {study.proof.command}
-          </div>
-          <div className="mt-1 font-medium">
-            <span aria-hidden>✓</span> {study.proof.result}
-          </div>
-        </div>
-      )}
+        {study.proof && (
+          <Block className="bg-invert-bg text-invert-fg text-body mt-8 rounded-sm px-4 py-4 font-mono leading-relaxed">
+            <div className="text-invert-fg/70">
+              <span className="text-invert-fg font-bold">$</span>{" "}
+              {study.proof.command}
+            </div>
+            <div className="mt-1 font-medium">
+              <span aria-hidden>✓</span> {study.proof.result}
+            </div>
+          </Block>
+        )}
 
-      {!study.proof && study.evidence && (
-        <div className="border-border-strong text-muted-foreground text-body mt-12 rounded-sm border px-4 py-4 font-mono leading-relaxed">
-          <span aria-hidden>✓</span> {study.evidence}
-        </div>
-      )}
+        {!study.proof && study.evidence && (
+          <Block className="border-border-strong text-muted-foreground text-body mt-8 rounded-sm border px-4 py-4 font-mono leading-relaxed">
+            <span aria-hidden>✓</span> {study.evidence}
+          </Block>
+        )}
+      </GridRow>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-2">
-        <div className="space-y-8">
-          <section>
-            <MetaLabel as="h2">{ui.fields.context}</MetaLabel>
-            <p className="text-muted-foreground text-body mt-2 leading-relaxed text-pretty">
-              {study.context}
-            </p>
-          </section>
-          <section>
-            <MetaLabel as="h2">{ui.fields.problem}</MetaLabel>
-            <p className="text-muted-foreground text-body mt-2 leading-relaxed text-pretty">
-              {study.problem}
-            </p>
-          </section>
-          <section>
-            <MetaLabel as="h2">{ui.fields.solution}</MetaLabel>
-            <p className="text-muted-foreground text-body mt-2 leading-relaxed text-pretty">
-              {study.solution}
-            </p>
-          </section>
-        </div>
+      <div className="mt-24 space-y-16">
+        <Field label={ui.fields.context}>
+          <Prose>{study.context}</Prose>
+        </Field>
 
-        <div className="space-y-8">
-          <section>
-            <MetaLabel as="h2">{ui.fields.architecture}</MetaLabel>
-            <ol className="mt-2 space-y-2">
-              {study.architecture.map((item, index) => (
-                <li
-                  key={item.slice(0, 28)}
-                  className="text-muted-foreground text-body flex gap-4 leading-relaxed"
-                >
-                  <span className="text-muted-foreground text-meta font-mono">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
+        <Field label={ui.fields.problem}>
+          <Prose>{study.problem}</Prose>
+        </Field>
+
+        <Field label={ui.fields.solution}>
+          <Prose>{study.solution}</Prose>
+        </Field>
+
+        <Field label={ui.fields.architecture} width="full">
+          <ol className="space-y-4">
+            {study.architecture.map((item, index) => (
+              <li key={item.slice(0, 28)} className="flex gap-4">
+                <span className="text-muted-foreground text-meta mt-1 shrink-0 font-mono">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="text-muted-foreground text-body leading-relaxed">
                   {item}
-                </li>
-              ))}
-            </ol>
-          </section>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </Field>
 
-          <section>
-            <MetaLabel as="h2">{ui.fields.challenges}</MetaLabel>
-            <ul className="mt-2 space-y-4">
-              {study.challenges.map((challenge) => (
-                <li key={challenge.title} className="text-body">
-                  <span className="text-foreground font-medium">
-                    {challenge.title}.
-                  </span>{" "}
-                  <span className="text-muted-foreground leading-relaxed">
-                    {challenge.detail}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </section>
+        <Field label={ui.fields.challenges}>
+          <ul className="space-y-8">
+            {study.challenges.map((challenge) => (
+              <li key={challenge.title}>
+                <h3 className="font-display text-subtitle font-medium tracking-tight">
+                  {challenge.title}
+                </h3>
+                <p className="text-muted-foreground text-body mt-2 leading-relaxed text-pretty">
+                  {challenge.detail}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </Field>
 
-          <section>
-            <MetaLabel as="h2">{ui.fields.technologies}</MetaLabel>
-            <TagList items={study.technologies} className="mt-2" />
-          </section>
-        </div>
-      </div>
+        <Field label={ui.fields.technologies} width="full">
+          <TagList items={study.technologies} />
+        </Field>
 
-      <div className="border-border mt-16 grid gap-12 border-t pt-12 lg:grid-cols-2">
         {study.result && study.result.length > 0 && (
-          <section>
-            <MetaLabel as="h2">{ui.fields.result}</MetaLabel>
-            <BulletList items={study.result} className="mt-2" />
-          </section>
+          <Field label={ui.fields.result}>
+            <BulletList items={study.result} />
+          </Field>
         )}
-        <section>
-          <MetaLabel as="h2">{ui.fields.demonstrates}</MetaLabel>
-          <p className="text-foreground/90 text-body mt-2 leading-relaxed text-pretty">
+
+        <Field label={ui.fields.demonstrates}>
+          <p className="text-foreground/90 text-body leading-relaxed text-pretty">
             {study.demonstrates}
           </p>
-        </section>
+        </Field>
       </div>
     </article>
   );

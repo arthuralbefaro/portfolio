@@ -21,19 +21,31 @@ export function Section({ id, mark, className, children }: SectionProps) {
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-8">
         {mark ? (
-          <div className="grid grid-cols-4 gap-x-6 sm:grid-cols-12">
-            <div className="col-span-4 sm:col-span-3">
-              <MetaLabel data-reveal>{mark}</MetaLabel>
-            </div>
-            <div className="col-span-4 mt-6 grid grid-cols-4 gap-x-6 sm:col-span-9 sm:mt-0 sm:grid-cols-9">
-              {children}
-            </div>
-          </div>
+          <GridRow rail={<MetaLabel data-reveal>{mark}</MetaLabel>}>
+            {children}
+          </GridRow>
         ) : (
           children
         )}
       </div>
     </section>
+  );
+}
+
+interface GridRowProps {
+  rail?: React.ReactNode;
+  className?: string;
+  children: React.ReactNode;
+}
+
+export function GridRow({ rail, className, children }: GridRowProps) {
+  return (
+    <div className={cn("grid grid-cols-4 gap-x-6 sm:grid-cols-12", className)}>
+      <div className="col-span-4 sm:col-span-3">{rail}</div>
+      <div className="col-span-4 mt-6 grid grid-cols-4 gap-x-6 sm:col-span-9 sm:mt-0 sm:grid-cols-9">
+        {children}
+      </div>
+    </div>
   );
 }
 
