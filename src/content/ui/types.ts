@@ -50,8 +50,6 @@ export interface UiDictionary {
     };
     viewCase: string;
     backToIndex: string;
-    expand: string;
-    collapse: string;
   };
   certifications: {
     mark: string;

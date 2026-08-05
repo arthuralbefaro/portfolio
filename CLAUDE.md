@@ -145,9 +145,9 @@ URLs differ rather than match. Replacing a CV keeps its filename.
 
 ## Rendering
 
-Server Components by default. Only six modules are client-side, and that is
-deliberate: `header`, `language-switcher`, `contact-form`,
-`case-study-disclosure`, `scroll-reveal`, `use-scroll-spy`. Do not add
+Server Components by default. Only five modules are client-side, and that is
+deliberate: `header`, `language-switcher`, `contact-form`, `scroll-reveal`,
+`use-scroll-spy`. Do not add
 `"use client"` to a section component to solve a problem that has a server-side
 answer.
 
@@ -177,9 +177,8 @@ Constraints that define the look, all intentional:
 - **Three type roles only**: `font-display` (Space Grotesk) for headings,
   `font-mono` (JetBrains Mono) for technical metadata and marks, `font-sans`
   (Inter) for body.
-- **Motion is minimal**: one `IntersectionObserver` reveal via `[data-reveal]`
-  and a grid-rows disclosure via `[data-disclosure]`, both CSS-driven and both
-  disabled under `prefers-reduced-motion`. No animation library.
+- **Motion is minimal**: one `IntersectionObserver` reveal via `[data-reveal]`,
+  CSS-driven and disabled under `prefers-reduced-motion`. No animation library.
 
 ### Spacing scale
 

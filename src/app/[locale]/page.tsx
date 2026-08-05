@@ -27,7 +27,7 @@ export default async function HomePage({
       <Hero dict={dict} />
       <About dict={dict} />
       <TechStack dict={dict} />
-      <CaseStudies dict={dict} />
+      <CaseStudies dict={dict} locale={raw} />
       <Certifications dict={dict} />
       <ExperienceSection dict={dict} />
       <Education dict={dict} />

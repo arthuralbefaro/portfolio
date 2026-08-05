@@ -55,8 +55,6 @@ export const ptUi: UiDictionary = {
     },
     viewCase: "ver caso",
     backToIndex: "voltar para os casos",
-    expand: "ver estudo completo",
-    collapse: "recolher",
   },
   certifications: {
     mark: "// certificações",

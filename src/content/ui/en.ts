@@ -53,8 +53,6 @@ export const enUi: UiDictionary = {
     },
     viewCase: "view case",
     backToIndex: "back to case studies",
-    expand: "view full case study",
-    collapse: "collapse",
   },
   certifications: {
     mark: "// certifications",

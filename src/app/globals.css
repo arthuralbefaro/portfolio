@@ -113,21 +113,6 @@
   }
 }
 
-[data-disclosure] {
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 300ms ease;
-}
-
-[data-disclosure="open"] {
-  grid-template-rows: 1fr;
-}
-
-[data-disclosure] > div {
-  overflow: hidden;
-  min-height: 0;
-}
-
 [data-reveal] {
   transition:
     opacity 260ms ease-out,
