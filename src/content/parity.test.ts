@@ -12,6 +12,20 @@ describe("locale content parity", () => {
     );
   });
 
+  it("lists professional case studies before personal ones", () => {
+    for (const dictionary of [pt, en]) {
+      const isPersonal = dictionary.caseStudies.map(
+        (study) => study.status === "Projeto pessoal",
+      );
+
+      expect(isPersonal).toContain(true);
+      expect(isPersonal).toContain(false);
+      expect(isPersonal.lastIndexOf(false)).toBeLessThan(
+        isPersonal.indexOf(true),
+      );
+    }
+  });
+
   it("has the same certifications, identified by title", () => {
     expect(en.certifications.map((cert) => cert.title)).toEqual(
       pt.certifications.map((cert) => cert.title),

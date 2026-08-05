@@ -61,7 +61,7 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
 | `npm run lint` | ESLint 9 flat config |
 | `npm run format` | Prettier write |
 | `npm run format:check` | Prettier check — **this is what fails CI** |
-| `npm test` | Vitest, 29 tests across 4 files |
+| `npm test` | Vitest, 30 tests across 4 files |
 | `npm run build` | Production build |
 
 CI (`.github/workflows/ci.yml`) runs typecheck → lint → format:check → test →
@@ -77,7 +77,7 @@ npm run typecheck && npm test && npm run build
 ```
 
 Run them in the same message as the claim. Read the exit code and the full
-output, not the last line. `npm test` must report **29 tests across 4 files**,
+output, not the last line. `npm test` must report **30 tests across 4 files**,
 and `src/content/parity.test.ts` must be among them — a green run that skipped
 it proves nothing.
 
@@ -106,7 +106,9 @@ UI chrome strings live separately in `src/content/ui/{pt,en}.ts`, typed by
 ### Parity contract
 
 `src/content/parity.test.ts` fails when locales drift. It pairs by key, not by
-array position:
+array position, with one exception: the case study check compares the two slug
+arrays with `toEqual`, which **is** order sensitive, so reordering one locale
+alone already fails.
 
 | Collection | Pairing key |
 | --- | --- |
@@ -117,6 +119,12 @@ array position:
 | skill groups | `category` |
 | nav items | `id` |
 | technical posts, languages | length only |
+
+A separate test asserts that professional case studies come before personal
+ones, in both locales. That is not locale drift but a content invariant: the
+home index groups by `status` and the order carries the hierarchy, so an
+identical reorder in both files would pass every other check and still break
+the page.
 
 Profile is compared field by field on `name`, `email`, `phone` and `company`.
 `resumeUrl` is checked the other way round: it must differ between locales,
