@@ -13,6 +13,7 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\"",
     "typecheck": "tsc --noEmit",
+    "check:spacing": "node scripts/check-spacing.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },

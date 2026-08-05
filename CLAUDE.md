@@ -158,6 +158,31 @@ Constraints that define the look, all intentional:
   and a grid-rows disclosure via `[data-disclosure]`, both CSS-driven and both
   disabled under `prefers-reduced-motion`. No animation library.
 
+### Spacing scale
+
+Ten steps. Every margin, padding, gap and space utility uses one of them, and
+nothing else. The names are the stock Tailwind ones, so `mt-6` is still 24px:
+
+| Step | px | Use |
+| --- | --- | --- |
+| `1` `2` `4` | 4, 8, 16 | inside a component |
+| `6` `8` `12` | 24, 32, 48 | between components in a section |
+| `16` | 64 | larger breathing room inside a long section |
+| `24` | 96 | between sections |
+| `32` `48` | 128, 192 | **section and page vertical rhythm only** — never inside a component |
+
+`npm run check:spacing` enforces this and runs in CI. It covers rhythm only
+(`m*`, `p*`, `gap*`, `space*`); component dimensions (`size-*`, `w-*`, `h-*`,
+`inset-*`, `top-*`) are deliberately free, since icon and control sizes are
+optical decisions rather than rhythm.
+
+This is enforced by a script rather than by locking `--spacing` in CSS. Setting
+`--spacing: initial` does work, but it also drops every `space-y-*` utility
+(even ones whose `--spacing-N` token exists, because `space-*` reads only the
+dynamic variable), every zero utility such as `left-0` and `inset-y-0`, and all
+component dimensions. A missing utility produces no build error, just collapsed
+layout, so the CSS lock trades a loud failure for a silent one.
+
 Layout primitives are `Section` and `SectionHeading` in
 `src/components/section.tsx`. New sections use them rather than re-implementing
 the container and heading rhythm.
