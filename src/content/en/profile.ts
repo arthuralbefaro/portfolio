@@ -24,7 +24,7 @@ export const profile: Profile = {
     "Automation of operational and CRM routines, with AI via the OpenAI, Anthropic, and Gemini APIs",
     "Full stack in Angular and ASP.NET, with infrastructure on AWS, Docker, and CI/CD",
   ],
-  email: "arthuralbefarodev@gmail.com",
+  email: "arthuralbefaroec@gmail.com",
   phone: "+55 27 99952-1684",
   location: "Vila Velha, ES, Brazil",
   availability: "Backend · Full Stack · Cloud",

@@ -30,8 +30,8 @@ export const socials: SocialLink[] = [
   },
   {
     label: "Email",
-    href: "mailto:arthuralbefarodev@gmail.com",
-    handle: "arthuralbefarodev@gmail.com",
+    href: "mailto:arthuralbefaroec@gmail.com",
+    handle: "arthuralbefaroec@gmail.com",
     icon: Mail,
   },
 ];
