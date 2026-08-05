@@ -6,7 +6,7 @@ export const profile: Profile = {
   firstName: "Arthur",
   role: "Full-Stack Developer · Back-end, Automation & Systems Integration",
   headline:
-    "I build backends where the rules that cannot break are enforced in the database — and proven with tests.",
+    "I build backends where the rules that cannot break are enforced in the database and proven with tests.",
   summary:
     "Backend and full stack developer working with TypeScript, C#, Java, and React.",
   about: [

@@ -94,7 +94,7 @@ export const ptUi: UiDictionary = {
       fallback: {
         title: "Formulário temporariamente indisponível",
         description:
-          "Fale comigo direto por um dos canais abaixo — respondo o mais breve possível.",
+          "Fale comigo direto por um dos canais abaixo. Respondo o mais breve possível.",
       },
       sendVia: {
         whatsapp: "enviar pelo whatsapp",

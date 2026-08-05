@@ -2,10 +2,10 @@ import type { Experience } from "@/types";
 
 export const experiences: Experience[] = [
   {
-    role: "Full Stack Developer — AI & Automation",
+    role: "Full Stack Developer · AI & Automation",
     company: "Overload",
     companyUrl: "https://overloadmkt.com.br",
-    period: "April 2025 — Present",
+    period: "Since April 2025",
     current: true,
     description:
       "Full stack development of SaaS, systems integration, landing page creation, and development of APIs and SaaS",
@@ -33,7 +33,7 @@ export const experiences: Experience[] = [
     role: "Full Stack Developer",
     company: "Arcabee",
     companyUrl: "https://arcabee.com.br",
-    period: "2025 — Present",
+    period: "Since 2025",
     current: true,
     description:
       "Revit content platform with an Angular front-end, an ASP.NET API, and production infrastructure on AWS",

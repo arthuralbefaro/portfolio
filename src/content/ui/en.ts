@@ -91,7 +91,7 @@ export const enUi: UiDictionary = {
       fallback: {
         title: "The form is temporarily unavailable",
         description:
-          "Reach me directly through one of the channels below — I will get back to you as soon as possible.",
+          "Reach me directly through one of the channels below. I will get back to you as soon as possible.",
       },
       sendVia: {
         whatsapp: "send via whatsapp",
