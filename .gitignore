@@ -42,6 +42,3 @@ next-env.d.ts
 docs/internal/
 docs/casos-tecnicos/
 docs/ROADMAP.md
-
-# agent instructions (local only)
-CLAUDE.md
