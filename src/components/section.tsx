@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 interface SectionProps {
   id: string;
-  mark?: string;
+  mark: string;
   className?: string;
   children: React.ReactNode;
 }
@@ -20,13 +20,9 @@ export function Section({ id, mark, className, children }: SectionProps) {
       )}
     >
       <div className="mx-auto w-full max-w-6xl px-4 sm:px-8">
-        {mark ? (
-          <GridRow rail={<MetaLabel data-reveal>{mark}</MetaLabel>}>
-            {children}
-          </GridRow>
-        ) : (
-          children
-        )}
+        <GridRow rail={<MetaLabel data-reveal>{mark}</MetaLabel>}>
+          {children}
+        </GridRow>
       </div>
     </section>
   );
@@ -83,49 +79,23 @@ export function Block({
 }
 
 interface SectionHeadingProps {
-  mark?: string;
   title: string;
   description?: string;
 }
 
-export function SectionHeading({
-  mark,
-  title,
-  description,
-}: SectionHeadingProps) {
-  if (!mark) {
-    return (
-      <Block className="mb-12">
-        <div data-reveal>
-          <h2 className="font-display text-title font-semibold tracking-tight text-balance">
-            {title}
-          </h2>
-          {description && (
-            <p className="text-muted-foreground text-lead mt-4 max-w-2xl text-pretty">
-              {description}
-            </p>
-          )}
-        </div>
-      </Block>
-    );
-  }
-
+export function SectionHeading({ title, description }: SectionHeadingProps) {
   return (
-    <div data-reveal className="mb-12">
-      <div className="flex items-baseline gap-4">
-        <span className="text-muted-foreground font-mono text-sm whitespace-nowrap">
-          {mark}
-        </span>
-        <h2 className="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+    <Block className="mb-12">
+      <div data-reveal>
+        <h2 className="font-display text-title font-semibold tracking-tight text-balance">
           {title}
         </h2>
-        <span aria-hidden className="bg-border h-px flex-1 self-center" />
+        {description && (
+          <p className="text-muted-foreground text-lead mt-4 max-w-2xl text-pretty">
+            {description}
+          </p>
+        )}
       </div>
-      {description && (
-        <p className="text-muted-foreground mt-4 max-w-2xl text-pretty">
-          {description}
-        </p>
-      )}
-    </div>
+    </Block>
   );
 }
