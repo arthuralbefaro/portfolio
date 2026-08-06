@@ -61,7 +61,7 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
 | `npm run lint` | ESLint 9 flat config |
 | `npm run format` | Prettier write |
 | `npm run format:check` | Prettier check — **this is what fails CI** |
-| `npm test` | Vitest, 30 tests across 4 files |
+| `npm test` | Vitest, 31 tests across 4 files |
 | `npm run check:design` | Type and spacing scale guard |
 | `npm run build` | Production build |
 
@@ -78,7 +78,7 @@ npm run typecheck && npm test && npm run build
 ```
 
 Run them in the same message as the claim. Read the exit code and the full
-output, not the last line. `npm test` must report **30 tests across 4 files**,
+output, not the last line. `npm test` must report **31 tests across 4 files**,
 and `src/content/parity.test.ts` must be among them — a green run that skipped
 it proves nothing.
 
@@ -128,8 +128,10 @@ identical reorder in both files would pass every other check and still break
 the page.
 
 Profile is compared field by field on `name`, `email`, `phone` and `company`.
-`resumeUrl` is checked the other way round: it must differ between locales,
-because the CV is localized.
+`resumeUrl` and `availability` are checked the other way round: they are
+localized, so the tests assert they exist and, for `resumeUrl`, that the two
+differ. `availability` drifted between locales for ten commits before anyone
+noticed, which is why it has a test at all.
 
 ### Union keys stay in Portuguese
 

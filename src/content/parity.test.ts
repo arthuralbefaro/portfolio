@@ -71,6 +71,11 @@ describe("locale content parity", () => {
     expect(en.profile.company).toEqual(pt.profile.company);
   });
 
+  it("gives each locale its own availability line", () => {
+    expect(pt.profile.availability.trim()).not.toBe("");
+    expect(en.profile.availability.trim()).not.toBe("");
+  });
+
   it("gives each locale its own resume file", () => {
     expect(pt.profile.resumeUrl).toMatch(/^\/CV_.+\.pdf$/);
     expect(en.profile.resumeUrl).toMatch(/^\/CV_.+\.pdf$/);
