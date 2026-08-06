@@ -4,7 +4,7 @@
  */
 export const GITHUB_USERNAME = "arthuralbefaro";
 
-export const contentLastModified = "2026-08-05";
+export const contentLastModified = "2026-08-06";
 
 export const siteConfig = {
   name: "Arthur Albefaro",
