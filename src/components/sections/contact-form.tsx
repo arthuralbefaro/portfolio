@@ -155,7 +155,7 @@ function ContactFormFields({
           className={`mt-2 ${fieldClass}`}
         />
         {errors.name && (
-          <p id="name-error" className={errorClass}>
+          <p id="name-error" role="alert" className={errorClass}>
             {errors.name}
           </p>
         )}
@@ -179,7 +179,7 @@ function ContactFormFields({
           className={`mt-2 ${fieldClass}`}
         />
         {errors.email && (
-          <p id="email-error" className={errorClass}>
+          <p id="email-error" role="alert" className={errorClass}>
             {errors.email}
           </p>
         )}
@@ -202,7 +202,7 @@ function ContactFormFields({
           className={`mt-2 resize-y ${fieldClass}`}
         />
         {errors.message && (
-          <p id="message-error" className={errorClass}>
+          <p id="message-error" role="alert" className={errorClass}>
             {errors.message}
           </p>
         )}

@@ -173,7 +173,7 @@ export default async function CaseStudyPage({
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-2 transition-colors"
+                className="text-muted-foreground hover:text-emphasis inline-flex items-center gap-2 py-1 transition-colors"
               >
                 {link.label}
                 <ArrowUpRight aria-hidden className="size-4" />

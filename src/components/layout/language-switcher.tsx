@@ -47,7 +47,7 @@ export function LanguageSwitcher({ locale, label }: LanguageSwitcherProps) {
             onClick={() => switchTo(option)}
             aria-current={option === locale ? "true" : undefined}
             className={cn(
-              "rounded-sm px-1 uppercase transition-colors",
+              "rounded-sm px-1 py-1 uppercase transition-colors",
               option === locale
                 ? "text-emphasis"
                 : "text-muted-foreground hover:text-foreground",

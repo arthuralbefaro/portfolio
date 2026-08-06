@@ -52,7 +52,7 @@ export function Footer({ dict, locale }: FooterProps) {
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
                   {...(link.download ? { download: true } : {})}
-                  className="text-muted-foreground hover:text-emphasis transition-colors"
+                  className="text-muted-foreground hover:text-emphasis inline-flex py-1 transition-colors"
                 >
                   {link.label}
                 </a>
