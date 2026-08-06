@@ -1,177 +1,162 @@
-# Arthur Albefaro — Portfólio
+# Portfólio · Arthur Albefaro
 
-Construído com **Next.js 15 (App Router)**, **React 19**, **TypeScript estrito**,
-**Tailwind CSS 4** e componentes no estilo **shadcn/ui**, com dark mode
+Portfólio pessoal bilíngue, construído como documento técnico: grelha rígida,
+tipografia expressiva, paleta escura única.
 
----
-
-## Visão geral
-
-- **Conteúdo tipado**: todo o texto (perfil, casos técnicos, certificações,
-  experiência, formação) vive em `src/data/`, separado dos componentes.
-- **Dark mode** com suporte a light mode, alternância persistida em
-  `localStorage` (via `next-themes`) e detecção de tema do sistema.
-- **Responsivo e mobile-first**, com navegação por âncoras e **scroll spy**.
-- **Animações discretas** com Framer Motion, respeitando `prefers-reduced-motion`.
-- **Acessibilidade**: HTML semântico, skip link, foco visível, `aria-*`.
-- **SEO**: metadata, Open Graph, Twitter Cards, `sitemap.xml`, `robots.txt`,
-  **JSON-LD** (schema.org `Person`) e imagem OG gerada dinamicamente.
-- **TypeScript estrito** (`noUncheckedIndexedAccess`), ESLint + Prettier.
-
----
+**Produção:** [arthuralbefaro.com](https://arthuralbefaro.com)
 
 ## Stack
 
-| Camada      | Tecnologias                                              |
-| ----------- | --------------------------------------------------------- |
-| Framework   | Next.js 15 (App Router) · React 19                       |
-| Linguagem   | TypeScript (strict, `noUncheckedIndexedAccess`)          |
-| Estilização | Tailwind CSS 4 · tokens em OKLCH · shadcn/ui (new-york)  |
-| UI / Ícones | Lucide React · class-variance-authority · tailwind-merge |
-| Animação    | Framer Motion                                            |
-| Tema        | next-themes                                              |
-| Qualidade   | ESLint 9 (flat config) · Prettier + plugin Tailwind      |
-| Deploy      | Vercel                                                   |
+| Camada | O que é usado |
+| --- | --- |
+| Framework | Next.js 15, App Router |
+| UI | React 19, TypeScript strict |
+| Estilo | Tailwind CSS 4, configurado em CSS via `@theme inline` |
+| Componentes | `class-variance-authority`, `@radix-ui/react-slot`, `tailwind-merge` |
+| Ícones | `lucide-react` |
+| Testes | Vitest |
+| Deploy | Vercel |
 
----
+Não há biblioteca de animação, não há gerenciador de tema e não há modo claro. A
+paleta é uma só, escura, e o movimento se resume a um `IntersectionObserver` que
+revela blocos ao entrar na viewport, desativado sob `prefers-reduced-motion`.
 
-## Arquitetura
+## Comandos
 
-- **Server Components por padrão.** Apenas componentes que precisam de estado,
-  efeitos ou APIs do browser (tema, scroll spy, menu mobile, animações) são
-  `"use client"`.
-- **Conteúdo separado de apresentação**: arquivos em `src/data/` são a fonte
-  única da verdade e tipados via `src/types/index.ts`. Os componentes em
-  `src/components/sections/` apenas renderizam esses dados.
-- **SEO centralizado** em `src/lib/site.ts` (`siteConfig`) e
-  `src/lib/structured-data.ts` (JSON-LD), consumidos por `layout.tsx`,
-  `sitemap.ts`, `robots.ts` e `opengraph-image.tsx`.
+| Comando | O que faz |
+| --- | --- |
+| `npm run dev` | Servidor de desenvolvimento |
+| `npm run typecheck` | `tsc --noEmit` |
+| `npm run lint` | ESLint 9, flat config |
+| `npm run format` | Prettier, escrita |
+| `npm run format:check` | Prettier, verificação. É o que costuma quebrar o CI |
+| `npm run check:design` | Guard das escalas de tipo e espaçamento |
+| `npm test` | Vitest |
+| `npm run build` | Build de produção |
 
----
+O CI roda typecheck, lint, format:check, check:design, test e build a cada push.
 
-## Seções do portfólio
+## Rotas
 
-`Hero` → `Sobre` → `Stack` → `Casos técnicos` → `Certificações` →
-`Experiência` → `Formação` → `Contato` → `Footer`.
-
----
-
-## Como rodar localmente
-
-### Pré-requisitos
-
-- **Node.js 18.18+** (recomendado 20 LTS)
-- **npm** (ou pnpm / yarn / bun)
-
-### Instalação
-
-```bash
-git clone https://github.com/arthuralbefaro/portfolio.git
-cd portfolio
-npm install
+```
+/                       redireciona para /{locale} (middleware, 308)
+/{locale}               home
+/{locale}/cases/{slug}  página de um estudo de caso
 ```
 
-### Desenvolvimento
+`locale` é `pt` ou `en`. As duas são pré-renderizadas por `generateStaticParams`,
+e as páginas de case são geradas para o produto de locales por slugs. O
+`middleware.ts` escolhe o idioma pelo cookie `NEXT_LOCALE` e, na falta dele, pelo
+`accept-language`.
 
-```bash
-npm run dev
-```
+## Conteúdo
 
-Acesse **http://localhost:3000**.
+Todo o texto do site é dado tipado. Componentes só renderizam.
 
-### Build de produção
+| Idioma | Caminho |
+| --- | --- |
+| pt | `src/data/*.ts` |
+| en | `src/content/en/*.ts` |
 
-```bash
-npm run build   # gera o build otimizado
-npm run start   # serve o build localmente
-```
+Os dois lados são unidos em `src/content/dictionary.ts` e tipados por
+`src/types/index.ts`. As strings de interface ficam à parte, em
+`src/content/ui/{pt,en}.ts`.
 
----
+`src/content/parity.test.ts` falha quando os idiomas divergem. Ele pareia por
+chave, não por posição: case studies por `slug`, certificações por `title`,
+experiências por `company`, grupos de skill por `category`. Campos localizados
+como `resumeUrl` e `availability` são verificados pela regra inversa, já que
+devem mesmo diferir entre idiomas.
 
-## Scripts disponíveis
+Editar um idioma sem o outro quebra o build. É de propósito.
 
-| Script                 | Descrição                           |
-| ---------------------- | ------------------------------------ |
-| `npm run dev`          | Servidor de desenvolvimento          |
-| `npm run build`        | Build de produção                    |
-| `npm run start`        | Serve o build de produção            |
-| `npm run lint`         | Verifica problemas com ESLint        |
-| `npm run typecheck`    | Checagem de tipos (`tsc --noEmit`)   |
-| `npm run format`       | Formata o código com Prettier        |
-| `npm run format:check` | Verifica a formatação                |
+## Sistema visual
 
----
+Paleta escura única, definida como custom properties em `src/app/globals.css` e
+exposta ao Tailwind via `@theme inline`. Sem cor de acento, sem gradiente, sem
+sombra, sem glassmorphism. Hairlines no lugar de cards com borda completa, e
+`--radius` de 2px.
 
-## Qualidade técnica
+### Escala de tipo
 
-- `npm run lint` e `npm run typecheck` sem erros.
-- `npm run build` gera build estático/otimizado sem warnings de tipo.
-- Sem dependências, imports ou assets não utilizados.
+Seis passos, e nada fora deles:
 
----
+| Token | Uso |
+| --- | --- |
+| `--text-display` | nome no hero |
+| `--text-title` | título de seção |
+| `--text-subtitle` | título de card, case, cargo |
+| `--text-lead` | parágrafo de abertura |
+| `--text-body` | corpo |
+| `--text-meta` | rótulo mono, caixa alta, tracking de 0.08em |
 
-## Estrutura de pastas
+### Escala de espaçamento
+
+Dez passos, com os nomes padrão do Tailwind, então `mt-6` continua sendo 24px:
+
+| Passo | px | Uso |
+| --- | --- | --- |
+| `1` `2` `4` | 4, 8, 16 | dentro de um componente |
+| `6` `8` `12` | 24, 32, 48 | entre componentes de uma seção |
+| `16` | 64 | respiro maior dentro de uma seção longa |
+| `24` | 96 | entre seções |
+| `32` `48` | 128, 192 | ritmo vertical de seção e de página |
+
+`npm run check:design` reprova qualquer classe de tipo ou de ritmo fora das duas
+escalas, e roda no CI. Dimensões de componente (`size-*`, `w-*`, `h-*`) ficam
+livres, porque tamanho de ícone e de controle é decisão óptica, não de ritmo.
+
+### Grelha
+
+`src/components/section.tsx` estabelece 12 colunas com gutter fixo. As colunas 1
+a 3 formam o rail de metadados; o conteúdo ocupa da 4 à 12. Prosa para na coluna
+10 para manter medida de leitura, listas e grelhas vão até a 12, e blocos
+consecutivos alternam o início entre a coluna 4 e a 5. Todo deslocamento cai numa
+linha da grelha.
+
+## Estrutura
 
 ```
 src/
-├── app/                      # App Router: rotas, layout e SEO
-│   ├── layout.tsx            # Shell, metadata, fontes, ThemeProvider, JSON-LD
-│   ├── page.tsx              # Composição das seções da home
-│   ├── globals.css           # Tailwind 4 + tokens de tema (dark/light)
-│   ├── opengraph-image.tsx   # Imagem Open Graph gerada dinamicamente
-│   ├── icon.tsx               # Favicon gerado dinamicamente
-│   ├── sitemap.ts             # sitemap.xml
-│   └── robots.ts              # robots.txt
+├── app/
+│   ├── [locale]/
+│   │   ├── cases/[slug]/page.tsx   página de estudo de caso
+│   │   ├── layout.tsx              shell, fontes, JSON-LD, metadata
+│   │   ├── opengraph-image.tsx     imagem social gerada
+│   │   └── page.tsx                home
+│   ├── globals.css                 tokens e escalas
+│   ├── robots.ts
+│   └── sitemap.ts
 ├── components/
-│   ├── layout/                # Header (scroll spy), Footer, tema, scroll progress
-│   ├── sections/               # Hero, About, TechStack, CaseStudies, Experience...
-│   ├── motion/                 # Wrappers de animação (Reveal)
-│   ├── ui/                     # Primitivos shadcn/ui (button, card, badge)
-│   └── section.tsx             # Section + SectionHeading reutilizáveis
-├── data/                       # Conteúdo tipado (fonte única da verdade)
-│   ├── profile.ts              # Perfil, headline, sobre, highlights
-│   ├── navigation.ts           # Itens de navegação / âncoras
-│   ├── skills.ts                # Stack por categoria
-│   ├── case-studies.ts          # Casos técnicos (Contexto → Resultado)
-│   ├── experience.ts            # Timeline profissional
-│   ├── education.ts              # Formação + idiomas
-│   ├── certifications.ts         # Certificações
-│   ├── socials.ts                # Links sociais
-│   └── technical-posts.ts        # Publicações técnicas (vazio até existirem)
-├── hooks/                      # use-scroll-spy, use-mounted
-├── lib/                         # utils (cn), site config, structured-data (JSON-LD)
-├── types/                       # Tipagens compartilhadas
-└── assets/                       # Imagens otimizadas (foto de perfil)
+│   ├── layout/                     header, footer, seletor de idioma
+│   ├── sections/                   uma por seção da home
+│   ├── ui/                         primitivos: badge, button, tag-list, ...
+│   └── section.tsx                 grelha, rail e blocos
+├── content/                        espelho en + dicionário + teste de paridade
+├── data/                           conteúdo pt
+├── hooks/
+├── i18n/
+├── lib/
+└── types/
 ```
 
-Todo o conteúdo (textos, links, certificações, casos técnicos) é editado em
-`src/data/`, sem tocar nos componentes. Configurações globais de SEO/URL ficam
-em `src/lib/site.ts` — atualize a propriedade `url` com o domínio final antes do
-deploy (usada em metadata, sitemap, robots e JSON-LD).
+## Acessibilidade
 
-O currículo em PDF é servido de `public/CV_Arthur_Albefaro_PT.pdf` e `public/CV_Arthur_Albefaro_EN.pdf`, um por idioma.
+Contraste AA em todo texto renderizado. O token `--dim` existe, mas é reservado a
+hairline e marcador decorativo: ele dá 2,74:1 sobre o fundo e nunca é usado em
+texto. O texto mais recessivo do site usa `--muted-foreground`, que dá 5,96:1
+sobre o fundo e 5,66:1 sobre a superfície.
 
----
+Navegação por teclado completa, foco visível em todo elemento interativo, e
+`prefers-reduced-motion` desativa o reveal.
 
-## Deploy na Vercel
+## Formulário de contato
 
-1. Faça push do repositório para o GitHub.
-2. Importe o projeto em [vercel.com/new](https://vercel.com/new).
-3. A Vercel detecta o Next.js automaticamente — nenhuma configuração extra é
-   necessária.
-4. Após o deploy, atualize `url` em `src/lib/site.ts` com o domínio final e faça
-   um novo deploy para que os metadados absolutos (OG, sitemap) fiquem corretos.
-
-Ou via CLI:
-
-```bash
-npm i -g vercel
-vercel          # preview
-vercel --prod   # produção
-```
-
----
+`src/components/sections/contact-form.tsx` envia para
+`NEXT_PUBLIC_CONTACT_API_URL`. Sem a variável, o formulário degrada para links de
+WhatsApp e e-mail em vez de quebrar. A validação é pura e testada em
+`src/lib/validate-contact.ts`.
 
 ## Licença
 
-[MIT](LICENSE) © Arthur Albefaro
+MIT.

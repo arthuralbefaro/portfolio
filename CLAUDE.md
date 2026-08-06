@@ -247,15 +247,6 @@ of the nine content columns, odd ones starting at column 1 and even ones at
 column 6, so the empty column between them separates the pair instead of a
 vertical rule. An **even number of skill groups** keeps the two columns level.
 
-## The README is stale
-
-It describes `next-themes` dark/light toggle, `localStorage` persistence and
-Framer Motion animations. None of those are installed — check `package.json`.
-Runtime dependencies are exactly: `next`, `react`, `react-dom`,
-`@radix-ui/react-slot`, `class-variance-authority`, `clsx`, `lucide-react`,
-`tailwind-merge`. Do not "restore" a light mode or a motion library on the
-README's authority. Trust `package.json` and this file.
-
 ## TypeScript
 
 `strict` plus `noUncheckedIndexedAccess`, `noImplicitOverride`,
