@@ -61,7 +61,7 @@ Tailwind 4, bilingual pt/en, deployed on Vercel.
 | `npm run lint` | ESLint 9 flat config |
 | `npm run format` | Prettier write |
 | `npm run format:check` | Prettier check — **this is what fails CI** |
-| `npm test` | Vitest, 31 tests across 4 files |
+| `npm test` | Vitest, 32 tests across 4 files |
 | `npm run check:design` | Type and spacing scale guard |
 | `npm run build` | Production build |
 
@@ -78,7 +78,7 @@ npm run typecheck && npm test && npm run build
 ```
 
 Run them in the same message as the claim. Read the exit code and the full
-output, not the last line. `npm test` must report **31 tests across 4 files**,
+output, not the last line. `npm test` must report **32 tests across 4 files**,
 and `src/content/parity.test.ts` must be among them — a green run that skipped
 it proves nothing.
 
@@ -86,6 +86,25 @@ If `parity.test.ts` fails you edited one locale and forgot the other. Fix the
 missing file. Never relax the assertion, never skip the test.
 
 Run `npm run format` last, then re-run `typecheck` if it touched anything.
+
+### Counting content in the generated HTML
+
+`grep -o "phrase" .next/server/app/pt.html | wc -l` is not a count of what the
+page shows, and `grep -c` is worse: the HTML is a single line, so it always
+reports 1. Two things break the naive search, and both bit us in `378ba55`:
+
+- **The RSC payload.** Next embeds the flight data in a `<script>` inside the
+  same file, so every rendered string appears **twice**. Strip `<script>` blocks
+  before counting.
+- **HTML entities.** An apostrophe renders as `&#x27;`, so a literal search for
+  `Bachelor's` finds nothing in the markup while still matching inside the
+  payload. Unescape entities before comparing.
+
+Searching for the wrong wording compounds it: the prose said `Bachelor's degree
+in Computer Science` while the data field says `Bachelor's in Computer Science`,
+so the naive grep returned 2 for pt and 0 for en when the truth was 1 and 1.
+Strip the scripts, unescape, and search the string that is actually in the
+data.
 
 ## Content architecture
 
@@ -119,7 +138,7 @@ alone already fails.
 | experiences | `company` |
 | skill groups | `category` |
 | nav items | `id` |
-| technical posts, languages | length only |
+| technical posts, languages, about paragraphs | length only |
 
 A separate test asserts that professional case studies come before personal
 ones, in both locales. That is not locale drift but a content invariant: the

@@ -64,6 +64,10 @@ describe("locale content parity", () => {
     expect(en.languages).toHaveLength(pt.languages.length);
   });
 
+  it("has the same number of about paragraphs", () => {
+    expect(en.profile.about).toHaveLength(pt.profile.about.length);
+  });
+
   it("keeps profile identity fields in sync", () => {
     expect(en.profile.name).toBe(pt.profile.name);
     expect(en.profile.email).toBe(pt.profile.email);
